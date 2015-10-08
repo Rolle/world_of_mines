@@ -1,0 +1,39 @@
+<div class="modal fade" id="popup-mine-<%=mine.id.to_s%>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= mine.name %></h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <%= form_for(mine) do |f| %>
+            <div class="field">
+              <%= f.label :latitude %><br>
+              <%= f.text_field :latitude %>
+            </div>
+            <div class="field">
+              <%= f.label :longitude %><br>
+              <%= f.text_field :longitude %>
+            </div>
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+            <div class="field">
+              <%= f.label :description %><br>
+              <%= f.text_field :description %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" data-dismiss="modal">Close</button-->
+        <button type="button" class="btn btn-primary">Speichern</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
