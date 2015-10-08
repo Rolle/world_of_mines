@@ -7,32 +7,41 @@
       </div>
       <div class="modal-body">
         <p>
-          <%= form_for(mine) do |f| %>
-            <div class="field">
-              <%= f.label :latitude %><br>
-              <%= f.text_field :latitude %>
+
+          <%= form_tag(url_for(controller: 'mines', action: :update_ajax, id: mine.id), remote: true) do %>
+            <div class="form-group">
+              <%= label_tag "Name", nil, :class => "control-label" %>
+              <div class="controls">
+                  <%= text_field_tag :name, mine.name, {:class=>"input-small form-control"} %>
+              </div>
             </div>
-            <div class="field">
-              <%= f.label :longitude %><br>
-              <%= f.text_field :longitude %>
+            <div class="form-group">
+              <%= label_tag "Beschreibung", nil, :class => "control-label" %>
+              <div class="controls">
+                  <%= text_area_tag :description, mine.description, {:class=>"input-small form-control"} %>
+              </div>
             </div>
-            <div class="field">
-              <%= f.label :name %><br>
-              <%= f.text_field :name %>
+            <div class="form-group">
+              <%= label_tag "Latitude", nil, :class => "control-label" %>
+              <div class="controls">
+                  <%= text_field_tag :latitude, mine.latitude, {:class=>"input-small form-control"} %>
+              </div>
             </div>
-            <div class="field">
-              <%= f.label :description %><br>
-              <%= f.text_field :description %>
-            </div>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
+            <div class="form-group">
+              <%= label_tag "Longitude", nil, :class => "control-label" %>
+              <div class="controls">
+                  <%= text_field_tag :longitude, mine.longitude, {:class=>"input-small form-control"} %>
+              </div>
+            </div>            
+            <%= button_tag( :class => "btn btn-primary btn-sm") do %>
+                <i class="glyphicon glyphicon-save"></i> Speichern
+            <% end %>
           <% end %>
         </p>
       </div>
       <div class="modal-footer">
         <!--button type="button" class="btn btn-default" data-dismiss="modal">Close</button-->
-        <button type="button" class="btn btn-primary">Speichern</button>
+        <button type="button" class="btn btn-danger">Löschen</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

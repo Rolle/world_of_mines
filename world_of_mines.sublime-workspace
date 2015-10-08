@@ -119,7 +119,7 @@
 			"file": "app/views/mines/map.html.erb",
 			"settings":
 			{
-				"buffer_size": 2331,
+				"buffer_size": 2326,
 				"line_ending": "Windows"
 			}
 		},
@@ -127,15 +127,23 @@
 			"file": "app/views/mines/_mine.html.erb",
 			"settings":
 			{
-				"buffer_size": 1419,
+				"buffer_size": 2186,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/mines/_form.html.erb",
+			"file": "app/controllers/mines_controller.rb",
 			"settings":
 			{
-				"buffer_size": 800,
+				"buffer_size": 1337,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 1499,
 				"line_ending": "Unix"
 			}
 		}
@@ -178,18 +186,21 @@
 	[
 		"/home/roland/projects/WorldOfMines",
 		"/home/roland/projects/WorldOfMines/app",
+		"/home/roland/projects/WorldOfMines/app/assets/images",
+		"/home/roland/projects/WorldOfMines/app/controllers",
 		"/home/roland/projects/WorldOfMines/app/views",
 		"/home/roland/projects/WorldOfMines/app/views/mines",
-		"/home/roland/projects/WorldOfMines/db/migrate"
+		"/home/roland/projects/WorldOfMines/config"
 	],
 	"file_history":
 	[
+		"/home/roland/projects/WorldOfMines/config/routes.rb",
+		"/home/roland/projects/WorldOfMines/Gemfile",
 		"/home/roland/projects/WorldOfMines/app/views/mines/_popup.html.erb",
 		"/home/roland/projects/WorldOfMines/app/views/mines/map.html.erb",
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/leaflet.markercluster.js",
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/application.js",
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/leaflet-providers.js",
-		"/home/roland/projects/WorldOfMines/config/routes.rb",
 		"/home/roland/projects/WorldOfMines/db/migrate/20151007191931_create_mines.rb",
 		"/home/roland/projects/marco/doc.kml",
 		"/home/roland/projects/marco/Neue Grubendaten zur Aufbereitung.gpx",
@@ -310,8 +321,7 @@
 		"/C/Projects/ruby/BigBrother/app/views/dashboards/_batch_jobs.html.erb",
 		"/C/Projects/ruby/BigBrother/app/views/statistic/params_ddo_trans.erb",
 		"/C/Projects/ruby/BigBrother/app/views/statistic/params_trans_ddo.html.erb",
-		"/C/Projects/ruby/BigBrother/app/views/dashboards/_sepa.html.erb",
-		"/C/Projects/ruby/BigBrother/app/views/dashboards/_order_confirmations.html.erb"
+		"/C/Projects/ruby/BigBrother/app/views/dashboards/_sepa.html.erb"
 	],
 	"find":
 	{
@@ -470,7 +480,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -479,15 +489,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2331,
+						"buffer_size": 2326,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								681,
-								681
+								679,
+								679
 							]
 						],
 						"settings":
@@ -497,10 +507,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 306.0,
+						"translation.y": 85.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -509,45 +519,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1419,
+						"buffer_size": 2186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 153.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/mines/_form.html.erb",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								469,
+								469
 							]
 						],
 						"settings":
@@ -561,6 +541,64 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/mines_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								452
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": -0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Gemfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1499,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

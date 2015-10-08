@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     collection do
       get "map"
     end
+    member do
+      post "update_ajax"
+    end
   end
   resources :mines
   root 'mines#map'

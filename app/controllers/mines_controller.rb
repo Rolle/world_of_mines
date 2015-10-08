@@ -1,8 +1,17 @@
 class MinesController < ApplicationController
   before_action :set_mine, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery with: :null_session
+  
   def map
     @mines = Mine.all
+  end
+  
+  def update_ajax
+    @mine = Mine.find(params[:id])
+    @mine.update_attributes({latitude: params[:latitude].to_f, longitude: params[:longitude].to_f, name: params[:name], description: params[:description]})
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index

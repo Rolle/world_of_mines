@@ -19,9 +19,7 @@
     var markersObject = {};
 
     function onClick(e) {
-        id = markersObject[e];
-        $('#popup-mine-'+id).modal('show');
-       // alert(markersObject[e]);
+        $('#popup-mine-'+this._popup_id).modal('show');
     }
 
     <% if Rails.env.production? %>
@@ -59,10 +57,11 @@
     
     
     <% @mines.each do |mine| %>
-            var marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'});//.addTo(map);
+             marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'});//.addTo(map);
             markers_main.addLayer(marker); 
             marker.on('click', onClick);
-            markersObject[marker] = <%=mine.id.to_s%>;
+            marker._popup_id = <%=mine.id.to_s%>;
+            //markersObject[marker] = <%=mine.id.to_s%>;
 
             /*var divNode = document.createElement("div");   
             divNode.innerHTML = '<%= raw create_popup(mine)%>';
