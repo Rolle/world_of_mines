@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Mines</h1>
+
+<table class="table table-striped table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="2"></th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mines.each do |mine| %>
+      <tr>
+        <td><%= mine.latitude %></td>
+        <td><%= mine.longitude %></td>
+        <td><%= mine.name %></td>
+        <td><%= mine.description %></td>
+        <!--<td><%= link_to 'Show', mine, class: "btn btn-primary btn-xs" %></td>-->
+        <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Delete', mine, method: :delete, data: { confirm: 'Are you sure?'},class: "btn btn-danger btn-xs"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mine', new_mine_path %>
+
+<script>
+  enable_top_menu("liste");
+</script> 

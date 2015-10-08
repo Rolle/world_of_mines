@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WorldOfMines</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+</head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <header class="navbar navbar-fixed-top navbar-default " role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>          
+          <a class="navbar-brand" href="/">World of Mines</a>          
+        </div>
+
+        <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li id="karte"><%= link_to "Karte", map_mines_path %></li>
+            <li id="upload"><%= link_to "Upload", mines_path %></li>
+            <li id="suche"><%= link_to "Suche", mines_path %></li>
+            <li id="liste"><%= link_to "Liste", mines_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <br/>
+    <%= yield %>
+
+    <footer class="bs-docs-footer" role="contentinfo">
+      <p>World of Mines</p>
+    </footer>
+  </body>
+
+  <a href="#" class="scrollup">Scroll</a>
+  <script type="text/javascript">
+    $(document).ready(function(){ 
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
+        }); 
+ 
+        $('.scrollup').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            return false;
+        });
+    });
+  </script>
+</html>

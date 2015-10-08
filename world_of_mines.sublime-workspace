@@ -1,0 +1,872 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"adi",
+				"adits_count"
+			],
+			[
+				"main",
+				"main_count"
+			],
+			[
+				"ma",
+				"markers_flag"
+			],
+			[
+				"maer",
+				"marker_places"
+			],
+			[
+				"makrer",
+				"markers_adits"
+			],
+			[
+				"makr",
+				"markers_flag"
+			],
+			[
+				"image_",
+				"images_adit"
+			],
+			[
+				"div",
+				"divNode"
+			],
+			[
+				"blue",
+				"blueMarker"
+			],
+			[
+				"marker",
+				"marker_places"
+			],
+			[
+				"maker",
+				"marker_places"
+			],
+			[
+				"layer",
+				"layerGroup"
+			],
+			[
+				"image_art",
+				"image_artifacts"
+			],
+			[
+				"image_arti",
+				"image_artifact_map_path"
+			],
+			[
+				"mark",
+				"markers_track"
+			],
+			[
+				"Imar",
+				"ImageArtifact"
+			],
+			[
+				"Imge",
+				"ImageArtifact"
+			],
+			[
+				"open",
+				"openPopup"
+			],
+			[
+				"ke",
+				"keys"
+			],
+			[
+				"reso",
+				"resolution"
+			],
+			[
+				"logse",
+				"logsessions"
+			],
+			[
+				"plat",
+				"plattform_92"
+			],
+			[
+				"brow",
+				"browser_92"
+			],
+			[
+				"PLATTFOR",
+				"PLATTFORM_IPAD"
+			],
+			[
+				"PLAT",
+				"PLATTFORM_WINDOWS"
+			],
+			[
+				"PLATT",
+				"PLATTFORM_IPHONE"
+			],
+			[
+				"BR",
+				"BROWSER_SAFARI"
+			],
+			[
+				"stat",
+				"Statistic"
+			],
+			[
+				"Fire",
+				"BROWSER_FIREFOX"
+			],
+			[
+				"failed",
+				"failedjobs_3"
+			],
+			[
+				"faild",
+				"failedjobs_1"
+			],
+			[
+				"part",
+				"partnerweb_3"
+			],
+			[
+				"missng",
+				"missing1"
+			],
+			[
+				"webserver",
+				"webserver_1"
+			],
+			[
+				"running",
+				"running_replications_count"
+			],
+			[
+				"now_",
+				"now_time"
+			],
+			[
+				"docimp",
+				"docimportnotprocessed"
+			],
+			[
+				"statu",
+				"statuschecker_red"
+			],
+			[
+				"now",
+				"now_time"
+			],
+			[
+				"webserv",
+				"webserver_1"
+			],
+			[
+				"coop",
+				"coop_rejected"
+			],
+			[
+				"result_a",
+				"result_array_pw"
+			],
+			[
+				"result",
+				"result_array_pw"
+			],
+			[
+				"succ",
+				"success_span"
+			],
+			[
+				"error_",
+				"error_span"
+			],
+			[
+				"Login",
+				"LoginSuccessfultime"
+			],
+			[
+				"D",
+				"Dashboard"
+			],
+			[
+				"Stati",
+				"Statistik"
+			],
+			[
+				"status_web",
+				"status_webserver_path"
+			],
+			[
+				"clinet",
+				"client_cert"
+			],
+			[
+				"cert",
+				"cert_file"
+			],
+			[
+				"checker",
+				"checkers"
+			],
+			[
+				"error",
+				"error_message"
+			],
+			[
+				"Fund",
+				"FundDescription"
+			],
+			[
+				"amount",
+				"amount_per_bic"
+			],
+			[
+				"amount_per_",
+				"amount_per_country"
+			],
+			[
+				"Sta",
+				"Statistic"
+			],
+			[
+				"up",
+				"upcase"
+			],
+			[
+				"doci",
+				"docimport_documentid_path"
+			],
+			[
+				"hod",
+				"holding_customerid_path"
+			],
+			[
+				"customer",
+				"customer_customerid_path"
+			],
+			[
+				"tra",
+				"tracking"
+			],
+			[
+				"st",
+				"start_with"
+			],
+			[
+				"whe",
+				"where"
+			],
+			[
+				"rat",
+				"ratings"
+			],
+			[
+				"content",
+				"content_tag"
+			],
+			[
+				"group",
+				"group_fell"
+			],
+			[
+				"grop",
+				"group_bekond"
+			],
+			[
+				"current",
+				"current_user"
+			],
+			[
+				"pref",
+				"preferred_group"
+			],
+			[
+				"pre",
+				"preferred_group"
+			],
+			[
+				"per",
+				"permanent"
+			],
+			[
+				"signe",
+				"signed"
+			],
+			[
+				"perma",
+				"permanent"
+			],
+			[
+				"end",
+				"end"
+			],
+			[
+				"change",
+				"change_group"
+			],
+			[
+				"do",
+				"do"
+			],
+			[
+				"coll",
+				"collection"
+			],
+			[
+				"resou",
+				"resources"
+			],
+			[
+				"red",
+				"redirect_to"
+			],
+			[
+				"group_id",
+				"group_id"
+			],
+			[
+				"prefe",
+				"preferred_group"
+			],
+			[
+				"cookie",
+				"cookies"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/views/mines/map.html.erb",
+			"settings":
+			{
+				"buffer_size": 1932,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/helpers/mines_helper.rb",
+			"settings":
+			{
+				"buffer_size": 307,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Ruby/Ruby.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 129.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Projects/ruby/WorldOfMines",
+		"/C/Projects/ruby/WorldOfMines/app",
+		"/C/Projects/ruby/WorldOfMines/app/assets",
+		"/C/Projects/ruby/WorldOfMines/app/helpers",
+		"/C/Projects/ruby/WorldOfMines/app/views",
+		"/C/Projects/ruby/WorldOfMines/app/views/layouts",
+		"/C/Projects/ruby/WorldOfMines/app/views/mines"
+	],
+	"file_history":
+	[
+		"/C/Projects/ruby/WorldOfMines/app/assets/javascripts/application.js",
+		"/C/Projects/ruby/WorldOfMines/app/views/layouts/application.html.erb",
+		"/C/Projects/ruby/WorldOfMines/scripts/import_kml.rb",
+		"/C/Projects/ruby/WorldOfMines/app/views/mines/index.html.erb",
+		"/C/Projects/ruby/WorldOfMines/app/helpers/mines_helper.rb",
+		"/C/Projects/ruby/WorldOfMines/scripts/doc.kml",
+		"/C/Projects/ruby/WorldOfMines/app/views/mines/map.html.erb",
+		"/C/Projects/ruby/WorldOfMines/config/routes.rb",
+		"/C/Projects/ruby/WorldOfMines/doc.kml",
+		"/C/Projects/ruby/WorldOfMines/import_kml.rb",
+		"/C/Projects/ruby/Cornerstone/app/controllers/cornerstones_controller.rb",
+		"/C/Projects/ruby/Cornerstone/app/views/layouts/application.html.erb",
+		"/C/Projects/ruby/Cornerstone/app/views/cornerstones/index.html.erb",
+		"/C/Projects/ruby/Cornerstone/app/views/cornerstones/map.html.erb",
+		"/C/Projects/ruby/Cornerstone/app/views/cornerstones/_thumb.html.erb",
+		"/C/Projects/ruby/Cornerstone/app/views/cornerstones/new.html.erb",
+		"/C/Projects/ruby/Cornerstone/app/assets/stylesheets/leaflet.css",
+		"/C/Projects/ruby/Gruben/app/models/image_artifact.rb",
+		"/C/Projects/ruby/Gruben/app/views/maps/index.html.erb",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/Marker.Text.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/application.js",
+		"/C/Projects/ruby/Gruben/app/controllers/maps_controller.rb",
+		"/C/Projects/ruby/Gruben/Gemfile",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/leaflet.measurecontrol.css",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/distance.css",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/Distance.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/leaflet.measurecontrol.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/measure.js",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/measure.css",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/distance.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/permalink.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/permalink-line.js",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/application.css",
+		"/C/Projects/ruby/Gruben/app/controllers/image_artifacts_controller.rb",
+		"/C/Projects/ruby/Gruben/app/controllers/adits_controller.rb",
+		"/C/Projects/ruby/Gruben/app/models/user.rb",
+		"/C/Projects/ruby/Gruben/log/development.log",
+		"/C/Projects/ruby/Gruben/app/controllers/user_sessions_controller.rb",
+		"/C/Projects/ruby/Gruben/app/views/image_artifacts/_thumb.html.erb",
+		"/C/Projects/ruby/Gruben/config/routes.rb",
+		"/C/Projects/ruby/Gruben/app/helpers/application_helper.rb",
+		"/C/Projects/ruby/Gruben/config/application.rb",
+		"/C/Projects/ruby/Gruben/app/views/image_artifacts/index.html.erb",
+		"/C/Projects/ruby/Gruben/app/helpers/maps_helper.rb",
+		"/C/Projects/ruby/Gruben/app/views/image_artifacts/edit.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/image_artifacts/destroy.js.erb",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/bootstrap.min.css",
+		"/C/Projects/ruby/Gruben/app/views/layouts/application.html.erb",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/overwrite.css.erb",
+		"/C/Projects/ruby/Gruben/app/views/image_artifacts/new.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/user_sessions/_form.html.erb",
+		"/C/Projects/ruby/Gruben/app/models/user_session.rb",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/leaflet.css",
+		"/H/DB_Cleanup_2013/hostfiles_karin/2013/temp/make_uniq.rb",
+		"/H/DB_Cleanup_2013/hostfiles_karin/2013/make_uniq - Copy.rb",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/glyphicons-halflings-regular.eot",
+		"/C/Projects/ruby/Gruben/config/environments/production.rb",
+		"/C/Projects/ruby/Gruben/app/views/user_sessions/new.html.erb",
+		"/C/Projects/ruby/Gruben/app/assets/stylesheets/leaflet.awesome-markers.css",
+		"/C/Projects/ruby/Gruben/app/views/adits/_form.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/notes/_form.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/places/_form.html.erb",
+		"/C/Projects/ruby/Gruben/db/migrate/20130726135505_remove_adit_from_image_artifacts.rb",
+		"/C/Projects/ruby/Gruben/app/controllers/places_controller.rb",
+		"/C/Projects/ruby/Gruben/app/helpers/image_artifacts_helper.rb",
+		"/C/Projects/ruby/Gruben/db/migrate/20130725124331_add_adit_to_image_artifacs.rb",
+		"/C/Projects/ruby/Gruben/app/views/places/index.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/places/new.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/places/create.html.erb",
+		"/C/Projects/ruby/Gruben/app/views/places/edit.html.erb",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/leaflet-providers.js",
+		"/C/Projects/ruby/Gruben.old/app/assets/javascripts/leaflet-providers.js",
+		"/C/Projects/ruby/Gruben/app/assets/javascripts/leaflet.js",
+		"/C/Projects/ruby/BergwerkPage/source/map.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/javascripts/map.js",
+		"/C/Projects/ruby/BergwerkPage/source/javascripts/Google.js",
+		"/C/Projects/ruby/BergwerkPage/BergwerkPage.sublime-project",
+		"/C/Projects/ruby/BergwerkPage/Gemfile",
+		"/C/Projects/ruby/BergwerkPage/source/bilder.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/javascripts/bootstrap.min.js",
+		"/C/Projects/ruby/BergwerkPage/source/stylesheets/bootstrap.min.css",
+		"/C/Projects/ruby/BergwerkPage/source/layouts/layout.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/bilder.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/stylesheets/my.css",
+		"/C/Projects/ruby/BergwerkPage/source/stylesheets/docs.css",
+		"/C/Projects/ruby/BergwerkPage/source/index.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/javascripts/my.js",
+		"/C/Projects/ruby/BergwerkPage/source/grubenwanderweg.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/gruppen.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/bergwerke.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/literatur.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/links.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/videos.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/foerderverein.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung/fell.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/impressum.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/grubenshop.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/bergwerk_untertage.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/bergwerk_uebertage.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/aktuelles.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/umgebung.html.erb",
+		"/C/Projects/ruby/BergwerkPage/source/stylesheets/bootstrap.css",
+		"/C/Projects/ruby/BergwerkPage/config.rb",
+		"/C/Java/ruby193.327/lib/ruby/gems/1.9.1/gems/middleman-more-3.0.10/lib/middleman-more/core_extensions/default_helpers.rb",
+		"/C/Projects/ruby/BergwerkPage/source/layouts/grubenshop.html.erb",
+		"/C/Projects/ruby/PictureMap/app/assets/stylesheets/MarkerCluster.Default.css",
+		"/C/Projects/ruby/PictureMap/app/assets/stylesheets/application.css",
+		"/C/Projects/ruby/PictureMap/app/views/maps/index.html.erb",
+		"/C/Projects/ruby/PictureMap/Gemfile",
+		"/C/Java/ruby-2.0.0-r38746-i386-mingw32/lib/ruby/gems/2.0.0/gems/sqlite3-1.3.6-x86-mingw32/lib/sqlite3.rb",
+		"/C/Projects/ruby/PictureMap/app/views/user_sessions/_form.html.erb",
+		"/C/Projects/ruby/PictureMap/app/controllers/application_controller.rb",
+		"/C/Projects/ruby/PictureMap/app/controllers/user_sessions_controller.rb",
+		"/C/Projects/ruby/PictureMap/app/views/user_sessions/new.html.erb",
+		"/C/Projects/ruby/PictureMap/app/controllers/maps_controller.rb",
+		"/C/Projects/ruby/PictureMap/app/controllers/users_controller.rb",
+		"/C/Projects/ruby/PictureMap/app/controllers/image_artifacts_controller.rb",
+		"/C/Projects/ruby/PictureMap/app/controllers/adits_controller.rb",
+		"/C/Projects/ruby/PictureMap/config/routes.rb",
+		"/C/Projects/ruby/PictureMap/app/views/users/index.html.erb",
+		"/C/Projects/ruby/PictureMap/app/models/user_session.rb",
+		"/C/Projects/ruby/PictureMap/app/views/users/_form.html.erb",
+		"/C/Projects/ruby/PictureMap/app/helpers/application_helper.rb",
+		"/C/Projects/ruby/PictureMap/app/models/user.rb",
+		"/C/Projects/ruby/PictureMap/app/views/image_artifacts/index.html.erb",
+		"/C/Projects/ruby/PictureMap/app/views/image_artifacts/edit.html.erb",
+		"/C/Projects/ruby/PictureMap/app/views/image_artifacts/new.html.erb",
+		"/C/Projects/ruby/PictureMap/app/models/image_artifact.rb"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\Projects\\ruby\\Cornerstone",
+			"C:\\Projects\\ruby\\Gruben\\app\\assets",
+			"C:\\Projects\\ruby\\BigSwiftBrother\\app\\assets",
+			"C:\\Projects\\ruby\\BigSwiftBrother\\app\\views",
+			"C:\\Projects\\ruby\\BigSwiftBrother"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"layers.png",
+			"images",
+			"marker_places",
+			".disable",
+			"fonts",
+			"images",
+			"glyphicons-halflings-regular.svg",
+			"glyphicons-halflings-regular.woff",
+			"images",
+			"drawnItems",
+			"markers_flag",
+			"markers_adits_groupless",
+			"addLayer",
+			"ggl",
+			"images",
+			"style=\"width: 260; height: 180px;\"",
+			"gly",
+			"glyph",
+			"alt=\"\"",
+			"class=\"group\"",
+			"glyphicons-",
+			"glyphicons-halflings-white.png",
+			"</h2>",
+			"<h2>",
+			"images/",
+			"<h4>",
+			"\"page-header\"",
+			"</h1>",
+			"<h1>",
+			"images/",
+			"markers_adits",
+			"<h3>",
+			"</h1>",
+			"<h1>",
+			"img",
+			"small",
+			"update",
+			"gly",
+			"walli",
+			".ui-btn-hover-c",
+			".ui-btn-hover-c:hover",
+			".ui-btn-up-e",
+			"data-icon=\"",
+			"gly",
+			"pp",
+			"puts",
+			"glyphicons",
+			"img",
+			"swi.t",
+			"swi.",
+			"@",
+			"_development:",
+			"Y:",
+			"dashboa",
+			"td",
+			"print",
+			"h4",
+			"https://",
+			"end",
+			"statbic",
+			"PRODUCTION",
+			"_DEV:",
+			" << \"\"",
+			"@orders_hash",
+			"btn",
+			"        <%= ",
+			"primary",
+			"body",
+			"51",
+			"group_dropdown",
+			"group_drop",
+			"group_down",
+			"daemons",
+			"group_dropdown",
+			"sess",
+			"daemon",
+			"url",
+			"daemon",
+			"tour_calender",
+			"th",
+			"daemon",
+			"backgrou",
+			"columnize",
+			"column",
+			"daemon",
+			"daemons",
+			"daemon",
+			"blockquote",
+			"over",
+			"E565",
+			"table",
+			"text",
+			"td",
+			"email",
+			"logo",
+			".gif",
+			"group_id => 5",
+			"###",
+			"error",
+			"put",
+			"49.788874",
+			"49.78887449",
+			"section-title",
+			"description",
+			"name"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"markers_places",
+			"style=\"width: 260px; height: 180px;\"",
+			"",
+			"class=\"fancybox\"",
+			"</h3>",
+			"<h3>",
+			"/images/",
+			"\"well well-small\"",
+			"</h2>",
+			"<h2>",
+			"../images/",
+			"markers_visitor",
+			"<h4>",
+			"</h3>",
+			"<h3>",
+			"",
+			"_production:",
+			"\\\\\\\\luxpisps14\\prod_shs_b2b$\\\\",
+			"th",
+			"",
+			"production",
+			"_development:",
+			"@result_hash",
+			"group_id => 6"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/views/mines/map.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1768,
+								1768
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/helpers/mines_helper.rb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 357.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "world_of_mines.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"style",
+				"app/assets/stylesheets/style.css"
+			],
+			[
+				"_",
+				"app/views/tracks/_list.html.erb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Projects\\ruby\\Ergo\\Ergo.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 337.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
