@@ -8,7 +8,7 @@
       <div class="modal-body">
         <p>
 
-          <%= form_tag(url_for(controller: 'mines', action: :update_ajax, id: mine.id), remote: true) do %>
+          <%= form_tag(url_for(controller: 'mines', action: :updateajax, id: mine.id, format: :js), method: :post, remote: true) do %>
             <div class="form-group">
               <%= label_tag "Name", nil, :class => "control-label" %>
               <div class="controls">
@@ -41,7 +41,7 @@
       </div>
       <div class="modal-footer">
         <!--button type="button" class="btn btn-default" data-dismiss="modal">Close</button-->
-        <button type="button" class="btn btn-danger">Löschen</button>
+        <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Löschen</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

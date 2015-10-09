@@ -36,15 +36,15 @@
     map = new L.Map('map');
     map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
 
-    var osmde = L.tileLayer.provider('OpenStreetMap.DE');
-    var ggl = new L.Google();
+    //var osmde = L.tileLayer.provider('OpenStreetMap.DE');
+    //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
     
-    var baseMaps = {
+    /*var baseMaps = {
             "Google": ggl,
             "Bing": bing,
             "OSM DE": osmde,
-    };
+    };*/
     var markers_main = new L.MarkerClusterGroup();
     var overlayMaps = {
         "Gruben": markers_main,
