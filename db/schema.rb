@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009182721) do
+ActiveRecord::Schema.define(version: 20151010153727) do
+
+  create_table "gps_files", force: :cascade do |t|
+    t.string   "file_id"
+    t.integer  "user_id"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mines", force: :cascade do |t|
     t.float    "latitude"
