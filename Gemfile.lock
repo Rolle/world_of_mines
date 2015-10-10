@@ -170,6 +170,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   devise
+  nokogiri
   rails (= 4.2.4)
   refile
   sqlite3

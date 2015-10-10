@@ -33,6 +33,8 @@ gem 'turbolinks'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem "refile", require: "refile/rails"
+gem "nokogiri"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -1,8 +1,10 @@
 class MinesController < ApplicationController
+  
   before_action :set_mine, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
-  
+
+
   def map
     @mines = Mine.all
   end

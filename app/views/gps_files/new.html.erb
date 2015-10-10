@@ -3,9 +3,18 @@
         <div class="col-md-12" role="main">
 
 			<h1>Neue GPS-Datei hochladen</h1>
-			<p>Find me in app/views/files/new.html.erb</p>
+			
+			<%= form_for @file do |f| %>
+				<div class="form-group">
+	            	
+	            	<div class="controls">
+	                  <%= f.attachment_field :file, :class=>"input-small form-control" %>
+	              	</div>
+	            </div>
 
-
+			  <%= f.submit "Hochladen", class: "btn btn-primary" %>
+			<% end %>
+		
 		</div>
 	</div>
 </div>

@@ -9,7 +9,6 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
             <th>Author</th>
             <th>Upload am</th>
             <th colspan="2"></th> 
@@ -20,12 +19,15 @@
           <% @files.each do |file| %>
             <tr>
               <td><%= file.file_id %></td>
-              <td><%= file.name %></td>
-              <td><%= file.user_id %></td>
+              <td><%= file.user.email %></td>
               <td><%= file.created_at.to_s %></td>
-              <td><%= link_to 'Show', file, class: "btn btn-primary btn-xs" %></td>
-              <td><%= link_to 'Edit', edit_file_path(mine), class: "btn btn-primary btn-xs" %></td>
-              <td><%= link_to 'Delete', file, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
+              <td><%= link_to 'Download', file, class: "btn btn-primary btn-xs" %></td>
+              <td><%= link_to 'Löschen', file, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
+              <% if file.is_in_db? %>
+                <td><%= link_to 'aus DB', export_gps_file_path(file), class: "btn btn-success btn-xs" %> </td>
+              <% else %>
+                <td><%= link_to 'in DB', import_gps_file_path(file), class: "btn btn-success btn-xs" %> </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :gps_files do
+    member do
+      get 'import'
+      get 'export'
+    end
+  end
+
   resources :gps_files
 
   devise_for :users

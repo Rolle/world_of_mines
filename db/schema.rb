@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010153727) do
+ActiveRecord::Schema.define(version: 20151010205646) do
 
   create_table "gps_files", force: :cascade do |t|
     t.string   "file_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151010153727) do
     t.integer  "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "is_in_db"
   end
 
   create_table "mines", force: :cascade do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151010153727) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "gps_file_id"
   end
 
   create_table "users", force: :cascade do |t|
