@@ -24,9 +24,10 @@
           <% if user_signed_in? %>
             <ul class="nav navbar-nav">           
               <li id="karte"><%= link_to "Karte", map_mines_path %></li>
-              <% if current_user.is_admin? %><li id="dateien"><%= link_to "Dateien", gps_files_path %></li><% end %>
-              <li id="liste"><%= link_to "Liste", mines_path %></li>
-              <% if current_user.is_admin? %><li id="user"><%= link_to "User", users_path %></li><% end %>
+              <% if current_user.is_admin? %><li id="dateien"><%= link_to "Dateien", gps_files_path %></li>
+                <li id="liste"><%= link_to "Liste", mines_path %></li>
+                <li id="user"><%= link_to "User", users_path %></li>
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="fb"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
