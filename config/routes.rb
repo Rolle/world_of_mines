@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :gps_files
 
-  devise_for :users
+  devise_for :users, :path => 'u'
 
   resources :users
 

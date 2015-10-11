@@ -22,8 +22,10 @@
           <div class="form-group">
             <div id ="map" style="width:566px; height: 200px;"></div>         
           </div>
-          <%= button_tag( :class => "btn btn-primary btn-sm") do %>
-            <i class="glyphicon glyphicon-save"></i> Speichern
+          <% if current_user.is_admin? %>
+            <%= button_tag( :class => "btn btn-primary btn-sm") do %>
+              <i class="glyphicon glyphicon-save"></i> Speichern
+            <% end %>
           <% end %>
         <% end %>
       </div>

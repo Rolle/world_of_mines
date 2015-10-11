@@ -22,7 +22,7 @@
                   <td><%= mine.description %></td>
                   <!--td><%= link_to 'Show', mine, class: "btn btn-success btn-xs" %></td-->
                   <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %></td>
-                  <td><%= link_to 'Delete', mine, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
+                  <% if current_user.is_admin?%><td><%= link_to 'Delete', mine, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td><% end %>
                 </tr>
               <% end %>
             </tbody>
