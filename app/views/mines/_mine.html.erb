@@ -6,8 +6,6 @@
         <h4 class="modal-title"><%= mine.name %></h4>
       </div>
       <div class="modal-body">
-        <p>
-
           <%= form_tag(url_for(controller: 'mines', action: :updateajax, id: mine.id, format: :js), method: :post, remote: true) do %>
             <div class="form-group">
               <%= label_tag "Name", nil, :class => "control-label" %>
@@ -37,7 +35,6 @@
                 <i class="glyphicon glyphicon-save"></i> Speichern
             <% end %>
           <% end %>
-        </p>
       </div>
       <div class="modal-footer">
         <!--button type="button" class="btn btn-default" data-dismiss="modal">Close</button-->

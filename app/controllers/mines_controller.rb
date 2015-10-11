@@ -21,21 +21,20 @@ class MinesController < ApplicationController
     @mines = Mine.all
   end
 
-  def show
-  end
-
   def new
     @mine = Mine.new
   end
 
   def edit
+    @mine = set_mine
+    
   end
 
   def create
     @mine = Mine.new(mine_params)
 
     if @mine.save
-      redirect_to @mine, notice: 'Mine was successfully created.'
+      redirect_to @mine, notice: 'Erfolgreich angelegt.'
     else
       render :new
     end
@@ -43,7 +42,7 @@ class MinesController < ApplicationController
 
   def update
     if @mine.update(mine_params)
-      redirect_to @mine, notice: 'Mine was successfully updated.'
+      redirect_to @mine, notice: 'Erfolgreich geändert.'
     else
       render :edit
     end
@@ -51,7 +50,7 @@ class MinesController < ApplicationController
 
   def destroy
     @mine.destroy
-    redirect_to mines_url, notice: 'Mine was successfully destroyed.'
+    redirect_to mines_url, notice: 'Gelöscht!.'
   end
 
   private
