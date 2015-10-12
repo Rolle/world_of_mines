@@ -1,9 +1,15 @@
 class MinesController < ApplicationController
-  
-  before_action :set_mine, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
+
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
 
+  def search
+    @mines = Mine.where("name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%'")    
+    respond_to do |format|
+      format.js {}
+    end  
+  end
 
   def map
     @mines = Mine.all
@@ -11,7 +17,13 @@ class MinesController < ApplicationController
   
   def updateajax
     @mine = Mine.find(params[:id])
-    @mine.update_attributes({latitude: params[:latitude].to_f, longitude: params[:longitude].to_f, name: params[:name], description: params[:description]})   
+    log_event(1, "Mine", "Änderungen vorher:" + 
+      @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at
+    )
+    @mine.update_attributes({name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], visited_at: params[:visited_at]})   
+    log_event(1, "Mine", "Änderungen nachher:" + 
+      @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at     
+    )
     respond_to do |format|
       format.js {}
     end
@@ -34,6 +46,9 @@ class MinesController < ApplicationController
     @mine = Mine.new(mine_params)
 
     if @mine.save
+      log_event(1, "Mine", "Neuanlage:" + 
+        @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at     
+      )
       redirect_to @mine, notice: 'Erfolgreich angelegt.'
     else
       render :new
@@ -41,7 +56,13 @@ class MinesController < ApplicationController
   end
 
   def update
+    log_event(1, "Mine", "Änderung vorher:" + 
+      @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at     
+    )
     if @mine.update(mine_params)
+      log_event(1, "Mine", "Änderung nachher:" + 
+        @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at     
+      )
       redirect_to @mine, notice: 'Erfolgreich geändert.'
     else
       render :edit
@@ -49,6 +70,9 @@ class MinesController < ApplicationController
   end
 
   def destroy
+    log_event(1, "Mine", "Löschung:" + 
+      @mine.name + ", " + @mine.description+", " + @mine.latitude + ", " + @mine.longitude + ", " + @mine.state.to_s + ", " + @mine.visited_at     
+    )
     @mine.destroy
     redirect_to mines_url, notice: 'Gelöscht!.'
   end

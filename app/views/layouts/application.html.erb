@@ -24,9 +24,13 @@
           <% if user_signed_in? %>
             <ul class="nav navbar-nav">           
               <li id="karte"><%= link_to "Karte", map_mines_path %></li>
-              <% if current_user.is_admin? %><li id="dateien"><%= link_to "Dateien", gps_files_path %></li>
-                <li id="liste"><%= link_to "Liste", mines_path %></li>
-                <li id="user"><%= link_to "User", users_path %></li>
+              <% if current_user.is_admin? %>
+                <li id="liste"><%= link_to "Gruben", mines_path %></li>
+                <li id="dateien"><%= link_to "Dateien", gps_files_path %></li>                
+                <li id="user"><%= link_to "Benutzer", users_path %></li>
+                <% if current_user.is_superadmin? %>
+                  <li id="events"><%= link_to "Log", events_path %></li>
+                <% end %>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -37,8 +41,6 @@
       </div>
     </header>
     <br/>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <%= yield %>
 

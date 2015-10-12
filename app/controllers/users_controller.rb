@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
@@ -13,7 +15,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    log_event(0, "User", "User " + @user.email + " wurde gelöscht.")
+    redirect_to users_url, notice: 'User gelöscht.'
   end
 
   def new
@@ -23,9 +26,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_event(0, "User", "User " + @user.email + " wurde angelegt.")
       redirect_to action: 'index', notice: 'Erfolgreich angelegt.'
     else
       render :new
+    end
+  end
+
+  def switch_admin
+    set_user
+    @user.is_admin = !@user.is_admin
+    @user.save
+    log_event(0, "User", "User " + @user.email + " wurde geändert, neuer Admin-Status " + @user.is_admin?.to_s)
+    respond_to do |format|
+      format.js {flash.now[:notice] = "Status geändert!"}
     end
   end
 

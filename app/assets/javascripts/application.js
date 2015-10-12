@@ -20,4 +20,5 @@
 //= require leaflet.awesome-markers.min
 //= require leaflet-providers
 //= require leaflet.markercluster
+//= require jquery.dataTables.min
 //= require my

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011203238) do
+ActiveRecord::Schema.define(version: 20151012150034) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.integer  "category"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "level"
+  end
 
   create_table "gps_files", force: :cascade do |t|
     t.string   "file_id"
@@ -39,6 +49,7 @@ ActiveRecord::Schema.define(version: 20151011203238) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "is_admin"
+    t.boolean  "is_superadmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

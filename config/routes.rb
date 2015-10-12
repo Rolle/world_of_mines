@@ -10,11 +10,18 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'u'
 
+  resources :users do
+    member do
+      get 'switch_admin'
+    end
+  end
+
   resources :users
 
   resources :mines do
     collection do
       get "map"
+      post "search"
     end
     member do
       post "updateajax"
@@ -22,6 +29,7 @@ Rails.application.routes.draw do
   end
   
   resources :mines
+  resources :events
   
   root 'mines#map'
   

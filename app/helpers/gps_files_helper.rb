@@ -11,9 +11,14 @@ module GpsFilesHelper
 			longitude = coords[0]
 			latitude= coords[1]
 			
-			m = Mine.new(name: name, latitude: latitude, longitude: longitude, gps_file_id: file.id)
+			m = Mine.new(name: name.parameterize(), latitude: latitude, longitude: longitude, gps_file_id: file.id)
 			m.save
 
 		end
+	end
+
+	def count_mines_in_file(file)
+		doc = Nokogiri::XML(file.file.read)
+		return doc.css("Placemark").size
 	end
 end
