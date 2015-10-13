@@ -22,7 +22,8 @@
         //$('#popup-mine-'+this._popup_id).modal('show');
         $('#popup-mine-edit').remove();
         $.ajax({
-            url:  this._popup_id+"/edit",
+            url: '/mines/' + this._popup_id+"/edit",
+            //url: <%= url_for :controller => 'mines', :action => 'edit', :id => 10  %>,
             type: "GET",
             
             //success: 
