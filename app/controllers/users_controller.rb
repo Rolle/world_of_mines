@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    @users = User.all
+    @users = User.where('id <> ' + current_user.id.to_s)
   end
 
   def sign_up
@@ -38,6 +38,16 @@ class UsersController < ApplicationController
     @user.is_admin = !@user.is_admin
     @user.save
     log_event(0, "User", "User " + @user.email + " wurde geändert, neuer Admin-Status " + @user.is_admin?.to_s)
+    respond_to do |format|
+      format.js {flash.now[:notice] = "Status geändert!"}
+    end
+  end
+
+    def switch_superadmin
+    set_user
+    @user.is_superadmin = !@user.is_superadmin
+    @user.save
+    log_event(0, "User", "User " + @user.email + " wurde geändert, neuer SuperAdmin-Status " + @user.is_superadmin?.to_s)
     respond_to do |format|
       format.js {flash.now[:notice] = "Status geändert!"}
     end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'switch_admin'
+      get 'switch_superadmin'
     end
   end
 

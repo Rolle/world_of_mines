@@ -12,14 +12,22 @@
         </div>
     </div>
 </div>
-
-<script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+<div id='popup'>
+</div>
 
 <script type='text/javascript'>   
     var markersObject = {};
 
     function onClick(e) {
-        $('#popup-mine-'+this._popup_id).modal('show');
+        //$('#popup-mine-'+this._popup_id).modal('show');
+        $('#popup-mine-edit').remove();
+        $.ajax({
+            url:  this._popup_id+"/edit",
+            type: "GET",
+            
+            //success: 
+        });
+        $('#popup-mine-edit').modal('show');
     }
 
     <% if Rails.env.production? %>
@@ -27,11 +35,61 @@
     <% else %>
             L.Icon.Default.imagePath = '<%= asset_path "" %>';
     <% end %>
+    var markers = {};
     var redMarker = L.AwesomeMarkers.icon({
               icon: 'search', 
               markerColor: 'red',
               prefix: 'fa'
     })
+    var darkredMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'darkred',
+              prefix: 'fa'
+    })
+    var orangeMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'orange',
+              prefix: 'fa'
+    })
+    var greenMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'green',
+              prefix: 'fa'
+    })
+    var darkgreenMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'darkgreen',
+              prefix: 'fa'
+    })
+    var blueMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'blue',
+              prefix: 'fa'
+    })
+    var purpleMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'purple',
+              prefix: 'fa'
+    })
+    var cadetblueMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'cadetblue',
+              prefix: 'fa'
+    })
+    var darkpurpleMarker = L.AwesomeMarkers.icon({
+      icon: 'search', 
+      markerColor: 'darkpurple',
+      prefix: 'fa'
+    })    
+    markers[0] = redMarker;
+    markers[1] = darkredMarker;
+    markers[2] = darkpurpleMarker;
+    markers[3] = greenMarker;
+    markers[4] = darkgreenMarker;
+    markers[5] = blueMarker;
+    markers[6] = purpleMarker;
+    markers[7] = cadetblueMarker;
+    markers[8] = orangeMarker;
 
     map = new L.Map('map');
     map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
@@ -57,18 +115,12 @@
     
     
     <% @mines.each do |mine| %>
-             marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'});//.addTo(map);
-            markers_main.addLayer(marker); 
-            marker.on('click', onClick);
-            marker._popup_id = <%=mine.id.to_s%>;
-            //markersObject[marker] = <%=mine.id.to_s%>;
-
-            /*var divNode = document.createElement("div");   
-            divNode.innerHTML = '<%= raw create_popup(mine)%>';
-            marker.bindPopup(divNode);*/
+      marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: markers[<%=mine.sort || 0 %>], title: '<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>'});//.addTo(map);
+      markers_main.addLayer(marker); 
+      marker.on('click', onClick);
+      marker._popup_id = <%=mine.id.to_s%>;
     <% end %>
 
     enable_top_menu("karte");
 </script> 
 
-<%= render partial: "mine", collection: @mines %>

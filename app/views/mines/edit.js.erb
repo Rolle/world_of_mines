@@ -1,2 +1,3 @@
 $('#popup-mine-edit').remove();
 $('#popup').append("<%= j render(:partial => 'edit', locals: {mine: @mine}) %>");
+$('#popup-mine-edit').modal('show');

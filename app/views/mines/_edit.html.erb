@@ -5,63 +5,85 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><%= mine.name %></h4>
       </div>
-      <div class="modal-body">
-        <%= form_tag(url_for(controller: 'mines', action: :updateajax, id: mine.id, format: :js), method: :post, remote: true) do %>
-          <div class="form-group">
-            <%= label_tag "Name", nil, :class => "control-label" %>
-            <div class="controls">
-                <%= text_field_tag :name, mine.name, {:class=>"input-small form-control"} %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= label_tag "Beschreibung", nil, :class => "control-label" %>
-            <div class="controls">
-                <%= text_area_tag :description, mine.description, {:class=>"input-small form-control"} %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= label_tag "Latitude", nil, :class => "control-label" %>
-            <div class="controls">
-                <%= text_field_tag :latitude, mine.latitude, {:class=>"input-small form-control"} %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= label_tag "Longitude", nil, :class => "control-label" %>
-            <div class="controls">
-                <%= text_field_tag :longitude, mine.longitude, {:class=>"input-small form-control"} %>
-            </div>
-          </div>      
-          <div class="form-group">
-            <%= label_tag "Zustand", nil, :class => "control-label" %>
-            <div class="controls">
-              <%= select_tag :state, options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3 }, mine.state), :class=>"input-small form-control" %>
-              <!--<%= text_field :state, mine.state, {:class=>"input-small form-control"} %>-->
-            </div>
-          </div>      
-          <div class="form-group">
-            <%= label_tag "Besucht am", nil, :class => "control-label" %>
-            <div class="controls">
-                <%= text_field_tag :visited_at, mine.visited_at, {:class=>"input-small form-control"} %>
-            </div>
-          </div>      
 
-          <div class="form-group">
-            <div id ="map" style="width:566px; height: 200px;"></div>         
-          </div>
-          <% if current_user.is_admin? %>
-            <%= button_tag( :class => "btn btn-primary btn-sm") do %>
-              <i class="glyphicon glyphicon-save"></i> Speichern
-            <% end %>
-          <% end %>
-        <% end %>
+      <div class="modal-body">
+        <div>  <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#data" aria-controls="home" role="tab" data-toggle="tab">Daten</a></li>
+            <li role="presentation"><a href="#image" aria-controls="profile" role="tab" data-toggle="tab">Bilder</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="data">
+              <%= form_tag(url_for(controller: 'mines', action: :updateajax, id: mine.id, format: :js), method: :post, remote: true) do %>
+                <div class="form-group">
+                  <%= label_tag "Name", nil, :class => "control-label" %>
+                  <div class="controls">
+                      <%= text_field_tag :name, mine.name, {:class=>"input-small form-control"} %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= label_tag "Beschreibung", nil, :class => "control-label" %>
+                  <div class="controls">
+                      <%= text_area_tag :description, mine.description, {:class=>"input-small form-control"} %>
+                  </div>
+                </div>
+          
+                <% if current_user.is_admin? %>
+                  <div class="form-group">
+                    <%= label_tag "Latitude", nil, :class => "control-label" %>
+                    <div class="controls">
+                        <%= text_field_tag :latitude, mine.latitude, {:class=>"input-small form-control"} %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag "Longitude", nil, :class => "control-label" %>
+                    <div class="controls">
+                        <%= text_field_tag :longitude, mine.longitude, {:class=>"input-small form-control"} %>
+                    </div>
+                  </div>      
+
+                  <div class="form-group">
+                    <%= label_tag "Typ", nil, :class => "control-label" %>
+                    <div class="controls">
+                      <%= select_tag :sort, options_for_select({"Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0}, mine.sort), :class=>"input-small form-control" %>
+                    </div>
+                  </div> 
+
+                  <div class="form-group">
+                    <%= label_tag "Zustand", nil, :class => "control-label" %>
+                    <div class="controls">
+                      <%= select_tag :state, options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3 }, mine.state), :class=>"input-small form-control" %>
+                      <!--<%= text_field :state, mine.state, {:class=>"input-small form-control"} %>-->
+                    </div>
+                  </div>      
+                  <div class="form-group">
+                    <%= label_tag "Besucht am", nil, :class => "control-label" %>
+                    <div class="controls">
+                        <%= text_field_tag :visited_at, mine.visited_at, {:class=>"input-small form-control"} %>
+                    </div>
+                  </div>      
+                <% end %>
+
+                <div class="form-group">
+                  <div id ="map_small" style="width:566px; height: 200px;"></div>         
+                </div>
+                <% if current_user.is_admin? %>
+                  <%= button_tag( :class => "btn btn-primary btn-sm") do %>
+                    <i class="glyphicon glyphicon-save"></i> Speichern
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div> <!-- end tab div data -->
+            <div role="tabpanel" class="tab-pane" id="image">
+            </div> <!-- end tab div image -->
+          </div> <!-- end tab content -->
+        </div> <!-- end tab div -->
       </div>
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
-<script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
 
 <script type='text/javascript'>   
     var markersObject = {};
@@ -77,8 +99,8 @@
               prefix: 'fa'
     })
 
-    map = new L.Map('map');
-    map.setView(new L.LatLng(<%=mine.latitude%>,<%=mine.longitude%>), 12);
+    map_small = new L.Map('map_small');
+    map_small.setView(new L.LatLng(<%=mine.latitude%>,<%=mine.longitude%>), 12);
 
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     //var ggl = new L.Google();
@@ -93,19 +115,19 @@
     var overlayMaps = {
         "Gruben": markers_main,
     };
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    L.control.layers(baseMaps, overlayMaps).addTo(map_small);
     //map.addLayer(bing);
-    map.addLayer(osmde);
-    map.addLayer(markers_main);
+    map_small.addLayer(osmde);
+    map_small.addLayer(markers_main);
     //map.addLayer(baseMaps);
     
     
-    marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'}).addTo(map);
+    marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'}).addTo(map_small);
     $('#popup-mine-edit').on('shown.bs.modal', function(){
       setTimeout(function() {
-      map.invalidateSize();
+      map_small.invalidateSize();
       }, 10);
     });
-  $('#popup-mine-edit').modal('show');
-  map.invalidateSize();
+  
+  map_small.invalidateSize();
 </script>

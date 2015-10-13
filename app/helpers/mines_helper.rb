@@ -11,4 +11,18 @@ module MinesHelper
 		return "zugefallen" if state == 2
 		return "verschlossen"
 	end
+
+	def sort_of_text(sort)
+		return "N/A" if sort == 0
+		return "Bergwerk" if sort == 8
+		return "Stollen" if sort == 1
+		return "Stollenmund" if sort == 2
+		return "Tagebau" if sort == 3
+		return "Halde" if sort == 4
+		return "Bunker" if sort == 5
+		return "Luftschutzstollen" if sort == 6
+		return "Lost place" if sort == 7
+		
+		return "N/A"
+	end
 end
