@@ -76,6 +76,7 @@
               <% end %>
             </div> <!-- end tab div data -->
             <div role="tabpanel" class="tab-pane" id="image">
+              <%= render(:partial => 'photos', locals: {mine: mine, photo: photo}) %>
             </div> <!-- end tab div image -->
           </div> <!-- end tab content -->
         </div> <!-- end tab div -->

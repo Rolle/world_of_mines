@@ -22,8 +22,7 @@
         //$('#popup-mine-'+this._popup_id).modal('show');
         $('#popup-mine-edit').remove();
         $.ajax({
-            url: '/mines/' + this._popup_id+"/edit",
-            //url: <%= url_for :controller => 'mines', :action => 'edit', :id => 10  %>,
+            url:  'mines/' + this._popup_id+"/edit",
             type: "GET",
             
             //success: 
@@ -122,6 +121,14 @@
       marker._popup_id = <%=mine.id.to_s%>;
     <% end %>
 
+
+    $(document).ready(function () {
+        $(function () {
+          $("a[rel=popover]").popover({live: true });
+          $("a[rel=popover]").fancybox();
+        });
+    });
+    
     enable_top_menu("karte");
 </script> 
 

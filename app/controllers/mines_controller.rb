@@ -39,13 +39,14 @@ class MinesController < ApplicationController
 
   def edit
     @mine = set_mine    
+    @photo = Photo.new
   end
 
   def create
     @mine = Mine.new(mine_params)
 
     if @mine.save
-      log_event(1, "Mine", "Neuanlage:" + 
+      log_event(1, "Mine", "Neuanlage von:" + 
         n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
       )
       redirect_to @mine, notice: 'Erfolgreich angelegt.'
@@ -69,7 +70,7 @@ class MinesController < ApplicationController
   end
 
   def destroy
-    log_event(1, "Mine", "Löschung:" + 
+    log_event(1, "Mine", "Löschung von:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
     @mine.destroy

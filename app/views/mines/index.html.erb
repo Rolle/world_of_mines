@@ -43,5 +43,11 @@
 </div>
 
 <script>
+  $(document).ready(function () {
+      $(function () {
+        $("a[rel=popover]").popover({live: true });
+        $("a[rel=popover]").fancybox();
+      });
+  });
   enable_top_menu("liste");
 </script> 

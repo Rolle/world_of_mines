@@ -13,6 +13,7 @@
 //= require jquery-1.11.3.min
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.remotipart
 //= require bootstrap.min
 //= require leaflet
 //= require Google
@@ -21,4 +22,5 @@
 //= require leaflet-providers
 //= require leaflet.markercluster
 //= require jquery.dataTables.min
+//= require jquery.fancybox.pack
 //= require my

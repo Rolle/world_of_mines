@@ -26,6 +26,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Name</th>
                 <th>Author</th>
                 <th>Einträge</th>
                 <th>Upload am</th>
@@ -36,13 +37,14 @@
             <tbody>
               <% @files.each do |file| %>
                 <tr>
-                  <td><%= file.file_id %></td>
+                  <td><%= file.id.to_s %></td>
+                  <td><%= File.basename(file.file.path) %></td>
                   <td><%= file.user.email %></td>
                   <td><%= file.count.to_s %></td>
-                  <td><%= file.created_at.strftime("%d.%m.%Y %H:%M:%S") %></td>
+                  <td><%= file.created_at.strftime("%d.%m.%Y %H:%M") %></td>
                   <td><%= link_to 'Download', file, class: "btn btn-primary btn-xs" %></td>
                   <td><%= link_to 'Löschen', file, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
-                  <% if file.is_in_db? %>
+                  <% if file.imported? %>
                     <td><%= link_to 'aus DB', export_gps_file_path(file), class: "btn btn-success btn-xs" %> </td>
                   <% else %>
                     <td><%= link_to 'in DB', import_gps_file_path(file), class: "btn btn-success btn-xs" %> </td>

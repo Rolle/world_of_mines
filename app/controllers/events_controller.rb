@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 	
 	def index
 		if current_user.is_superadmin?
-			@events = Event.all.limit(500)
+			@events = Event.all.limit(500).order(created_at: :desc)
 		else
 			@events = nil
 		end

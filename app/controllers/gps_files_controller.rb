@@ -11,7 +11,7 @@ class GpsFilesController < ApplicationController
   def destroy
     @file = GpsFile.find(params[:id])
     @file.destroy
-    log_event(1, "File", "Datei "+@file.id.to_s+" wurde gelöscht.")
+    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde gelöscht.")
 
     redirect_to gps_files_url, notice: 'Datei gelöscht.'
   end
@@ -19,9 +19,9 @@ class GpsFilesController < ApplicationController
   def import
     @file = GpsFile.find(params[:id])
     create_mines_from_file(@file)
-    @file.is_in_db = true
+    @file.imported = true
     @file.save
-    log_event(1, "File", "Datei "+@file.id.to_s+" wurde importiert.")
+    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde von " + @file.user.email + " importiert.")
     redirect_to gps_files_url, notice: 'Datei in DB eingefügt.'
   end
 
@@ -31,9 +31,9 @@ class GpsFilesController < ApplicationController
       mine.destroy
     end
     @file = GpsFile.find(params[:id])
-    @file.is_in_db = false
+    @file.imported = false
     @file.save
-    log_event(1, "File", "Datei "+@file.id.to_s+" wurde aus DB entfernt.")
+    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde von " + @file.user.email + " aus DB entfernt.")
   end
 
   def show
@@ -48,9 +48,10 @@ class GpsFilesController < ApplicationController
     @file = GpsFile.new(gps_file_params)
     @file.user_id = current_user.id
     @file.count = count_mines_in_file(@file)
-    
+    @file.created_at = DateTime.now
+
     if @file.save
-      log_event(1, "File", "Datei "+@file.id.to_s+" wurde aus DB hochgeladen.")
+      log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde hochgeladen.")
       redirect_to gps_files_url, notice: 'Datei wurde hochgeladen.'
     else
       render :new
@@ -60,6 +61,6 @@ class GpsFilesController < ApplicationController
   private
 
   def gps_file_params
-    params.require(:gps_file).permit(:file, :count)
+    params.require(:gps_file).permit(:file, :count, :name)
   end
 end

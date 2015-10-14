@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013151647) do
+ActiveRecord::Schema.define(version: 20151014083119) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,16 +24,26 @@ ActiveRecord::Schema.define(version: 20151013151647) do
   end
 
   create_table "gps_files", force: :cascade do |t|
-    t.string   "file_id"
+    t.string   "name"
+    t.string   "file"
     t.integer  "user_id"
     t.integer  "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "is_in_db"
+    t.boolean  "imported"
+    t.datetime "created_at"
   end
 
 # Could not dump table "mines" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "file_id"
+    t.integer  "mine_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "file"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

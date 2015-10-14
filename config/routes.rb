@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   
   resources :mines
   resources :events
+  resources :photos
   
   root 'mines#map'
   

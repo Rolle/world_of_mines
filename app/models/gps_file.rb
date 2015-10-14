@@ -1,5 +1,5 @@
 class GpsFile < ActiveRecord::Base
-	attachment :file
+	mount_uploader :file, GpsFileUploader
 	belongs_to :user
 	has_many :mines
 end
