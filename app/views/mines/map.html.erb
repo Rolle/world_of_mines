@@ -22,7 +22,7 @@
         //$('#popup-mine-'+this._popup_id).modal('show');
         $('#popup-mine-edit').remove();
         $.ajax({
-            url:  'mines/' + this._popup_id+"/edit",
+            url:   this._popup_id+"/edit",
             type: "GET",
             
             //success: 
@@ -120,14 +120,6 @@
       marker.on('click', onClick);
       marker._popup_id = <%=mine.id.to_s%>;
     <% end %>
-
-
-    $(document).ready(function () {
-        $(function () {
-          $("a[rel=popover]").popover({live: true });
-          $("a[rel=popover]").fancybox();
-        });
-    });
     
     enable_top_menu("karte");
 </script> 

@@ -3,3 +3,7 @@
 	  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
 	</a>
 </div>
+<script>
+          $("a[rel=popover]").popover({live: true });
+          $("a[rel=popover]").fancybox();
+</script>
