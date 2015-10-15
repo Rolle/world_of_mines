@@ -16,13 +16,12 @@
 </div>
 
 <script type='text/javascript'>   
-    var markersObject = {};
 
     function onClick(e) {
         //$('#popup-mine-'+this._popup_id).modal('show');
         $('#popup-mine-edit').remove();
         $.ajax({
-            url:   this._popup_id+"/edit",
+            url:  'mines/' + this._popup_id+"/edit",
             type: "GET",
             
             //success: 
@@ -35,7 +34,7 @@
     <% else %>
             L.Icon.Default.imagePath = '<%= asset_path "" %>';
     <% end %>
-    var markers = {};
+    var ma = {};
     var redMarker = L.AwesomeMarkers.icon({
               icon: 'search', 
               markerColor: 'red',
@@ -81,19 +80,21 @@
       markerColor: 'darkpurple',
       prefix: 'fa'
     })    
-    markers[0] = redMarker;
-    markers[1] = darkredMarker;
-    markers[2] = darkpurpleMarker;
-    markers[3] = greenMarker;
-    markers[4] = darkgreenMarker;
-    markers[5] = blueMarker;
-    markers[6] = purpleMarker;
-    markers[7] = cadetblueMarker;
-    markers[8] = orangeMarker;
+    ma[0] = redMarker;
+    ma[1] = darkredMarker;
+    ma[2] = darkpurpleMarker;
+    ma[3] = greenMarker;
+    ma[4] = darkgreenMarker;
+    ma[5] = blueMarker;
+    ma[6] = purpleMarker;
+    ma[7] = cadetblueMarker;
+    ma[8] = orangeMarker;
 
-    map = new L.Map('map');
+    map = new L.Map('map', {worldCopyJump: true});
     map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
+    var osmGeocoder = new L.Control.OSMGeocoder();
 
+    map.addControl(osmGeocoder);
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
@@ -103,24 +104,59 @@
             "Bing": bing,
             "OSM DE": osmde,
     };
-    var markers_main = new L.MarkerClusterGroup();
+    var mm = new L.MarkerClusterGroup({ chunkedLoading: true });
     var overlayMaps = {
-        "Gruben": markers_main,
+        "Gruben": mm,
     };
     L.control.layers(baseMaps, overlayMaps).addTo(map);
     //map.addLayer(bing);
     map.addLayer(osmde);
-    map.addLayer(markers_main);
+    map.addLayer(mm);
     //map.addLayer(baseMaps);
     
     
     <% @mines.each do |mine| %>
-      marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: markers[<%=mine.sort || 0 %>], title: '<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>'});//.addTo(map);
-      markers_main.addLayer(marker); 
-      marker.on('click', onClick);
-      marker._popup_id = <%=mine.id.to_s%>;
+      var m = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: ma[<%=mine.sort || 0 %>], title: '<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>'});
+      mm.addLayer(m); 
+      m.on('click', onClick);
+      m._popup_id = <%=mine.id.to_s%>;
     <% end %>
+
+/*
+    var tiles = L.tileLayer.provider('OpenStreetMap.DE');
+     
+//An extract of address points from the LINZ bulk extract: http://www.linz.govt.nz/survey-titles/landonline-data/landonline-bde
+//Should be this data set: http://data.linz.govt.nz/#/layer/779-nz-street-address-electoral/
+var addressPoints = [
+  <%@mines.each do |mine| %>
+    [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>"],
+  <% end %>
+]
+
+var addressPoints = [
+[-37.8839, 175.3745188667, "571"],
+[-37.8869090667, 175.3657417333, "486"],
+[-37.8894207167, 175.4015351167, "807"],
+[-37.8927369333, 175.4087452333, "899"],
+[-37.90585105, 175.4453463833, "1273"],
+[-37.9064188833, 175.4441556833, "1258"],
+[-37.90584715, 175.4463564333, "1279"],
+[-37.9033391333, 175.4244005667, "1078"],
+[-37.9061991333, 175.4492620333, "1309"],
+[-37.9058955167, 175.4445613167, "1261"]
+];
+    var map = L.map('map', {center: new L.LatLng(49.77477900007886,6.80334), zoom: 13, layers: [tiles]});
+    var markers = L.markerClusterGroup({ chunkedLoading: true });
     
+   for (var i = 0; i < addressPoints.length; i++) {
+      var a = addressPoints[i];
+      var title = a[2];
+      var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+      marker.bindPopup(title);
+      markers.addLayer(marker);
+    }
+
+    map.addLayer(markers);*/
     enable_top_menu("karte");
 </script> 
 

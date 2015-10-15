@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
     @photo.mine_id = params[:mine_id]
     
     if @photo.save
-      log_event(1, "File", "Datei " + File.basename(@photo.file.path) + " wurde hochgeladen.")
+      log_event(1, "File", "Datei " + File.basename(@photo.file.path) + " wurde hochgeladen zur " + @photo.mine.name)
       respond_to do |format|
         format.js {}
       end  

@@ -1,9 +1,5 @@
-<div class="col-xs-6 col-md-3">
-	<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
+<div class="col-xs-6 col-md-3" style="display: none;" id="photo-<%= photo.id.to_s%>">
+	<a id="a-photo-<%=photo.id.to_s%>" href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
 	  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
 	</a>
 </div>
-<script>
-          $("a[rel=popover]").popover({live: true });
-          $("a[rel=popover]").fancybox();
-</script>

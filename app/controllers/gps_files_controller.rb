@@ -21,19 +21,27 @@ class GpsFilesController < ApplicationController
     create_mines_from_file(@file)
     @file.imported = true
     @file.save
-    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde von " + @file.user.email + " importiert.")
-    redirect_to gps_files_url, notice: 'Datei in DB eingefügt.'
+    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde importiert.")
+    #redirect_to gps_files_url, notice: 'Datei in DB eingefügt.'
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def export
     @mines = Mine.where('gps_file_id ='+params[:id].to_s)
-    @mines.each do |mine|
-      mine.destroy
+    Mine.transaction do
+      @mines.each do |mine|
+        mine.destroy
+      end
     end
     @file = GpsFile.find(params[:id])
     @file.imported = false
     @file.save
-    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde von " + @file.user.email + " aus DB entfernt.")
+    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde aus DB entfernt.")
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def show

@@ -23,4 +23,5 @@
 //= require leaflet.markercluster
 //= require jquery.dataTables.min
 //= require jquery.fancybox.pack
+//= require Control.OSMGeocoder
 //= require my
