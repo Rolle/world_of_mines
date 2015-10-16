@@ -1,0 +1,69 @@
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-12" role="main">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Karte</b></h3>
+                </div>
+                <div class="panel-body">
+                    <div id ="map" style="width:auto; height: 700px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='popup'>
+</div>
+
+<script type='text/javascript'>   
+
+    <% if Rails.env.production? %>
+            L.Icon.Default.imagePath = '/';
+    <% else %>
+            L.Icon.Default.imagePath = '<%= asset_path "" %>';
+    <% end %>
+    
+    var redMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'red',
+              prefix: 'fa'
+    })
+     
+  /*var addressPoints = [
+    <%@mines.each do |mine| %>
+      [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>"],
+    <% end %>
+  ]*/
+
+var addressPoints = [
+    [52.241645,8.9364,"ausflugslokal1 (N/A)"],
+    [47.114288,13.135619,"austria (N/A)"],
+    [52.45893000000001,13.412876,"autobahn-a102-bruckentorso (N/A)"],
+    [49.621708,5.691199,"autofriedhof-belgien (N/A)"],
+    [46.835376,7.505945999999999,"autofriedhof-kaufdorf-gurbetal (N/A)"],
+    [56.466667,14.650000000000002,"autofriedhof-car-graveyard (N/A)"],
+    [51.080009000000004,4.847081,"autokerkhof (N/A)"],
+    [50.651163,5.624064,"autosecurite (N/A)"],
+    [44.21155,12.392156,"ave-maria (N/A)"],
+    [40.894516,4.47386,"avr-rotterdam-netherlands (N/A)"],
+    [35.980509,10.326008,"awe (N/A)"],
+    [51.215577,6.815374,"awista-abfallentsorgung (N/A)"]
+];
+    var tiles = L.tileLayer.provider('OpenStreetMap.DE');
+
+    var map = L.map('map', {center: new L.LatLng(49.77477900007886,6.80334), zoom: 10, layers: [tiles]});
+    var markers = L.markerClusterGroup({ chunkedLoading: false });
+    
+    for(var j=0; j<1000;j++) {
+     for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var title = a[2];
+        var marker = L.marker(L.latLng(a[0], a[1]),{icon: redMarker }); //, { title: title, icon: redMarker });
+        //marker.bindPopup(title);
+        markers.addLayer(marker);
+      }
+    }
+    map.addLayer(markers);
+    enable_top_menu("karte");
+</script> 
+

@@ -12,28 +12,19 @@
         </div>
     </div>
 </div>
+<%=render(:partial => 'new', locals: {mine: @new_mine, photo: @new_photo}) %>
+
 <div id='popup'>
 </div>
 
 <script type='text/javascript'>   
-
-    function onClick(e) {
-        //$('#popup-mine-'+this._popup_id).modal('show');
-        $('#popup-mine-edit').remove();
-        $.ajax({
-            url:  this._popup_id+"/edit",
-            type: "GET",
-            
-            //success: 
-        });
-        $('#popup-mine-edit').modal('show');
-    }
-
     <% if Rails.env.production? %>
             L.Icon.Default.imagePath = '/';
     <% else %>
-            L.Icon.Default.imagePath = '<%= asset_path "" %>';
+            L.Icon.Default.imagePath = 'assets';
     <% end %>
+    
+    
     var ma = {};
     var redMarker = L.AwesomeMarkers.icon({
               icon: 'search', 
@@ -76,9 +67,9 @@
               prefix: 'fa'
     })
     var darkpurpleMarker = L.AwesomeMarkers.icon({
-      icon: 'search', 
-      markerColor: 'darkpurple',
-      prefix: 'fa'
+              icon: 'search', 
+              markerColor: 'darkpurple',
+              prefix: 'fa'
     })    
     ma[0] = redMarker;
     ma[1] = darkredMarker;
@@ -91,6 +82,24 @@
     ma[8] = orangeMarker;
 
     map = new L.Map('map', {worldCopyJump: true});
+    function onClick(e) {
+        $('#popup-mine-edit').remove();
+        $.ajax({
+            url:  'mines/' + this._popup_id+"/edit",
+            type: "GET",
+        });
+        $('#popup-mine-edit').modal('show');
+    }
+    
+    function addMarker(e){
+      //var newMarker = new L.marker(e.latlng).addTo(map);
+      $('#latitude').val(e.latlng.lat);
+      $('#longitude').val(e.latlng.lng);
+      $('#popup-mine-new').modal('show')
+    }
+
+    map.on('click', addMarker);
+
     map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
     var osmGeocoder = new L.Control.OSMGeocoder();
 
@@ -114,49 +123,23 @@
     map.addLayer(mm);
     //map.addLayer(baseMaps);
     
-    
-    <% @mines.each do |mine| %>
-      var m = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: ma[<%=mine.sort || 0 %>], title: '<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>'});
-      mm.addLayer(m); 
-      m.on('click', onClick);
-      m._popup_id = <%=mine.id.to_s%>;
-    <% end %>
+    var addressPoints = [
+      <%@mines.each do |mine| %>
+        [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>],
+      <% end %>
+    ]
 
-/*
-    var tiles = L.tileLayer.provider('OpenStreetMap.DE');
-     
-//An extract of address points from the LINZ bulk extract: http://www.linz.govt.nz/survey-titles/landonline-data/landonline-bde
-//Should be this data set: http://data.linz.govt.nz/#/layer/779-nz-street-address-electoral/
-var addressPoints = [
-  <%@mines.each do |mine| %>
-    [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>"],
-  <% end %>
-]
-
-var addressPoints = [
-[-37.8839, 175.3745188667, "571"],
-[-37.8869090667, 175.3657417333, "486"],
-[-37.8894207167, 175.4015351167, "807"],
-[-37.8927369333, 175.4087452333, "899"],
-[-37.90585105, 175.4453463833, "1273"],
-[-37.9064188833, 175.4441556833, "1258"],
-[-37.90584715, 175.4463564333, "1279"],
-[-37.9033391333, 175.4244005667, "1078"],
-[-37.9061991333, 175.4492620333, "1309"],
-[-37.9058955167, 175.4445613167, "1261"]
-];
-    var map = L.map('map', {center: new L.LatLng(49.77477900007886,6.80334), zoom: 13, layers: [tiles]});
     var markers = L.markerClusterGroup({ chunkedLoading: true });
     
-   for (var i = 0; i < addressPoints.length; i++) {
-      var a = addressPoints[i];
-      var title = a[2];
-      var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
-      marker.bindPopup(title);
-      markers.addLayer(marker);
-    }
-
-    map.addLayer(markers);*/
+     for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: redMarker });
+        //marker.bindPopup(title);
+        m._popup_id = a[3];
+        m.on('click', onClick);
+        markers.addLayer(m);
+      }
+    map.addLayer(markers);
     enable_top_menu("karte");
 </script> 
 

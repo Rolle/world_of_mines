@@ -12,7 +12,9 @@ class MinesController < ApplicationController
   end
 
   def map
-    @mines = Mine.all
+    @mines = Mine.all.order(latitude: :desc)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
   end
   
   def updateajax
@@ -43,13 +45,20 @@ class MinesController < ApplicationController
   end
 
   def create
-    @mine = Mine.new(mine_params)
+    if (request.format == 'js')
+      @mine = Mine.new(latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state])
+    else
+      @mine = Mine.new(mine_params)
+    end
 
     if @mine.save
       log_event(1, "Mine", "Neuanlage von:" + 
         n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
       )
-      redirect_to @mine, notice: 'Erfolgreich angelegt.'
+      respond_to do |format|
+        format.js {}
+        format.html {redirect_to @mine, notice: 'Erfolgreich angelegt.'}
+      end
     else
       render :new
     end
@@ -70,11 +79,14 @@ class MinesController < ApplicationController
   end
 
   def destroy
+    set_mine
     log_event(1, "Mine", "Löschung von:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
     @mine.destroy
-    redirect_to mines_url, notice: 'Gelöscht!.'
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   private
