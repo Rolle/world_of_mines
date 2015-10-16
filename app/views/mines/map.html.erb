@@ -125,7 +125,7 @@
     
     var addressPoints = [
       <%@mines.each do |mine| %>
-        [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>],
+        [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>],
       <% end %>
     ]
 

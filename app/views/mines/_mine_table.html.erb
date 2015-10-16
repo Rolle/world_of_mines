@@ -2,6 +2,7 @@
 <br/>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Typ</th>
       <th>Beschreibung</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% mines.each do |mine| %>
       <tr id="mine-row-<%=mine.id.to_s%>">
+        <td><%= mine.id.to_s %></td>
         <td><%= mine.name %></td>
         <td><%= sort_of_text(mine.sort) %></td>
         <td><%= mine.description.first(25) if mine.description %></td>
