@@ -132,10 +132,18 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/mines/create.js.erb",
+			"file": "app/views/mines/_mine_table.html.erb",
 			"settings":
 			{
-				"buffer_size": 280,
+				"buffer_size": 1180,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/mines/map.html.erb",
+			"settings":
+			{
+				"buffer_size": 4314,
 				"line_ending": "Windows"
 			}
 		}
@@ -199,6 +207,7 @@
 	],
 	"file_history":
 	[
+		"/home/roland/projects/WorldOfMines/app/views/mines/create.js.erb",
 		"/home/roland/projects/WorldOfMines/app/views/mines/map.html.erb",
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/Control.OSMGeocoder.js",
 		"/home/roland/projects/WorldOfMines/app/views/photos/create.js.erb",
@@ -325,8 +334,7 @@
 		"//LUXSHFSDWSP9003/user$/schmrol/config/Desktop/01_IAM2000_DBB2B_ALTER_PCAMT_ST_PollGetData.sql",
 		"/T/Schmitt/Migration_3-24_SEPA/03_IAM2000_DBB2B_CREATE_TCAMT_054_IBANGroup.sql",
 		"/T/Schmitt/Migration_3-24_SEPA/04_IAM2000_DBB2B_INSERT_TCAMT_054_IBANGroup.sql",
-		"//LUXSHFSDWSP9003/user$/schmrol/config/Desktop/01_IAM2000_DBB2B_ALTER_PCAMT_ST_Poll.sql",
-		"//LUXSHFSDWSP9003/user$/schmrol/config/Desktop/Msg/setr.012.001.03.xml"
+		"//LUXSHFSDWSP9003/user$/schmrol/config/Desktop/01_IAM2000_DBB2B_ALTER_PCAMT_ST_Poll.sql"
 	],
 	"find":
 	{
@@ -489,32 +497,64 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/mines/create.js.erb",
+					"file": "app/views/mines/_mine_table.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 280,
+						"buffer_size": 1180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								36,
-								36
+								422,
+								422
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/JavaScript (Rails).tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/mines/map.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3779,
+								3779
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1989.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

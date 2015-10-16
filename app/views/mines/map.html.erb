@@ -107,11 +107,13 @@
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
-    
+    var wanderkarte = new L.tileLayer('http://topo5.wanderreitkarte.de/topo/{z}/{x}/{y}.png');
+
     var baseMaps = {
             //"Google": ggl,
             "Bing": bing,
             "OSM DE": osmde,
+            "Wanderreitkarte": wanderkarte
     };
     var mm = new L.MarkerClusterGroup({ chunkedLoading: true });
     var overlayMaps = {
