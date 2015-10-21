@@ -23,6 +23,15 @@ class PhotosController < ApplicationController
   	@photo = Photo.new
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    log_event(@photo.mine, 1, "Mine", "Löschung von Photo: " + @photo.file.path)
+    @photo.destroy
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id

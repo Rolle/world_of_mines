@@ -27,6 +27,8 @@
               <li id="karte"><%= link_to "Karte", map_mines_path %></li>
               <% if current_user.is_admin? %>
                 <li id="liste"><%= link_to "Gruben", mines_path %></li>
+              <% end %>
+              <% if current_user.is_superadmin? %>
                 <li id="dateien"><%= link_to "Dateien", gps_files_path %></li>                
                 <li id="user"><%= link_to "Benutzer", users_path %></li>
                 <% if current_user.is_superadmin? %>
