@@ -24,7 +24,7 @@
                 <tr>
                   <td><%= event.user_email %></td>
                   <td><%= event.category %></td>
-                  <td><% if !event.mine.nil? %> <%= n(event.mine.name) %> <%end%>
+                  <td><% if !event.mine.nil? %> <%= link_to event.mine.name, mine_path(event.mine) %> <%end%>
 
                   <td><%= event.level %></td>
                   <td><%= event.description %></td>

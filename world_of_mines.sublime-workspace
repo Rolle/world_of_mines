@@ -163,7 +163,7 @@
 			"file": "app/views/mines/map.html.erb",
 			"settings":
 			{
-				"buffer_size": 4624,
+				"buffer_size": 4577,
 				"line_ending": "Windows"
 			}
 		},
@@ -607,15 +607,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4624,
+						"buffer_size": 4577,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3092,
-								3092
+								3582,
+								3582
 							]
 						],
 						"settings":
