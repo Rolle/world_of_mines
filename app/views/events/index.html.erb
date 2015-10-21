@@ -12,6 +12,7 @@
               <tr>
                 <th>User</th>
                 <th>Kategorie</th>
+                <th>Eintrag</th>
                 <th>Level</th> 
                 <th>Beschreibung</th>
                 <th>Datum/Uhrzeit</th>
@@ -23,6 +24,8 @@
                 <tr>
                   <td><%= event.user_email %></td>
                   <td><%= event.category %></td>
+                  <td><% if !event.mine.nil? %> <%= n(event.mine.name) %> <%end%>
+
                   <td><%= event.level %></td>
                   <td><%= event.description %></td>
                   <td><%= event.created_at.strftime("%d.%m.%Y %H:%M:%S") %></td>

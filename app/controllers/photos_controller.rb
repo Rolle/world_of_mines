@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    log_event(1, "Foto", "Datei "+File.basename(@photo.file.path)+" wurde gelöscht.")
+    log_event(@photo.mine, 1, "Foto", "Datei "+File.basename(@photo.file.path)+" wurde gelöscht.")
 
     redirect_to photos_url, notice: 'Datei gelöscht.'
   end
@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
     @photo.mine_id = params[:mine_id]
     
     if @photo.save
-      log_event(1, "File", "Datei " + File.basename(@photo.file.path) + " wurde hochgeladen zur " + @photo.mine.name)
+      log_event(@photo.mine, 1, "File", "Datei " + File.basename(@photo.file.path) + " wurde hochgeladen zur " + @photo.mine.name)
       respond_to do |format|
         format.js {}
       end  

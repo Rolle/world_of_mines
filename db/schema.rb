@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014083119) do
+ActiveRecord::Schema.define(version: 20151021134718) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151014083119) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "level"
+    t.integer  "mine_id"
   end
 
   create_table "gps_files", force: :cascade do |t|

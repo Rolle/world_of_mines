@@ -100,7 +100,11 @@
 
     map.on('click', addMarker);
 
-    map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
+    <% if @mine.nil? %>
+      map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
+    <% else %>
+      map.setView(new L.LatLng(<%= @mine.latitude.to_s %>,<%= @mine.longitude.to_s %>), 15);
+    <% end %>
     var osmGeocoder = new L.Control.OSMGeocoder();
 
     map.addControl(osmGeocoder);
@@ -113,7 +117,7 @@
             //"Google": ggl,
             "Bing": bing,
             "OSM DE": osmde,
-            "Wanderreitkarte": wanderkarte
+            //"Wanderreitkarte": wanderkarte
     };
     var mm = new L.MarkerClusterGroup({ chunkedLoading: true });
     var overlayMaps = {
@@ -142,6 +146,7 @@
         markers.addLayer(m);
       }
     map.addLayer(markers);
+    map.invalidateSize();
     enable_top_menu("karte");
 </script> 
 

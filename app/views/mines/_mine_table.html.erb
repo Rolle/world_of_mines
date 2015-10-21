@@ -10,6 +10,7 @@
       <th>Besucht am</th>
       <th>Aktionen</th> 
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -23,7 +24,8 @@
         <td><%= state_to_desc(mine.state) %></td>
         <td><%= mine.visited_at.strftime("%d.%m.%Y") if mine.visited_at %></td>
         <% if current_user.is_admin?%>  
-          <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %></td>          
+          <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %></td>
+          <td><%= link_to 'Show', mine_path(mine), class: "btn btn-success btn-xs" %></td>  
           <td><%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>          
         <% end %>
       </tr>
