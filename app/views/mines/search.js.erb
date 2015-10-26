@@ -1,2 +1,2 @@
-$('#mine-table').remove();
-$('#table').append("<%= j render(:partial => 'mine_table', locals: {mines: @mines}) %>");
+$('#data-table').remove();
+$('#table').append("<%= j render(:partial => 'mine_table', locals: {mines: @mines, search: true}) %>");

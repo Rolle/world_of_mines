@@ -5,14 +5,15 @@
         
         <div class="panel-heading">
             <h3>Liste</h3>
-            <!--<%= form_tag(url_for(action: :search), method: :post, remote: true, class: "form-inline") do %>
+            <%= form_tag(url_for(action: :search), method: :post, remote: true, class: "form-inline") do %>
             <div class="form-group">
               <%= text_field_tag :search, nil, {:class=>"input-small form-control"} %>
               <%= button_tag( :class => "btn btn-success") do %>
                 <i class="glyphicon glyphicon-search"></i> Filtern
               <% end %>
+            <% end %>
+            <%= link_to "Alle", mines_path, :class => "btn btn-success" %>
             </div>
-          <% end %>-->
         </div>
 
         <div class="panel-body">
@@ -30,17 +31,21 @@
                 </div>
             <% end -%>
 
-          <%= link_to 'Neuer Eintrag', new_mine_path, class: "btn btn-primary" %>
+          <%= link_to 'Neuer Eintrag', '', onclick: "show()", class: "btn btn-primary" %>
+
+
           <div id="table">
-            <%= render partial: "mine_table", locals: {mines: @mines} %>
+            <%= render partial: "mine_table", locals: {mines: @mines, search: false} %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div id='popup'>
 </div>
+<%=render(:partial => 'new', locals: {mine: @new_mine, photo: @new_photo}) %>
 
 <script>
   $(document).ready(function () {
@@ -49,5 +54,11 @@
         $("a[rel=popover]").fancybox();
       });
   });
+
   enable_top_menu("liste");
 </script> 
+<script>
+  function show(e) {
+    $('#popup-mine-new').modal('show');
+  }
+</script>

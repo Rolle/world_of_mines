@@ -5,7 +5,7 @@ class MinesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def search
-    @mines = Mine.where("name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%'")    
+    @mines = Mine.where("name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%'").page(params[:page]).per(100)
     respond_to do |format|
       format.js {}
     end  
@@ -40,7 +40,10 @@ class MinesController < ApplicationController
   end
 
   def index
-    @mines = Mine.all
+    #@mines = Mine.all
+    @mines = Mine.page(params[:page]).per(100)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
   end
 
   def new

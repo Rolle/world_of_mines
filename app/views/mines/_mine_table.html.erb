@@ -1,42 +1,43 @@
-<table class="table table-striped table-hover table-condensed" id="mine-table">
-<br/>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Typ</th>
-      <th>Beschreibung</th>
-      <th>Zustand</th>
-      <th>Besucht am</th>
-      <th>Bilder?</th>
-      <th>Aktionen</th> 
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% mines.each do |mine| %>
-      <tr id="mine-row-<%=mine.id.to_s%>">
-        <td><%= mine.id.to_s %></td>
-        <td><%= mine.name %></td>
-        <td><%= sort_of_text(mine.sort) %></td>
-        <td><%= mine.description.first(25) if mine.description %></td>
-        <td><%= state_to_desc(mine.state) %></td>
-        <td><%= mine.visited_at.strftime("%d.%m.%Y") if mine.visited_at %></td>
-        <td><%= mine.photos.count.to_s %></td>
-        <% if current_user.is_admin?%>  
-          <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %></td>
-          <td><%= link_to 'Show', mine_path(mine), class: "btn btn-success btn-xs" %></td>  
-          <td><%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>          
-        <% end %>
+<div id="data-table">
+  <%= paginate @mines if !search %>
+  <table class="table table-striped table-hover table-condensed" id="mine-table">
+  <br/>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Typ</th>
+        <th>Beschreibung</th>
+        <th>Zustand</th>
+        <th>Besucht</th>
+        <th>Aktionen</th> 
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% mines.each do |mine| %>
+        <tr id="mine-row-<%=mine.id.to_s%>">
+          <td><%= mine.id.to_s %></td>
+          <td><%= mine.name %></td>
+          <td><%= sort_of_text(mine.sort) %></td>
+          <td><%= mine.description.first(25) if mine.description %></td>
+          <td><%= state_to_desc(mine.state) %></td>
+          <td><%= mine.visited_at.strftime("%d.%m.%Y") if mine.visited_at %></td>
+          <% if current_user.is_admin?%>  
+            <td><%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %></td>
+            <td><%= link_to 'Show', mine_path(mine), class: "btn btn-success btn-xs" %></td>  
+            <td><%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>          
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script>
-  $(document).ready(function(){
+  /*$(document).ready(function(){
     $('#mine-table').DataTable();
-  });
+  });*/
 </script>
