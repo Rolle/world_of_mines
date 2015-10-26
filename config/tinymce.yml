@@ -1,0 +1,5 @@
+toolbar:
+  - styleselect | bold italic | undo redo | table | underline | link | bullist | numlist
+plugins:
+  - link
+menubar: false

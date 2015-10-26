@@ -1,0 +1,31 @@
+<%= tinymce_assets %>
+
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Notiz</h3>
+        </div>
+        <div class="panel-body"> 
+          <%= form_for @note  do |f| %>
+             <div class="form-group">
+              <%= label_tag "Text", nil, :class => "control-label" %>
+              <div class="controls">
+                  <%= f.text_area :text, {:class=>"tinymce input-small form-control", :rows => "25"} %>
+                  <%= tinymce %>
+              </div>
+            </div>
+            <%= button_tag( :class => "btn btn-primary") do %>
+              <i class="glyphicon glyphicon-save"></i> Speichern
+            <% end %>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  enable_top_menu("notiz");
+</script> 

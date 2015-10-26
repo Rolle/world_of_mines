@@ -6,7 +6,15 @@
                     <h3>Karte</b></h3>
                 </div>
                 <div class="panel-body">
-                    <div id ="map" style="width:auto; height: 700px;"></div>
+                  <div class="form-inline form-group">
+                    <%= label_tag "Typ: "%> 
+                    <%= select_tag :sort, options_for_select({"Alle" => 99, "Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0}), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
+                    <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
+                    <%= label_tag "Zustand: "%> 
+                    <%= select_tag :state, options_for_select({"Alle" => 99, "unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4 }), :class=>"input-small form-control", :onchange => 'select_zustand(this.value)' %>
+                    <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
+                  </div>
+                  <div id ="map" style="width:auto; height: 700px;"></div>
                 </div>
             </div>
         </div>
@@ -24,8 +32,6 @@
             L.Icon.Default.imagePath = 'assets';
     <% end %>
     
-    
-    var ma = {};
     var redMarker = L.AwesomeMarkers.icon({
               icon: 'search', 
               markerColor: 'red',
@@ -71,6 +77,7 @@
               markerColor: 'darkpurple',
               prefix: 'fa'
     })    
+    var ma = {};
     ma[0] = redMarker;
     ma[1] = darkredMarker;
     ma[2] = darkpurpleMarker;
@@ -85,17 +92,48 @@
     function onClick(e) {
         $('#popup-mine-edit').remove();
         $.ajax({
-            url:  'mines/' + this._popup_id+"/edit",
+            url:  '/mines/' + this._popup_id+"/edit",
             type: "GET",
         });
         $('#popup-mine-edit').modal('show');
     }
     
     function addMarker(e){
-      //var newMarker = new L.marker(e.latlng).addTo(map);
       $('#latitude').val(e.latlng.lat);
       $('#longitude').val(e.latlng.lng);
       $('#popup-mine-new').modal('show')
+    }
+    function select_typ(index) {
+      markers.clearLayers();
+      if (index == 99) {
+        for (var i = 0; i < addressPoints.length; i++) {
+          var a = addressPoints[i];
+          markers.addLayer(markersId[a[3]]);
+        }
+        return;
+      }
+      for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        if (a[5] == index) {
+          markers.addLayer(markersId[a[3]]);
+        }
+      }
+    }
+    function select_zustand(index) {
+      markers.clearLayers();
+      if (index == 99) {
+        for (var i = 0; i < addressPoints.length; i++) {
+          var a = addressPoints[i];
+          markers.addLayer(markersId[a[3]]);
+        }
+        return;
+      }
+      for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        if (a[4] == index) {
+          markers.addLayer(markersId[a[3]]);
+        }
+      }
     }
 
     map.on('click', addMarker);
@@ -110,41 +148,38 @@
     map.addControl(osmGeocoder);
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     var opentopo = L.tileLayer.provider('OpenTopoMap');
-    //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
     
     var baseMaps = {
-            //"Google": ggl,
             "Bing": bing,
             "OSM DE": osmde,
             "OpenTopo": opentopo
     };
-    var mm = new L.MarkerClusterGroup({ chunkedLoading: true });
+    var markers = L.markerClusterGroup({ chunkedLoading: true });
     var overlayMaps = {
-        "Gruben": mm,
+        "Gruben": markers,
     };
     L.control.layers(baseMaps, overlayMaps).addTo(map);
-    //map.addLayer(bing);
     map.addLayer(osmde);
-    map.addLayer(mm);
-    //map.addLayer(baseMaps);
     
+    //Array über alle Punkte:
+    // <lat,long,Label,id,status,typ
     var addressPoints = [
       <%@mines.each do |mine| %>
-        [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>],
+          [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
       <% end %>
     ]
+   
+    var markersId = {};
 
-    var markers = L.markerClusterGroup({ chunkedLoading: true });
-    
-     for (var i = 0; i < addressPoints.length; i++) {
-        var a = addressPoints[i];
-        var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: redMarker });
-        //marker.bindPopup(title);
-        m._popup_id = a[3];
-        m.on('click', onClick);
-        markers.addLayer(m);
-      }
+   for (var i = 0; i < addressPoints.length; i++) {
+      var a = addressPoints[i];
+      var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: ma[a[5]] });
+      m._popup_id = a[3];
+      m.on('click', onClick);
+      markers.addLayer(m);
+      markersId[a[3]] = m;
+    }
     map.addLayer(markers);
     map.invalidateSize();
     enable_top_menu("karte");

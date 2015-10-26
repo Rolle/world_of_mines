@@ -16,7 +16,14 @@
 			<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
 			  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
 			</a>
-			<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
+			<% if current_user.is_admin? %>
+				<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
+			<% end %>
   		</div>
   	<% end %>
 </div>
+
+<script>
+    $("a[rel=popover]").popover({live: true });
+    $("a[rel=popover]").fancybox();
+</script>

@@ -1,6 +1,6 @@
-
 $('#popup-mine-new').modal('hide');
 var m = L.marker(L.latLng(<%= @mine.latitude.to_s %>, <%= @mine.longitude.to_s %>), { title: <%=@mine.name + " ("+sort_of_text(@mine.sort)+")" %>, icon: redMarker });
 m._popup_id = <%= @mine.id %>;
 m.on('click', onClick);
 markers.addLayer(m);
+markersId[<%= @mine.id %>] = m;

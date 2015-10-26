@@ -5,9 +5,9 @@
         <div class="panel-heading">
             <h3>Events</h3>
         </div>
-        <div class="panel-body">
-          
-          <table class="table table-striped table-hover table-condensed">
+        <div class="panel-body">   
+          <%= link_to 'Clear log', clear_events_path, data: {confirm: "Soll das Log wirklich gelöscht werden?"}, class: "btn btn-danger" %>       
+          <table id="table-events" class="table table-striped table-hover table-condensed">
             <thead>
               <tr>
                 <th>User</th>
@@ -24,7 +24,10 @@
                 <tr>
                   <td><%= event.user_email %></td>
                   <td><%= event.category %></td>
-                  <td><% if !event.mine.nil? %> <%= link_to event.mine.name, mine_path(event.mine) %> <%end%>
+                  <td><% if !event.mine.nil? %> 
+                    <%= link_to event.mine.name, mine_path(event.mine) %> 
+                    <%end%>
+                  </td>
 
                   <td><%= event.level %></td>
                   <td><%= event.description %></td>

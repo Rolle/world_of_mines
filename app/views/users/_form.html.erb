@@ -34,7 +34,13 @@
     <div class="controls">
         <%= f.check_box :is_admin, {:class=>"input-small"} %>
     </div>
-  </div>            
+  </div>     
+   <div class="form-group">
+    <%= f.label "Super-Admin?", nil, :class => "control-label" %>
+    <div class="controls">
+        <%= f.check_box :is_superadmin, {:class=>"input-small"} %>
+    </div>
+  </div>   
 
   <%= button_tag( :class => "btn btn-primary") do %>
     <i class="glyphicon glyphicon-save"></i> Speichern

@@ -9,7 +9,19 @@ module MinesHelper
 		return "unbekannt" if state==0 or state.nil?
 		return "offen" if state==1
 		return "zugefallen" if state == 2
-		return "verschlossen"
+		return "verschlossen" if state == 3
+		return "abgerissen" if state == 4
+		return "unbekannt"
+	end
+
+	def sort(mine)
+		return "0" if mine.sort.nil?
+		return mine.sort.to_s
+	end
+
+	def state(mine)
+		return "0" if mine.state.nil?
+		return mine.state.to_s
 	end
 
 	def sort_of_text(sort)

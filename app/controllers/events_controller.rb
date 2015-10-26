@@ -9,4 +9,9 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def clear
+		@events = Event.destroy_all
+		render action: 'index'
+	end
+
 end

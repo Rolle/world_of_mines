@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :notes
+
   resources :gps_files do
     member do
       get 'import'
       get 'export'
     end
   end
-
   resources :gps_files
 
   devise_for :users, :path => 'u'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
       get 'switch_superadmin'
     end
   end
-
   resources :users
 
   resources :mines do
@@ -31,6 +31,12 @@ Rails.application.routes.draw do
   end
   
   resources :mines
+
+  resources :events do
+    collection do
+      get "clear"
+    end
+  end
   resources :events
   resources :photos
   

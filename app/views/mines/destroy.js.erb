@@ -1,1 +1,3 @@
 $('#mine-row-<%=@mine.id.to_s%>').fadeOut();
+$('#popup-mine-edit').modal('hide');
+markers.removeLayer(markersId[<%= @mine.id.to_s%>]);

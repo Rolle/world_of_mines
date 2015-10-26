@@ -1,0 +1,22 @@
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Photos</h3>
+        </div>
+        <div class="panel-body"> 
+          <% @photos.each do |photo| %>
+            <%= render partial: 'photo', locals: {photo: photo, visible: true} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("a[rel=popover]").popover({live: true });
+    $("a[rel=popover]").fancybox();
+  enable_top_menu("photos");
+</script> 

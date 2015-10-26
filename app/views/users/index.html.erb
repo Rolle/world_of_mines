@@ -42,6 +42,7 @@
                   <% if current_user.is_superadmin? %>
                     <td><%= check_box_tag("is_superadmin",user.id, user.is_superadmin, :data => {:remote => true, :url => url_for(action: "switch_superadmin", id: user.id)})%></td>
                   <% end %>
+                  <td><%= link_to 'Edit', user, class: "btn btn-primary btn-xs" %></td>
                   <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
                 </tr>
               <% end %>
