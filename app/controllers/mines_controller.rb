@@ -5,7 +5,7 @@ class MinesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def search
-    @mines = Mine.where("name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%'").page(params[:page]).per(100)
+    @mines = Mine.where("name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%' or id = " + params[:search]).page(params[:page]).per(100)
     respond_to do |format|
       format.js {}
     end  
