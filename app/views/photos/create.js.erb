@@ -1,4 +1,4 @@
-$('#image-list').append("<%= j render(:partial => 'photo', locals: {photo: @photo}) %>")
+$('#image-list').append("<%= j render(:partial => 'photo', locals: {photo: @photo, visible: true}) %>")
 $('#photo-<%= @photo.id.to_s %>').fadeIn();
 $('#a-photo-<%= @photo.id.to_s %>').popover({live: true });
 $('#a-photo-<%= @photo.id.to_s %>').fancybox();    

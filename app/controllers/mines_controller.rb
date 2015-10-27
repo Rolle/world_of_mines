@@ -122,6 +122,9 @@ class MinesController < ApplicationController
 
   def destroy
     set_mine
+    @mine.photos.each do |photo|
+      photo.destroy
+    end
     log_event(@mine, 1, "Mine", "Löschung von:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
