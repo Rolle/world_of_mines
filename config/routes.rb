@@ -32,7 +32,6 @@ Rails.application.routes.draw do
       post "updateajax"
       get  "createajax"
       post  "lock"
-      post "unlock"
     end
   end
   

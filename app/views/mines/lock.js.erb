@@ -1,0 +1,1 @@
+$('#mine-row-<%= @mine.id.to_s %>').replaceWith("<%= j render(:partial => 'mine_table_row', locals: {mine: @mine}) %>");

@@ -19,19 +19,14 @@ class MinesController < ApplicationController
   
   def lock
     @mine = Mine.find(params[:id])
-    @mine.locked_by = current_user.id
-    @mine.save
-    respond_to do |format|
-      format.js { render nothing: true}
+    if @mine.locked_by == current_user.id
+      @mine.locked_by = nil
+    else
+      @mine.locked_by = current_user.id
     end
-  end
-
-  def unlock
-    @mine = Mine.find(params[:id])
-    @mine.locked_by = nil
     @mine.save
     respond_to do |format|
-      format.js { render nothing: true}
+      format.js { }
     end
   end
 
