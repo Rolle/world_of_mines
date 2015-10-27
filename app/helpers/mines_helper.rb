@@ -36,6 +36,7 @@ module MinesHelper
 		return "Bergwerk" if sort == 8
 		return "Höhle" if sort == 9
 		return "Tunnel" if sort == 10
+		return "U-Verlagerung" if sort == 11
 		
 		return "N/A"
 	end
