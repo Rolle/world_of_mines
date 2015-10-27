@@ -47,7 +47,7 @@ class MinesController < ApplicationController
     log_event(@mine, 1, "Mine", "Änderungen vorher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
-    @mine.update_attributes({name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
+    @mine.update_attributes({updated_by: current_user.id, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
     log_event(@mine, 1, "Mine", "Änderungen nachher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
@@ -87,9 +87,10 @@ class MinesController < ApplicationController
 
   def create
     if (request.format == 'js')
-      @mine = Mine.new(latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state])
+      @mine = Mine.new(created_by: current_user.id,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state])
     else
       @mine = Mine.new(mine_params)
+      @mine.created_by = current_user.id
     end
 
     if @mine.save
@@ -138,6 +139,6 @@ class MinesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mine_params
-      params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state, :locked_by)
+      params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state, :locked_by, :created_by, :updated_by)
     end
 end
