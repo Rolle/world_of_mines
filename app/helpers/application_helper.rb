@@ -17,4 +17,8 @@ module ApplicationHelper
 		return "" if s.nil?
 		s.to_s
 	end
+
+	def is_s_i?(s)
+		/\A[-+]?\d+\z/ === s
+	end
 end
