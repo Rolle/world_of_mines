@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :gps_files
   has_many :events
+  
 end

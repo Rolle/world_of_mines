@@ -25,8 +25,7 @@ module MinesHelper
 	end
 
 	def sort_of_text(sort)
-		return "N/A" if sort == 0
-		return "Bergwerk" if sort == 8
+		return "N/A" if sort == 0		
 		return "Stollen" if sort == 1
 		return "Stollenmund" if sort == 2
 		return "Tagebau" if sort == 3
@@ -34,6 +33,9 @@ module MinesHelper
 		return "Bunker" if sort == 5
 		return "Luftschutzstollen" if sort == 6
 		return "Lost place" if sort == 7
+		return "Bergwerk" if sort == 8
+		return "Höhle" if sort == 9
+		return "Tunnel" if sort == 10
 		
 		return "N/A"
 	end

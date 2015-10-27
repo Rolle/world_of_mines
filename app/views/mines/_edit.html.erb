@@ -46,7 +46,7 @@
                   <div class="form-group">
                     <%= label_tag "Typ", nil, :class => "control-label" %>
                     <div class="controls">
-                      <%= select_tag :sort, options_for_select({"Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0}, mine.sort), :class=>"input-small form-control" %>
+                      <%= select_tag :sort, options_for_select({"N/A" =>0, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"Bergwerk" => 8, "Höhle" => 9, "Tunnel" => 10}, mine.sort), :class=>"input-small form-control" %>
                     </div>
                   </div> 
 
@@ -69,10 +69,20 @@
                   <div id ="map_small" style="width:566px; height: 200px;"></div>         
                 </div>
                 <% if current_user.is_admin? %>
-                  <%= button_tag( :class => "btn btn-primary") do %>
-                    <i class="glyphicon glyphicon-save"></i> Speichern
+                  <% if mine.locked_by.nil? or mine.locked_by == current_user.id %>            
+                    <%= button_tag( :class => "btn btn-primary") do %>
+                      <i class="glyphicon glyphicon-save"></i> Speichern
+                    <% end %>
                   <% end %>
-                  <%= link_to 'Löschen', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'}, class: "btn btn-danger" %>
+                  <% if mine.locked_by.nil? or mine.locked_by == current_user.id %>            
+                    <%= link_to 'Löschen', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'}, class: "btn btn-danger" %>
+                  <% end %>
+                  <% if mine.locked_by == current_user.id %>
+                    <%= link_to 'Unlock', unlock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
+                  <% end %>
+                  <% if mine.locked_by.nil? %>
+                    <%= link_to 'Lock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
+                  <% end %>
                 <% end %>                
               <% end %>
             </div> <!-- end tab div data -->

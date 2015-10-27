@@ -31,8 +31,7 @@
                 </div>
             <% end -%>
 
-          <%= link_to 'Neuer Eintrag', '', onclick: "show()", class: "btn btn-primary" %>
-
+          <%= link_to 'Neuer Eintrag', '', onclick: "showNew()", class: "btn btn-primary" %>
 
           <div id="table">
             <%= render partial: "mine_table", locals: {mines: @mines, search: false} %>
@@ -58,7 +57,7 @@
   enable_top_menu("liste");
 </script> 
 <script>
-  function show(e) {
+  function showNew(e) {
     $('#popup-mine-new').modal('show');
   }
 </script>

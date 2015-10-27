@@ -17,6 +17,24 @@ class MinesController < ApplicationController
     @new_photo = Photo.new
   end
   
+  def lock
+    @mine = Mine.find(params[:id])
+    @mine.locked_by = current_user.id
+    @mine.save
+    respond_to do |format|
+      format.js { render nothing: true}
+    end
+  end
+
+  def unlock
+    @mine = Mine.find(params[:id])
+    @mine.locked_by = nil
+    @mine.save
+    respond_to do |format|
+      format.js { render nothing: true}
+    end
+  end
+
   def show
     @mine = set_mine
     @mines = Mine.all.order(latitude: :desc)
@@ -40,10 +58,23 @@ class MinesController < ApplicationController
   end
 
   def index
-    #@mines = Mine.all
     @mines = Mine.page(params[:page]).per(100)
     @new_mine = Mine.new
     @new_photo = Photo.new
+  end
+
+  def own
+    @mines = Mine.where("locked_by = "+current_user.id.to_s).page(params[:page]).per(100)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :index
+  end
+
+  def locked
+    @mines = Mine.where("locked_by is not null").page(params[:page]).per(100)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :index
   end
 
   def new
@@ -108,6 +139,6 @@ class MinesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mine_params
-      params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state)
+      params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state, :locked_by)
     end
 end

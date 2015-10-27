@@ -4,6 +4,7 @@
 	</a>
 	<% if current_user.is_admin? %>
 		<%= link_to 'Delete', photo, method: :delete, remote: true,data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger btn-xs"  %>
+		<%= link_to 'Edit', edit_mine_path(photo.mine), class: "btn btn-primary btn-xs", remote: true %>
 	<% end %>
 </div>
 

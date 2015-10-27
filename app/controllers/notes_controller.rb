@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+
+
   def index
   	@note = Note.first
   	if @note.nil?
@@ -21,6 +23,7 @@ class NotesController < ApplicationController
   	@note.save!
   	render action: 'index'
   end
+
 
 private
     def note_params

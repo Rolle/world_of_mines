@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   resources :notes
+  resources :user_notes
 
   resources :gps_files do
     member do
@@ -22,11 +24,15 @@ Rails.application.routes.draw do
   resources :mines do
     collection do
       get "map"
+      get "locked"
+      get "own"
       post "search"
     end
     member do
       post "updateajax"
       get  "createajax"
+      post  "lock"
+      post "unlock"
     end
   end
   
