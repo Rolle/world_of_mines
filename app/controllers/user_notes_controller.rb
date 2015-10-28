@@ -17,7 +17,7 @@ class UserNotesController < ApplicationController
   end
 
   def update
-  	@usernote = Note.find(params[:id])
+  	@usernote = UserNote.find(params[:id])
   	@usernote.text = params[:user_note][:text] 
    	@usernote.save!
   	render action: 'index'
