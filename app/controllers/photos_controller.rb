@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   include ApplicationHelper
 
   def index
-  	@photos = Photo.all
+  	@photos = Photo.page(params[:page]).per(24)    
   end
 
   def destroy

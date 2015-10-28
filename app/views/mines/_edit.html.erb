@@ -146,5 +146,8 @@
   map_small.invalidateSize();
 
   $("a[rel=popover]").popover({live: true });
-  $("a[rel=popover]").fancybox();
+  $("a[rel=popover]").fancybox({
+    parent: "body",
+    openEffect  : 'elastic'
+  });
 </script>

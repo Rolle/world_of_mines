@@ -3,8 +3,8 @@
   <td><%= mine.name.first(30) %></td>
   <td><%= sort_of_text(mine.sort) %></td>
   <td><%= mine.description.first(25) if mine.description %></td>
-  <td><% if !mine.locked_by.nil? %><%= mine.locked_by.email %><%end%></td>
   <td><span class="badge"><%= mine.photos.count.to_s %></span></td>
+  <td><% if !mine.locked_by.nil? %><%= mine.locked_by.email %><%end%></td>
   <td><%= state_to_desc(mine.state) %></td>
   <td><%= mine.visited_at.strftime("%d.%m.%Y") if mine.visited_at %></td>
   <td>

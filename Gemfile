@@ -39,6 +39,10 @@ gem 'remotipart'
 gem 'tinymce-rails'
 gem "mini_magick"
 gem 'kaminari'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'fancybox2-rails'
+#gem 'acts_as_indexed'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

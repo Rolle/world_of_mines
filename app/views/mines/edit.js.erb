@@ -2,4 +2,7 @@ $('#popup-mine-edit').remove();
 $('#popup').append("<%= j render(:partial => 'edit', locals: {mine: @mine, photo: @photo}) %>");
 $('#popup-mine-edit').modal('show');
 $("a[rel=popover]").popover({live: true });
-$("a[rel=popover]").fancybox();
+$("a[rel=popover]").fancybox({
+  parent: "body",
+  openEffect  : 'elastic'
+});

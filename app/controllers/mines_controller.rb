@@ -5,11 +5,13 @@ class MinesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def search
-    search = "name like '%" + params[:search] +"%' or description like '%" + params[:search] +"%'"
-    if is_s_i?(params[:search])
-      search = search + " or id = "+params[:search]
+    search_term = params[:search].strip
+    search = "name like '%" + search_term +"%' or description like '%" +search_term +"%'"
+    if is_s_i?(search_term)
+      search = search + " or id = "+search_term
     end
-    @mines = Mine.where(search).page(params[:page]).per(100)
+    @mines = Mine.where(search).page(params[:page])
+
     respond_to do |format|
       format.js {}
     end  
@@ -23,10 +25,10 @@ class MinesController < ApplicationController
   
   def lock
     @mine = Mine.find(params[:id])
-    if @mine.locked_by == current_user.id
+    if @mine.locked_by == current_user
       @mine.locked_by = nil
     else
-      @mine.locked_by = current_user.id
+      @mine.locked_by = current_user
     end
     @mine.save
     respond_to do |format|
@@ -47,7 +49,7 @@ class MinesController < ApplicationController
     log_event(@mine, 1, "Mine", "Änderungen vorher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
-    @mine.update_attributes({updated_by: current_user.id, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
+    @mine.update_attributes({updated_by: current_user, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
     log_event(@mine, 1, "Mine", "Änderungen nachher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
@@ -57,7 +59,10 @@ class MinesController < ApplicationController
   end
 
   def index
+    #for pagination
     @mines = Mine.page(params[:page]).per(100)
+
+    #@mines = Mine.all
     @new_mine = Mine.new
     @new_photo = Photo.new
   end

@@ -8,7 +8,7 @@
                 <div class="panel-body">
                   <div class="form-inline form-group">
                     <%= label_tag "Typ: "%> 
-                    <%= select_tag :sort, options_for_select({"Alle" => 99, "Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0}), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
+                    <%= select_tag :sort, options_for_select({"Alle" => 99, "Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0, "Höhle" => 9, "Tunnel" => 10, "U-Verlagerung" => 11}), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
                     <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
                     <%= label_tag "Zustand: "%> 
                     <%= select_tag :state, options_for_select({"Alle" => 99, "unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4 }), :class=>"input-small form-control", :onchange => 'select_zustand(this.value)' %>

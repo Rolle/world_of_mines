@@ -65,6 +65,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
+    fancybox2-rails (0.2.8)
+      railties (>= 3.1.0, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -144,6 +146,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -153,6 +158,7 @@ DEPENDENCIES
   byebug
   carrierwave
   devise
+  fancybox2-rails
   kaminari
   mini_magick
   nokogiri
@@ -164,6 +170,5 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-BUNDLED WITH
-   1.10.6
+  will_paginate
+  will_paginate-bootstrap

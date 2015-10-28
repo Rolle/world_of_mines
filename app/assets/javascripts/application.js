@@ -16,12 +16,10 @@
 //= require jquery.remotipart
 //= require bootstrap.min
 //= require leaflet
-//= require Google
 //= require Bing
 //= require leaflet.awesome-markers.min
 //= require leaflet-providers
 //= require leaflet.markercluster
-//= require jquery.dataTables.min
-//= require jquery.fancybox.pack
 //= require Control.OSMGeocoder
+//= require fancybox
 //= require my

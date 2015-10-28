@@ -1,4 +1,5 @@
 class Mine < ActiveRecord::Base
+	#acts_as_indexed fields: [:name, :description, :id]
   belongs_to :gps_file
   has_many :photos
   belongs_to :created_by, class_name: "User", foreign_key: "created_by"
