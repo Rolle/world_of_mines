@@ -22,4 +22,5 @@
 //= require leaflet.markercluster
 //= require Control.OSMGeocoder
 //= require fancybox
+//= require Leaflet.fullscreen.min
 //= require my

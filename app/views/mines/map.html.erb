@@ -88,7 +88,10 @@
     ma[7] = cadetblueMarker;
     ma[8] = orangeMarker;
 
-    map = new L.Map('map', {worldCopyJump: true});
+    map = new L.Map('map', {
+      worldCopyJump: true,
+      fullscreenControl: true
+    });
     function onClick(e) {
         $('#popup-mine-edit').remove();
         $.ajax({
