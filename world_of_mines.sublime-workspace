@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"user_group_id"
+			],
+			[
+				"user_gr",
+				"user_group_id"
+			],
+			[
 				"se",
 				"search"
 			],
@@ -156,34 +164,18 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/photos/index.html.erb",
+			"file": "app/controllers/users_controller.rb",
 			"settings":
 			{
-				"buffer_size": 749,
-				"line_ending": "Windows"
+				"buffer_size": 1636,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/controllers/photos_controller.rb",
+			"file": "app/views/users/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 1160,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/photos/_photo.html.erb",
-			"settings":
-			{
-				"buffer_size": 725,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/assets/javascripts/application.js",
-			"settings":
-			{
-				"buffer_size": 952,
+				"buffer_size": 2269,
 				"line_ending": "Unix"
 			}
 		},
@@ -191,8 +183,16 @@
 			"file": "app/views/mines/map.html.erb",
 			"settings":
 			{
-				"buffer_size": 6295,
+				"buffer_size": 6512,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 3838,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -232,16 +232,42 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roland/projects/World_Of_Mines",
-		"/home/roland/projects/World_Of_Mines/app",
-		"/home/roland/projects/World_Of_Mines/app/assets",
-		"/home/roland/projects/World_Of_Mines/app/assets/javascripts",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets",
-		"/home/roland/projects/World_Of_Mines/app/views",
-		"/home/roland/projects/World_Of_Mines/app/views/mines"
+		"/C/Projects/ruby/World_Of_Mines",
+		"/C/Projects/ruby/World_Of_Mines/app",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers",
+		"/C/Projects/ruby/World_Of_Mines/app/views",
+		"/C/Projects/ruby/World_Of_Mines/app/views/layouts",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines",
+		"/C/Projects/ruby/World_Of_Mines/config",
+		"/C/Projects/ruby/World_Of_Mines/db/migrate"
 	],
 	"file_history":
 	[
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/_form.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/new.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/_edit.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/show.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/config/routes.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine_table_row.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_edit.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/users_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/events_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/photos/_photo.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_new.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_photos.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/user.rb",
+		"/C/Projects/ruby/World_Of_Mines/db/migrate/20151029094027_drop_columns_user.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/user_group.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/layouts/application.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/db/seeds.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/user_notes_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/photos/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/photos_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/application.js",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/map.html.erb",
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/_photos.html.erb",
 		"/C/Projects/ruby/WorldOfMines/Gemfile",
 		"/C/Projects/ruby/WorldOfMines/app/views/photos/index.html.erb",
@@ -344,42 +370,18 @@
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/application.js",
 		"/home/roland/projects/WorldOfMines/app/assets/javascripts/leaflet-providers.js",
 		"/home/roland/projects/WorldOfMines/db/migrate/20151007191931_create_mines.rb",
-		"/home/roland/projects/marco/doc.kml",
-		"/home/roland/projects/marco/Neue Grubendaten zur Aufbereitung.gpx",
-		"/home/roland/projects/immohellef/index.html",
-		"/home/roland/projects/rails-schnitzeljagd/app/views/pages/index.html.erb",
-		"/home/roland/projects/rails-schnitzeljagd/config/environments/production.rb",
-		"/home/roland/projects/rails-schnitzeljagd/app/views/registrations/new.html.erb",
-		"/home/roland/projects/rails-schnitzeljagd/config/environments/development.rb",
-		"/home/roland/projects/rails-schnitzeljagd/app/controllers/registrations_controller.rb",
-		"/home/roland/projects/rails-schnitzeljagd/app/views/layouts/application.html.erb",
-		"/home/roland/projects/rails-schnitzeljagd/app/views/pages/ablauf.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/assets/stylesheets/bootstrap.min.css.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/assets/stylesheets/my.css.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/pages/ablauf.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/registrations/new.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/pages/index.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/pages/strecke.html.erb",
-		"/home/roland/projects/rails-schnitzeljagd/app/views/pages/strecke.html.erb",
-		"/home/roland/projects/rails-schnitzeljagd/Gemfile",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/registrations/index.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/views/registrations/_form.html.erb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/controllers/registrations_controller.rb",
-		"/C/Projects/ruby/rails-schnitzeljagd/Gemfile",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/mailers/contact_mailer.rb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/mailers/registration_mailer.rb",
-		"/C/Projects/ruby/rails-schnitzeljagd/app/controllers/contacts_controller.rb",
-		"/C/Projects/ruby/rails-schnitzeljagd/streckenlängen.txt"
+		"/home/roland/projects/marco/doc.kml"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
 		"height": 90.0,
 		"where_history":
 		[
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
 			"C:\\Projects\\ruby\\WorldOfMines\\app\\",
 			"C:\\Projects\\ruby\\WorldOfMines\\app\\views",
 			"C:\\Projects\\ruby\\WorldOfMines\\app",
@@ -400,6 +402,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"is_admin",
+			"is_superadmin",
 			".nil",
 			"mine",
 			"update_attributes",
@@ -553,54 +557,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/photos/index.html.erb",
+					"file": "app/controllers/users_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 749,
+						"buffer_size": 1636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								469,
-								469
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/photos_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1160,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								173,
-								173
+								1159,
+								1159
 							]
 						],
 						"settings":
@@ -610,84 +584,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/views/photos/_photo.html.erb",
+					"buffer": 1,
+					"file": "app/views/users/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 725,
+						"buffer_size": 2269,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29,
-								29
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/assets/javascripts/application.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 952,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								937,
-								937
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/mines/map.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6295,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3362,
-								3362
+								1651,
+								1651
 							]
 						],
 						"settings":
@@ -697,10 +614,70 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/mines/map.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4787,
+								4787
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1890.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/layouts/application.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3838,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1926,
+								1926
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -708,7 +685,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -749,7 +726,7 @@
 	"project": "world_of_mines.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -791,7 +768,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 286.0,
+	"side_bar_width": 391.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

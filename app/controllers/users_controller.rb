@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where('id <> ' + current_user.id.to_s)
+    @groups = UserGroup.all
   end
 
   def sign_up
@@ -22,10 +23,12 @@ class UsersController < ApplicationController
 
   def show
     @user = set_user
+    @groups = UserGroup.all
   end
 
   def new
     @user = User.new
+    @groups = UserGroup.all
   end
 
   def update
@@ -46,34 +49,24 @@ class UsersController < ApplicationController
     end
   end
 
-  def switch_admin
+  def update_group
     set_user
-    @user.is_admin = !@user.is_admin
-    @user.save
-    log_event(nil, 0, "User", "User " + @user.email + " wurde geändert, neuer Admin-Status " + @user.is_admin?.to_s)
-    respond_to do |format|
-      format.js {flash.now[:notice] = "Status geändert!"}
+    if current_user.user_group_id >= params[:user_group_id]
+      @user.user_group_id = params[:user_group_id]
+      @user.save
+      log_event(nil, 0, "User", "User " + @user.email + " wurde geändert, neue Gruppe " + @user.user_group.description)
     end
-  end
-
-    def switch_superadmin
-    set_user
-    @user.is_superadmin = !@user.is_superadmin
-    @user.save
-    log_event(nil, 0, "User", "User " + @user.email + " wurde geändert, neuer SuperAdmin-Status " + @user.is_superadmin?.to_s)
     respond_to do |format|
-      format.js {flash.now[:notice] = "Status geändert!"}
+      format.js {render nothing: true}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :is_admin, :is_superadmin)
+      params.require(:user).permit(:email, :password, :password_confirmation, :user_group_id)
     end
 end

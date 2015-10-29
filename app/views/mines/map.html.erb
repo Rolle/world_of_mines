@@ -138,8 +138,12 @@
         }
       }
     }
-
-    map.on('click', addMarker);
+    <% if current_user.user? %>
+      map.on('click', addMarker);
+    <% else %>
+      map.options.maxZoom = 12;
+      map.options.minZoom = 8;
+    <% end %>
 
     <% if @mine.nil? %>
       map.setView(new L.LatLng(49.77477900007886,6.80334), 12);
@@ -179,7 +183,10 @@
       var a = addressPoints[i];
       var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: ma[a[5]] });
       m._popup_id = a[3];
-      m.on('click', onClick);
+      //only if user is more then guest
+      <% if current_user.user? %>
+        m.on('click', onClick);
+      <% end %>
       markers.addLayer(m);
       markersId[a[3]] = m;
     }

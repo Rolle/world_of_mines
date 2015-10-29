@@ -25,10 +25,7 @@
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Admin?</th>
-                <% if current_user.is_superadmin? %>
-                  <th>Superadmin?</th>
-                <% end %>
+                <th>Gruppe</th>
                 <th></th> 
               </tr>
             </thead>
@@ -36,14 +33,16 @@
             <tbody>
               <% @users.each do |user| %>                
                 <tr>
-                  <td><%= user.email %></td>
-                  <!--td><%if user.is_admin? %>Ja<%else%>Nein<%end%></td-->  
-                  <td><%= check_box_tag("is_admin",user.id, user.is_admin, :data => {:remote => true, :url => url_for(action: "switch_admin", id: user.id)})%></td>
-                  <% if current_user.is_superadmin? %>
-                    <td><%= check_box_tag("is_superadmin",user.id, user.is_superadmin, :data => {:remote => true, :url => url_for(action: "switch_superadmin", id: user.id)})%></td>
-                  <% end %>
-                  <td><%= link_to 'Edit', user, class: "btn btn-primary btn-xs" %></td>
-                  <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
+                  <td><%= user.email %></td>                  
+                  <td>
+                    <%= select_tag 'user_group_id', options_from_collection_for_select(@groups, :id, :description, user.user_group_id), :class=>"input-small",
+                       data: {
+                        remote: true,
+                        url: url_for( action: :update_group, id: user.id.to_s)
+                      }
+                    %>
+                  <td><%= link_to 'Edit', user, class: "btn btn-primary btn-xs" %>
+                  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>
                 </tr>
               <% end %>
             </tbody>

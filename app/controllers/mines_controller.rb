@@ -59,10 +59,7 @@ class MinesController < ApplicationController
   end
 
   def index
-    #for pagination
     @mines = Mine.page(params[:page]).per(100)
-
-    #@mines = Mine.all
     @new_mine = Mine.new
     @new_photo = Photo.new
   end
@@ -140,12 +137,10 @@ class MinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_mine
       @mine = Mine.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def mine_params
       params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state, :locked_by, :created_by, :updated_by)
     end

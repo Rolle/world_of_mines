@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+UserGroup.create(description: "Guest")
+UserGroup.create(description: "User")
+UserGroup.create(description: "Admin")
+UserGroup.create(description: "Superadmin")
