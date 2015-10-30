@@ -129,14 +129,14 @@ class MinesController < ApplicationController
   end
 
   def own
-    @mines = Mine.where("locked_by = "+current_user.id.to_s).page(params[:page]).per(100)
+    @mines = Mine.where("locked_by = "+current_user.id.to_s).page(params[:page])
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :index
   end
 
   def locked
-    @mines = Mine.where("locked_by is not null").page(params[:page]).per(100)
+    @mines = Mine.where("locked_by is not null").page(params[:page])
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :index
