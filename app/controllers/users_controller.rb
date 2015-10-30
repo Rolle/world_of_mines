@@ -51,11 +51,9 @@ class UsersController < ApplicationController
 
   def update_group
     set_user
-    #if current_user.user_group_id >= params[:user_group_id]
-      @user.user_group_id = params[:user_group_id]
-      @user.save
-      log_event(nil, 0, "User", "User " + @user.email + " wurde geändert, neue Gruppe " + @user.user_group.description)
-    #end
+    @user.user_group_id = params[:user_group_id]
+    @user.save
+    log_event(nil, 0, "User", "User " + @user.email + " wurde geändert, neue Gruppe " + @user.user_group.description)
     respond_to do |format|
       format.js {render nothing: true}
     end

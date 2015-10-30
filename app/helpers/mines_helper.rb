@@ -1,4 +1,29 @@
 module MinesHelper
+
+	def generate_kml(mines)
+		kml = "<?xml version='1.0' encoding='UTF-8'?>
+				<kml xmlns='http://www.opengis.net/kml/2.2'>
+				<Document>
+					<name>Untergrundkataster "+ DateTime.now.strftime("%Y%m%d_%H%M%S")+"</name>
+					<description>Export von " + @mines.count.to_s + " Eintraegen</description>
+					<Folder>"
+
+		mines.each do |mine|
+			kml = kml + 
+			"<Placemark>
+				<name>"+mine.name+"</name>
+				<description><![CDATA["+n(mine.description)+"]]></description>
+				<styleUrl>#icon-503-DB4436</styleUrl>
+				<ExtendedData>
+				</ExtendedData>
+				<Point>
+					<coordinates>"+mine.longitude.to_s+","+mine.latitude.to_s+",0.0</coordinates>
+				</Point>
+			</Placemark>"
+		end
+		kml = kml + "</Folder></Document></kml>"
+	end
+
 	def create_popup(mine)
 		html = link_to('Edit', edit_mine_path(mine), class: 'btn btn-primary btn-xs')
 		html = html + ' ' + 	link_to('Delete', mine, method: :delete, data: { confirm: 'Are you sure?'},class: 'btn btn-danger btn-xs')
@@ -6,7 +31,7 @@ module MinesHelper
 	end
 
 	def state_to_desc(state)
-		return "unbekannt" if state==0 or state.nil?
+		return "unbekannt" if state==0
 		return "offen" if state==1
 		return "zugefallen" if state == 2
 		return "verschlossen" if state == 3

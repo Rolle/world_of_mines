@@ -17,7 +17,8 @@
         </div>
 
         <div class="panel-body">
-          <%= link_to 'Neuer Eintrag', '', onclick: "showNew()", class: "btn btn-primary" %>
+          <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
+          <%= link_to 'Export', export_all_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
           <div id="table">
             <%= render partial: "mine_table", locals: {mines: @mines, search: false} %>
           </div>

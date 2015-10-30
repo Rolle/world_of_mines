@@ -1,8 +1,72 @@
 class MinesController < ApplicationController
   include ApplicationHelper
+  include MinesHelper
 
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
+
+  def clear_work_list
+    current_user.clear_work_list()
+    respond_to do |format|
+      format.js {render "update_work_list"}
+    end
+  end
+
+  def sort_work_list
+    @mines = Mine.find(current_user.work_list_ids)
+    @mines.each do |mine|
+      mine.sort = params[:sort]
+      mine.save
+    end
+    respond_to do |format|
+      format.js {render "update_work_list"}
+    end
+  end
+
+  def state_work_list
+    @mines = Mine.find(current_user.work_list_ids)
+    @mines.each do |mine|
+      mine.state = params[:state]
+      mine.save
+    end
+    @mines = Mine.find(current_user.work_list_ids)
+    respond_to do |format|
+      format.js {render "update_work_list"}
+    end    
+  end
+
+  def export_work_list
+    @mines = Mine.find(current_user.work_list_ids)
+    send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
+  end
+
+  def export_all
+    @mines = Mine.all
+    send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
+  end
+
+  def delete_work_list
+    @mines = Mine.find(current_user.work_list_ids)
+    @mines.each do |mine|
+      mine.destroy      
+    end
+    current_user.clear_work_list()
+    @mines = nil
+    respond_to do |format|
+      format.js {render "update_work_list"}
+    end   
+  end
+
+  def add_or_remove_list_item
+    current_user.add_or_remove_workitem(params[:id])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def work_list
+    @mines = Mine.find(current_user.work_list_ids)
+  end
 
   def search
     search_term = params[:search].strip

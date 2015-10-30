@@ -1,0 +1,44 @@
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="panel panel-primary">
+        
+        <div class="panel-heading">
+            <h3>Arbeitsliste</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="form-inline form-group">
+            <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+            <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
+
+            <%= select_tag :sort, 
+              options_for_select({"N/A" =>0, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"Bergwerk" => 8, "Höhle" => 9, "Tunnel" => 10, "U-Verlagerung" => 11}), :class=>"input-small form-control",
+               data: {
+                  remote: true,
+                  url: url_for( action: :sort_work_list)
+                }
+            %>
+            <%= select_tag :state, 
+              options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4 }), :class=>"input-small form-control",
+              data: {
+                  remote: true,
+                  url: url_for( action: :state_work_list)
+                }
+            %>
+            <%= link_to 'Clear', clear_work_list_mines_path, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-success" %>
+          </div>
+
+          <div id="work-list-table">
+            <%= render partial: "mine_table", locals: {mines: @mines, search: true} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id='popup'>
+</div>
+<script>
+  enable_top_menu("liste");
+</script> 

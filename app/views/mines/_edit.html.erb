@@ -66,7 +66,7 @@
                 <% end %>
 
                 <div class="form-group">
-                  <div id ="map_small" style="width:566px; height: 200px;"></div>         
+                  <div id ="map_small" style="width:566px; height: 250px;"></div>         
                 </div>
                 <% if current_user.admin? %>
                   <% if mine.locked_by.nil? or mine.locked_by == current_user.id %>            
@@ -83,6 +83,13 @@
                   <% if mine.locked_by.nil? %>
                     <%= link_to 'Lock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning" %>            
                   <% end %>
+                  <%= label_tag "Arbeitsliste " %>
+                  <%= check_box_tag "check-"+mine.id.to_s, 1, current_user.is_work_item?(mine.id),
+                    data: {
+                      remote: true,
+                      url: url_for( action: :add_or_remove_list_item, id: mine.id)
+                    }
+                  %>                  
                 <% end %>                
               <% end %>
             </div> <!-- end tab div data -->

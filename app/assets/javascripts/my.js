@@ -3,3 +3,49 @@ function enable_top_menu(menuname) {
   $('#'+menuname).addClass('active');
 }
 
+function onClick(e) {
+    $('#popup-mine-edit').remove();
+    $.ajax({
+        url:  '/mines/' + this._popup_id+"/edit",
+        type: "GET",
+    });
+    $('#popup-mine-edit').modal('show');
+}
+    
+function addMarker(e){
+  $('#latitude').val(e.latlng.lat);
+  $('#longitude').val(e.latlng.lng);
+  $('#popup-mine-new').modal('show');
+}
+function select_typ(index) {
+  markers.clearLayers();
+  if (index == 99) {
+    for (var i = 0; i < addressPoints.length; i++) {
+      var a = addressPoints[i];
+      markers.addLayer(markersId[a[3]]);
+    }
+    return;
+  }
+  for (var i = 0; i < addressPoints.length; i++) {
+    var a = addressPoints[i];
+    if (a[5] == index) {
+      markers.addLayer(markersId[a[3]]);
+    }
+  }
+}
+function select_zustand(index) {
+  markers.clearLayers();
+  if (index == 99) {
+    for (var i = 0; i < addressPoints.length; i++) {
+      var a = addressPoints[i];
+      markers.addLayer(markersId[a[3]]);
+    }
+    return;
+  }
+  for (var i = 0; i < addressPoints.length; i++) {
+    var a = addressPoints[i];
+    if (a[4] == index) {
+      markers.addLayer(markersId[a[3]]);
+    }
+  }
+}

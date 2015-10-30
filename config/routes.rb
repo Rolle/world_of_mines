@@ -26,10 +26,18 @@ Rails.application.routes.draw do
       get "locked"
       get "own"
       post "search"
+      get  "work_list"
+      get "delete_work_list"
+      get "export_work_list"
+      get "export_all"
+      get "sort_work_list"
+      get "state_work_list"
+      get "clear_work_list"
     end
     member do
       post "updateajax"
       get  "createajax"
+      get  "add_or_remove_list_item"
       post  "lock"
     end
   end

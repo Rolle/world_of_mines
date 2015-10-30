@@ -13,6 +13,14 @@ module ApplicationHelper
     	@event.save
 	end
 
+	def online_users_as_list(users)
+		s = ""
+		users.each do |user|
+			s = s + user.email + "\n"
+		end
+		return s
+	end
+
 	def n(s)
 		return "" if s.nil?
 		s.to_s
