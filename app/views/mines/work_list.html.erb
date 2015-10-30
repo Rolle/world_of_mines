@@ -20,7 +20,7 @@
                 }
             %>
             <%= select_tag :state, 
-              options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4 }), :class=>"input-small form-control",
+              options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4, "verfüllt" => 5, "verschollen" => 6, "aktiv" =>7 }), :class=>"input-small form-control",
               data: {
                   remote: true,
                   url: url_for( action: :state_work_list)

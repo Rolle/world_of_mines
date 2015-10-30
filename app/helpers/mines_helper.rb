@@ -36,6 +36,9 @@ module MinesHelper
 		return "zugefallen" if state == 2
 		return "verschlossen" if state == 3
 		return "abgerissen" if state == 4
+		return "verfüllt" if state == 5
+		return "verschollen" if state == 6
+		return "aktiv" if state == 7
 		return "unbekannt"
 	end
 
