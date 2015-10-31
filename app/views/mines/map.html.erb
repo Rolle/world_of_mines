@@ -7,7 +7,9 @@
                 </div>
                 <div class="panel-body">
                   <div class="form-inline form-group">
-                  <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+                  <% if current_user.admin? %>
+                    <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+                   <% end %> 
                     <%= label_tag "Typ: "%> 
                     <%= select_tag :sort, options_for_select({"Alle" => 99, "Bergwerk" => 8, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"N/A" =>0, "Höhle" => 9, "Tunnel" => 10, "U-Verlagerung" => 11}), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
                     <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
