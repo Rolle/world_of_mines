@@ -36,7 +36,11 @@ class MinesController < ApplicationController
   end
 
   def export_work_list
-    @mines = Mine.find(current_user.work_list_ids)
+    if params[:ne_lat] and params[:ne_lng] and params[:sw_lat] and params[:sw_lng]
+      @mines = Mine.where("latitude < ? and latitude > ? and longitude < ? and longitude > ?", params[:ne_lat], params[:sw_lat],params[:ne_lng],params[:sw_lng])
+    else
+      @mines = Mine.find(current_user.work_list_ids)
+    end
     send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
   end
 

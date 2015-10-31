@@ -1,3 +1,15 @@
+function changeBoundsOnLink(link_id, bounds) {
+  var ne_lat = bounds._northEast.lat;
+  var ne_lng = bounds._northEast.lng;
+  var sw_lat = bounds._southWest.lat;
+  var sw_lng = bounds._southWest.lng;
+  href = $('#'+link_id).attr("href");
+  if (href.indexOf("?") != -1)
+    href = href.substring(0, href.indexOf("?"));
+  href = href + "?ne_lat="+ne_lat+"&ne_lng="+ne_lng+"&sw_lat="+sw_lat+"&sw_lng="+sw_lng;
+  $('#'+link_id).attr("href",href);
+}
+
 function enable_top_menu(menuname) {
   $('.top-menu').removeClass('active');
   $('#'+menuname).addClass('active');
