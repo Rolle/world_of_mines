@@ -5,7 +5,7 @@
         
         <div class="panel-heading">
             <h3>Liste</h3>
-            <%= form_tag(url_for(action: :search), method: :post, remote: true, class: "form-inline") do %>
+            <%= form_tag(url_for(action: :search), method: :get,  class: "form-inline") do %>
             <div class="form-group">
               <%= text_field_tag :search, nil, {:class=>"input-small form-control"} %>
               <%= button_tag( :class => "btn btn-success") do %>

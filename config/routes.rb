@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       get "map"
       get "locked"
       get "own"
-      post "search"
+      get "search"
       get  "work_list"
       get "delete_work_list"
       get "export_work_list"

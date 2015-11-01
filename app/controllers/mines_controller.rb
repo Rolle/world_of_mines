@@ -81,10 +81,13 @@ class MinesController < ApplicationController
       search = search + " or id = "+search_term
     end
     @mines = Mine.where(search).page(params[:page])
-
-    respond_to do |format|
-      format.js {}
-    end  
+        @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :index
+    #
+    #respond_to do |format|
+    #  format.js {}
+    #end  
   end
 
   def map
