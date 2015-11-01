@@ -59,7 +59,7 @@ class GpsFilesController < ApplicationController
     @file.created_at = DateTime.now
 
     if @file.save
-      log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde hochgeladen.")
+      log_event(nil, 1, "File", "Datei "+File.basename(@file.file.path)+" wurde hochgeladen.")
       redirect_to gps_files_url, notice: 'Datei wurde hochgeladen.'
     else
       render :new
