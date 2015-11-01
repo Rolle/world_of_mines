@@ -61,3 +61,6 @@ function select_zustand(index) {
     }
   }
 }
+  function showNew(e) {
+    $('#popup-mine-new').modal('show');
+  }
