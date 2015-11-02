@@ -11,7 +11,7 @@ class GpsFilesController < ApplicationController
   def destroy
     @file = GpsFile.find(params[:id])
     @file.destroy
-    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde gelöscht.")
+    log_event(nil, 1, "File", "Datei "+File.basename(@file.file.path)+" wurde gelöscht.")
 
     redirect_to gps_files_url, notice: 'Datei gelöscht.'
   end
@@ -21,7 +21,7 @@ class GpsFilesController < ApplicationController
     create_mines_from_file(@file)
     @file.imported = true
     @file.save
-    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde importiert.")
+    log_event(nil, 1, "File", "Datei "+File.basename(@file.file.path)+" wurde importiert.")
     #redirect_to gps_files_url, notice: 'Datei in DB eingefügt.'
     respond_to do |format|
       format.js {}
@@ -38,7 +38,7 @@ class GpsFilesController < ApplicationController
     @file = GpsFile.find(params[:id])
     @file.imported = false
     @file.save
-    log_event(1, "File", "Datei "+File.basename(@file.file.path)+" wurde aus DB entfernt.")
+    log_event(nil, 1, "File", "Datei "+File.basename(@file.file.path)+" wurde aus DB entfernt.")
     respond_to do |format|
       format.js {}
     end

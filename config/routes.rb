@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       get "sort_work_list"
       get "state_work_list"
       get "clear_work_list"
+      get "add_page_list_items"
+      get "add_current_list_items"
     end
     member do
       post "updateajax"

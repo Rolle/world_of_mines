@@ -84,7 +84,7 @@
                     <%= link_to 'Lock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning" %>            
                   <% end %>
                   <%= label_tag "Arbeitsliste " %>
-                  <%= check_box_tag "check-"+mine.id.to_s, 1, current_user.is_work_item?(mine.id),
+                  <%= check_box_tag "check-"+mine.id.to_s, 1, current_user.work_item?(mine.id),
                     data: {
                       remote: true,
                       url: url_for( action: :add_or_remove_list_item, id: mine.id)

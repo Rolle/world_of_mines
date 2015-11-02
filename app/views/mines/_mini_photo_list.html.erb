@@ -1,0 +1,9 @@
+<div class="row" id="mini-image-list">
+	<% mine.photos.each do |photo| %>
+  		<div class="col-xs-6 col-md-6" id="photo-<%= photo.id.to_s %>">
+			<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
+			  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>				  
+			</a>
+  		</div>
+  	<% end %>
+</div>

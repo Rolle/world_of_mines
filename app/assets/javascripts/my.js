@@ -8,6 +8,9 @@ function changeBoundsOnLink(link_id, bounds) {
     href = href.substring(0, href.indexOf("?"));
   href = href + "?ne_lat="+ne_lat+"&ne_lng="+ne_lng+"&sw_lat="+sw_lat+"&sw_lng="+sw_lng;
   $('#'+link_id).attr("href",href);
+  $.cookie('map.lat', map.getCenter().lat, { expires: 7});
+  $.cookie('map.lng', map.getCenter().lng, { expires: 7});
+  $.cookie('map.zoomlevel', map.getZoom(), { expires: 7});
 }
 
 function enable_top_menu(menuname) {

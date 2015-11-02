@@ -63,6 +63,20 @@ class MinesController < ApplicationController
     end   
   end
 
+  def add_current_list_items    
+    current_user.add_workitems(current_user.current_ids)
+    respond_to do |format|
+      format.js {render "add_or_remove_list_item"}
+    end
+  end
+
+  def add_page_list_items    
+    current_user.add_workitems(current_user.page_ids)
+    respond_to do |format|
+      format.js {render "add_or_remove_list_item"}
+    end
+  end
+
   def add_or_remove_list_item
     current_user.add_or_remove_workitem(params[:id])
     respond_to do |format|
@@ -74,20 +88,29 @@ class MinesController < ApplicationController
     @mines = Mine.find(current_user.work_list_ids)
   end
 
+  def index
+    @mines = Mine.page(params[:page]) #.per(100)
+    current_user.update_page_ids(@mines)
+    current_user.update_current_ids(nil)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+  end
+
   def search
     search_term = params[:search].strip
     search = "name like '%" + search_term +"%' or description like '%" +search_term +"%'"
     if is_s_i?(search_term)
       search = search + " or id = "+search_term
     end
-    @mines = Mine.where(search).page(params[:page])
-        @new_mine = Mine.new
+    @mines = Mine.where(search)
+
+    current_user.update_current_ids(@mines)
+    @mines = @mines.page(params[:page])
+
+    current_user.update_page_ids(@mines)
+    @new_mine = Mine.new
     @new_photo = Photo.new
     render :index
-    #
-    #respond_to do |format|
-    #  format.js {}
-    #end  
   end
 
   def map
@@ -129,12 +152,6 @@ class MinesController < ApplicationController
     respond_to do |format|
       format.js {}
     end
-  end
-
-  def index
-    @mines = Mine.page(params[:page]).per(100)
-    @new_mine = Mine.new
-    @new_photo = Photo.new
   end
 
   def own

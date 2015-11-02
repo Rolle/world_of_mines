@@ -23,4 +23,5 @@
 //= require Control.OSMGeocoder
 //= require fancybox
 //= require Leaflet.fullscreen.min
+//= require jquery.cookie
 //= require my

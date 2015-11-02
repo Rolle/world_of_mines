@@ -1,5 +1,11 @@
 <br/>
 <%= form_for(photo, remote: true) do |f| %>
+	<div class="form-group">
+		<%= f.label "Beschreibung", nil, :class => "control-label" %>
+	    <div class="controls">
+	        <%= f.text_area :description, {:class=>"input-small form-control"} %>
+	    </div>
+	</div>
 	<div class="form-group">            	
  		<div class="controls">
 			<%= f.file_field :file, :class=>"input-small form-control" %>
@@ -17,9 +23,12 @@
 				<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
 				  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
 				</a>
-				<% if current_user.admin? %>
-					<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
-				<% end %>
+				<div class="caption">
+					<h6><%= photo.description %></h6>
+					<% if current_user.admin? %>
+						<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
+					<% end %>
+				</div>
 			</div>
   		</div>
   	<% end %>

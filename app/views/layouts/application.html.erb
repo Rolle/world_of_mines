@@ -51,7 +51,7 @@
               </li>
             <% end %>
             <% if current_user.admin? %>
-              <li>
+              <li id="arbeitsliste">
                 <%= link_to raw("Arbeitsliste: <span id='work_item_counter' class='badge'>"+current_user.work_items_count.to_s+"</span>"), work_list_mines_path %>
               </li>
             <% end %>
@@ -64,7 +64,7 @@
                   Online: <span class="badge"><%= @users_online.count.to_s -%></span>
                 </button>
             <% end %>                 
-              <li id="fb"><%= link_to "Logout " + current_user.email, destroy_user_session_path, method: :delete %></li>
+            <li id="fb"><%= link_to "Logout " + current_user.email, destroy_user_session_path, method: :delete %></li>
           </ul>
         <% end %>
       </nav>
@@ -94,7 +94,7 @@
             $("html, body").animate({ scrollTop: 0 }, 600);
             return false;
         });
-        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover();
 
     });
   </script>
