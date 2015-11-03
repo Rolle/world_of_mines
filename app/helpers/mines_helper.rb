@@ -1,4 +1,14 @@
 module MinesHelper
+	STATES_ID = {
+		0 => "unbekannt",
+		1 => "offen", 
+		2 => "zugefallen", 
+		3 => "verschlossen", 
+		4 => "abgerissen", 
+		5 => "verfüllt", 
+		6 => "verschollen",
+		7 => "aktiv" 
+	}
 	STATES = {
 		"unbekannt" =>0, 
 		"offen" => 1, 
@@ -8,6 +18,21 @@ module MinesHelper
 		"verfüllt" => 5, 
 		"verschollen" => 6, 
 		"aktiv" =>7 
+	}
+	SORTS_ID = {
+		0 => "N/A", 
+		1 => "Stollen", 
+		2 => "Stollenmund", 
+		3 => "Tagebau", 
+		4 => "Halde", 
+		5 => "Bunker",
+		6 => "Luftschutzstollen",
+		7 => "Lost place",
+		8 => "Bergwerk", 
+		9 => "Höhle", 
+		10 => "Tunnel", 
+		11 => "U-Verlagerung", 
+		12 => "Montanindustrie"
 	}
 	SORTS = {
 		"N/A" =>0, 
@@ -82,16 +107,16 @@ module MinesHelper
 	end
 
 	def state_to_desc(state)
-		if STATES_ALL.key?(state)
-			STATES_ALL[state] 
+		if STATES_ID.key?(state)
+			STATES_ID[state] 
 		else 
 			return "unbekannt"
 		end
 	end
 
 	def sort_of_text(sort)
-		if SORTS_ALL.key?(sort)
-			return SORTS_ALL[sort] 
+		if SORTS_ID.key?(sort)
+			return SORTS_ID[sort] 
 		else 
 			return "N/A"
 		end
