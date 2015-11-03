@@ -1,5 +1,56 @@
 module MinesHelper
-
+	STATES = {
+		"unbekannt" =>0, 
+		"offen" => 1, 
+		"zugefallen" => 2, 
+		"verschlossen" => 3, 
+		"abgerissen" => 4, 
+		"verfüllt" => 5, 
+		"verschollen" => 6, 
+		"aktiv" =>7 
+	}
+	SORTS = {
+		"N/A" =>0, 
+		"Stollen" => 1, 
+		"Stollenmund" => 2, 
+		"Tagebau" => 3, 
+		"Halde" =>4, 
+		"Bunker" =>5,
+		"Luftschutzstollen" =>6,
+		"Lost place" =>7,
+		"Bergwerk" => 8, 
+		"Höhle" => 9, 
+		"Tunnel" => 10, 
+		"U-Verlagerung" => 11, 
+		"Montanindustrie" => 12
+	}
+	STATES_ALL = {
+		"Alle" => 99,
+		"unbekannt" =>0, 
+		"offen" => 1, 
+		"zugefallen" => 2, 
+		"verschlossen" => 3, 
+		"abgerissen" => 4, 
+		"verfüllt" => 5, 
+		"verschollen" => 6, 
+		"aktiv" =>7 
+	}
+	SORTS_ALL = {
+		"Alle" => 99,
+		"N/A" =>0, 
+		"Stollen" => 1, 
+		"Stollenmund" => 2, 
+		"Tagebau" => 3, 
+		"Halde" =>4, 
+		"Bunker" =>5,
+		"Luftschutzstollen" =>6,
+		"Lost place" =>7,
+		"Bergwerk" => 8, 
+		"Höhle" => 9, 
+		"Tunnel" => 10, 
+		"U-Verlagerung" => 11, 
+		"Montanindustrie" => 12
+	}
 	def generate_kml(mines)
 		kml = "<?xml version='1.0' encoding='UTF-8'?>
 				<kml xmlns='http://www.opengis.net/kml/2.2'>
@@ -31,15 +82,19 @@ module MinesHelper
 	end
 
 	def state_to_desc(state)
-		return "unbekannt" if state==0
-		return "offen" if state==1
-		return "zugefallen" if state == 2
-		return "verschlossen" if state == 3
-		return "abgerissen" if state == 4
-		return "verfüllt" if state == 5
-		return "verschollen" if state == 6
-		return "aktiv" if state == 7
-		return "unbekannt"
+		if STATES_ALL.key?(state)
+			STATES_ALL[state] 
+		else 
+			return "unbekannt"
+		end
+	end
+
+	def sort_of_text(sort)
+		if SORTS_ALL.key?(sort)
+			return SORTS_ALL[sort] 
+		else 
+			return "N/A"
+		end
 	end
 
 	def sort(mine)
@@ -52,20 +107,4 @@ module MinesHelper
 		return mine.state.to_s
 	end
 
-	def sort_of_text(sort)
-		return "N/A" if sort == 0		
-		return "Stollen" if sort == 1
-		return "Stollenmund" if sort == 2
-		return "Tagebau" if sort == 3
-		return "Halde" if sort == 4
-		return "Bunker" if sort == 5
-		return "Luftschutzstollen" if sort == 6
-		return "Lost place" if sort == 7
-		return "Bergwerk" if sort == 8
-		return "Höhle" if sort == 9
-		return "Tunnel" if sort == 10
-		return "U-Verlagerung" if sort == 11
-		
-		return "N/A"
-	end
 end

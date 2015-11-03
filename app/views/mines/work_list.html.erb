@@ -13,14 +13,14 @@
             <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
 
             <%= select_tag :sort, 
-              options_for_select({"N/A" =>0, "Stollen" => 1, "Stollenmund" => 2, "Tagebau" => 3, "Halde" =>4, "Bunker" =>5,"Luftschutzstollen" =>6,"Lost place" =>7,"Bergwerk" => 8, "Höhle" => 9, "Tunnel" => 10, "U-Verlagerung" => 11}), :class=>"input-small form-control",
+              options_for_select(MinesHelper::SORTS), :class=>"input-small form-control",
                data: {
                   remote: true,
                   url: url_for( action: :sort_work_list)
                 }
             %>
             <%= select_tag :state, 
-              options_for_select({"unbekannt" =>0, "offen" => 1, "zugefallen" => 2, "verschlossen" => 3, "abgerissen" => 4, "verfüllt" => 5, "verschollen" => 6, "aktiv" =>7 }), :class=>"input-small form-control",
+              options_for_select(MinesHelper::STATES), :class=>"input-small form-control",
               data: {
                   remote: true,
                   url: url_for( action: :state_work_list)

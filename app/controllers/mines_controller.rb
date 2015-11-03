@@ -85,7 +85,8 @@ class MinesController < ApplicationController
   end
 
   def work_list
-    @mines = Mine.find(current_user.work_list_ids)
+    #@mines = Mine.find(current_user.work_list_ids)
+    @mines = Mine.where(id: current_user.work_list_ids)
   end
 
   def index
@@ -98,7 +99,12 @@ class MinesController < ApplicationController
 
   def search
     search_term = params[:search].strip
-    search = "name like '%" + search_term +"%' or description like '%" +search_term +"%'"
+
+
+    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
+    search = search + " and state = " + params[:state] if (params[:state] != "99")
+    search = search + " and sort = " + params[:state]  if (params[:state] != "99")
+
     if is_s_i?(search_term)
       search = search + " or id = "+search_term
     end
