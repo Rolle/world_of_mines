@@ -103,7 +103,7 @@ class MinesController < ApplicationController
 
     search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
     search = search + " and state = " + params[:state] if (params[:state] != "99")
-    search = search + " and sort = " + params[:state]  if (params[:state] != "99")
+    search = search + " and sort = " + params[:sort]  if (params[:sort] != "99")
 
     if is_s_i?(search_term)
       search = search + " or id = "+search_term
