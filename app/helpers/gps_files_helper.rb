@@ -11,7 +11,7 @@ module GpsFilesHelper
 				coords = placemark.css("Point").css("coordinates").text.split(",")
 				longitude = coords[0]
 				latitude= coords[1]			
-				m = Mine.new(created_by: current_user, name: name.parameterize(), latitude: latitude, longitude: longitude, gps_file_id: file.id)
+				m = Mine.new(created_by: current_user, name: name.parameterize(), sort: 0, state: 0, latitude: latitude, longitude: longitude, gps_file_id: file.id)
 				m.save
 			end
 		end

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"mine",
+				"mine_id"
+			],
+			[
 				"SORTS",
 				"SORTS_ALL"
 			],
@@ -192,19 +196,11 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/mines/index.html.erb",
+			"file": "app/views/mines/map.html.erb",
 			"settings":
 			{
-				"buffer_size": 2072,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/mines_controller.rb",
-			"settings":
-			{
-				"buffer_size": 7254,
-				"line_ending": "Unix"
+				"buffer_size": 6055,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -246,29 +242,30 @@
 	[
 		"/C/Projects/ruby/World_Of_Mines",
 		"/C/Projects/ruby/World_Of_Mines/app",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers",
-		"/C/Projects/ruby/World_Of_Mines/app/helpers",
-		"/C/Projects/ruby/World_Of_Mines/app/models",
 		"/C/Projects/ruby/World_Of_Mines/app/views",
-		"/C/Projects/ruby/World_Of_Mines/config"
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines",
+		"/C/Projects/ruby/World_Of_Mines/db/migrate"
 	],
 	"file_history":
 	[
+		"/C/Projects/ruby/World_Of_Mines/db/migrate/20151105115016_add_indexes_to_tables.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/map.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/stylesheets/leaflet.awesome-markers.css.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/helpers/mines_helper.rb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/mines/work_list.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_new.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_form.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/helpers/gps_files_helper.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/gps_files_controller.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_edit.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/helpers/application_helper.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_form.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_new.html.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/updateajax.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/work_list.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/helpers/application_helper.rb",
 		"/C/Projects/ruby/World_Of_Mines/config/routes.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/models/user.rb",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/layouts/application.html.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine_table_row.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/gps_files_controller.rb",
-		"/C/Projects/ruby/World_Of_Mines/app/helpers/gps_files_helper.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/my.js",
 		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/application.js",
 		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/jquery.cookies.js",
@@ -378,10 +375,7 @@
 		"/home/roland/projects/WorldOfMines/app/views/mines/_mine.html.erb",
 		"/home/roland/projects/WorldOfMines/app/views/mines/index.html.erb",
 		"/home/roland/projects/WorldOfMines/app/controllers/gps_files_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/gps_files/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/helpers/gps_files_helper.rb",
-		"/home/roland/projects/WorldOfMines/app/helpers/files_helper.rb",
-		"/home/roland/projects/WorldOfMines/Gemfile"
+		"/home/roland/projects/WorldOfMines/app/views/gps_files/index.html.erb"
 	],
 	"find":
 	{
@@ -392,6 +386,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
 			"C:\\Projects\\ruby\\World_Of_Mines\\app\\views",
 			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
 			"C:\\Projects\\ruby\\World_Of_Mines\\app\\views",
@@ -418,6 +413,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"darkpurple",
+			"darkpurpleMarker",
 			"options_for_select",
 			"options_for",
 			"work_list",
@@ -586,24 +583,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/mines/index.html.erb",
+					"file": "app/views/mines/map.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2072,
+						"buffer_size": 6055,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2059,
-								2059
+								3242,
+								3242
 							]
 						],
 						"settings":
@@ -613,37 +610,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/mines_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3017,
-								3017
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1215.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -737,7 +704,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 396.0,
+	"side_bar_width": 347.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

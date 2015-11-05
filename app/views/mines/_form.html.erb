@@ -23,16 +23,20 @@
         <%= f.text_area :description, {:class=>"input-small form-control"} %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label "Latitude", nil, :class => "control-label" %>
-    <div class="controls">
+
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <%= f.label "Latitude", nil, :class => "control-label" %>
+      <div class="controls">
         <%= f.text_field :latitude, {:class=>"input-small form-control"} %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Longitude", nil, :class => "control-label" %>
-    <div class="controls">
+  
+    <div class="col-xs-6">
+      <%= f.label "Longitude", nil, :class => "control-label" %>
+      <div class="controls">
         <%= f.text_field :longitude, {:class=>"input-small form-control"} %>
+      </div>
     </div>
   </div>    
 

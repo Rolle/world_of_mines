@@ -81,17 +81,26 @@
               icon: 'search', 
               markerColor: 'darkpurple',
               prefix: 'fa'
-    })    
+    })   
+      var darkblueMarker = L.AwesomeMarkers.icon({
+              icon: 'search', 
+              markerColor: 'darkblue',
+              prefix: 'fa'
+    })   
     var ma = {};
     ma[0] = redMarker;
     ma[1] = darkredMarker;
-    ma[2] = darkpurpleMarker;
+    ma[2] = orangeMarker;
     ma[3] = greenMarker;
     ma[4] = darkgreenMarker;
-    ma[5] = blueMarker;
-    ma[6] = purpleMarker;
-    ma[7] = cadetblueMarker;
-    ma[8] = orangeMarker;
+    ma[5] = blueMarker; 
+    ma[6] = darkblueMarker;
+    ma[7] = purpleMarker;
+    ma[8] = darkpurpleMarker;
+    ma[9] = redMarker;
+    ma[10] = darkredMarker;
+    ma[11] = orangeMarker;
+    ma[12] = greenMarker;
 
     map = new L.Map('map', {
       worldCopyJump: true,
@@ -120,9 +129,10 @@
     <% else %>
       map.setView(new L.LatLng(<%= @mine.latitude.to_s %>,<%= @mine.longitude.to_s %>), 15);
     <% end %>
-    var osmGeocoder = new L.Control.OSMGeocoder();
 
+    var osmGeocoder = new L.Control.OSMGeocoder();
     map.addControl(osmGeocoder);
+
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     var opentopo = L.tileLayer.provider('OpenTopoMap');
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
@@ -133,10 +143,8 @@
             "OpenTopo": opentopo
     };
     var markers = L.markerClusterGroup({ chunkedLoading: true });
-    var overlayMaps = {
-        "Gruben": markers,
-    };
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    L.control.layers(baseMaps).addTo(map);
     map.addLayer(osmde);
     
     //Array über alle Punkte:
@@ -161,7 +169,8 @@
       markersId[a[3]] = m;
     }
     map.addLayer(markers);
-    map.invalidateSize();
+    
+    //map.invalidateSize();
     enable_top_menu("karte");
 </script> 
 
