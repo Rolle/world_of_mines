@@ -7,8 +7,10 @@
 			<h5><%= photo.mine.name %></h5>
 			<h6><%= photo.description %></h6>
 			<% if current_user.admin? %>
+			 	<%= link_to 'Show', mine_path(photo.mine), class: "btn btn-success btn-xs" %>
+			 	<%= link_to 'Edit', edit_mine_path(photo.mine), class: "btn btn-primary btn-xs", remote: true %>
 				<%= link_to 'Delete', photo, method: :delete, remote: true,data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger btn-xs"  %>
-				<%= link_to 'Edit', edit_mine_path(photo.mine), class: "btn btn-primary btn-xs", remote: true %>
+				
 			<% end %>
 		</div>
 	</div>
