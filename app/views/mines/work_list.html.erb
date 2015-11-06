@@ -9,8 +9,10 @@
 
         <div class="panel-body">
           <div class="form-inline form-group">
-            <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
-            <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
+            <% if current_user.superadmin? %>
+              <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+              <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
+            <% end %>
 
             <%= select_tag :sort, 
               options_for_select(MinesHelper::SORTS), :class=>"input-small form-control",

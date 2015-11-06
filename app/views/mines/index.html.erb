@@ -27,7 +27,9 @@
               </div>
 
               <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
-              <%= link_to 'Export', export_all_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+              <% if current_user.superadmin? %>
+                <%= link_to 'Export', export_all_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+              <% end %>
             <% end %>            
           </div>
           <div id="table">
