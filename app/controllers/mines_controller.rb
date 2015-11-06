@@ -85,12 +85,11 @@ class MinesController < ApplicationController
   end
 
   def work_list
-    #@mines = Mine.find(current_user.work_list_ids)
     @mines = Mine.where(id: current_user.work_list_ids)
   end
 
   def index
-    @mines = Mine.page(params[:page]) #.per(100)
+    @mines = Mine.page(params[:page])
     current_user.update_page_ids(@mines)
     current_user.update_current_ids(nil)
     @new_mine = Mine.new
@@ -123,6 +122,20 @@ class MinesController < ApplicationController
     @mines = Mine.all.order(latitude: :desc)
     @new_mine = Mine.new
     @new_photo = Photo.new
+  end
+
+  def created
+    @mines = Mine.where(created_by: current_user.id).order(latitude: :desc)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :map
+  end
+
+  def last_edited
+    @mines = Mine.where(updated_by: current_user.id).limit(20).order(latitude: :desc)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :map
   end
   
   def lock

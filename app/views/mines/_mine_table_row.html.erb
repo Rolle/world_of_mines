@@ -11,8 +11,8 @@
   <td><%= mine.description.first(25) if mine.description %></td>
   
   <td>
-    <button type="button" class="btn btn-default btn-xs" data-trigger="focus" data-placement="right" data-html="true" data-toggle="popover" title="Fotos" data-content='<%=render(partial: "mini_photo_list", locals: {mine: mine}).html_safe%>'>
-      <%= mine.photos.count.to_s %>       
+    <button type="button" class="btn btn-default btn-xs" data-trigger="hover" data-placement="right" data-html="true" data-toggle="popover" title="Fotos" data-content='<%=render(partial: "mini_photo_list", locals: {mine: mine}).html_safe%>'>
+      <%= mine.photos.size.to_s %>       
     </button>
   </td>
 

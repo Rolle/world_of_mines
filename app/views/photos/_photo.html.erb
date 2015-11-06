@@ -1,11 +1,11 @@
-<div class="col-xs-6 col-md-2" <%= 'style="display: none;"' if !visible %> id="photo-<%= photo.id.to_s%>">
+<div class="col-md-2" <%= 'style="display: none;"' if !visible %> id="photo-<%= photo.id.to_s%>">
 	<div class="thumbnail">
-		<a id="a-photo-<%=photo.id.to_s%>" href="<%= photo.file.url %>" class="fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
+		<a id="a-photo-<%=photo.id.to_s%>" href="<%= photo.file.url %>" class="fancybox" rel="fancybox" title="<%= n(photo.mine.name) + ": " + n(photo.description) %>">
 		  <%= image_tag(photo.file_url(:thumb), data: {:src => photo.file.url}) %>
 		</a>
 		<div class="caption">
-			<h5><%= n(photo.mine.name) %></h5>
-			<h6><%= n(photo.description) %></h6>
+			<h5><%= photo.mine.name %></h5>
+			<h6><%= photo.description %></h6>
 			<% if current_user.admin? %>
 				<%= link_to 'Delete', photo, method: :delete, remote: true,data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger btn-xs"  %>
 				<%= link_to 'Edit', edit_mine_path(photo.mine), class: "btn btn-primary btn-xs", remote: true %>

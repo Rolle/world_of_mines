@@ -6,9 +6,12 @@
             <h3>Fotos</h3>
         </div>
         <div class="panel-body"> 
-          <% @photos.each do |photo| %>
-            <%= render partial: 'photo', locals: {photo: photo, visible: true} %>
-          <% end %>
+          <%= will_paginate @photos, renderer: BootstrapPagination::Rails %>
+          <div id="photos" class="row">
+            <% @photos.each do |photo| %>
+              <%= render partial: 'photo', locals: {photo: photo, visible: true} %>
+            <% end %>
+          </div>
           <%= will_paginate @photos, renderer: BootstrapPagination::Rails %>
         </div>
       </div>
@@ -17,9 +20,8 @@
 </div>
 <div id='popup'>
 </div>
-<script>
-    $("a[rel=popover]").popover({live: true });
-    $("a[rel=popover]").fancybox({
+<script>    
+    $("a[rel=fancybox]").fancybox({
       parent: "body",
       openEffect  : 'elastic'
     });

@@ -20,7 +20,7 @@
 	<% mine.photos.each do |photo| %>
   		<div class="col-xs-6 col-md-3" id="photo-<%= photo.id.to_s %>">
   			<div class="thumbnail">
-				<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="popover" data-placement="bottom" data-trigger="hover">
+				<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="fancybox" >
 				  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
 				</a>
 				<div class="caption">

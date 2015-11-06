@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       get "clear_work_list"
       get "add_page_list_items"
       get "add_current_list_items"
+      get "last_edited"
+      get "created"
     end
     member do
       post "updateajax"
@@ -52,6 +54,12 @@ Rails.application.routes.draw do
     end
   end
   resources :events
+  
+  resources :photos do
+    collection do
+      get "own"
+    end
+  end
   resources :photos
   
   root 'mines#map'

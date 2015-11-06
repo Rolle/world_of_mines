@@ -24,24 +24,34 @@
       <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <% if user_signed_in? %>
           <ul class="nav navbar-nav">           
-            <li id="karte"><%= link_to "Karte", map_mines_path %></li>
+            <li class="dropdown" id="karte">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Karten <span class="caret"></span></a>
+              <ul class="dropdown-menu">  
+                <li><%= link_to "Alle", map_mines_path %></li>
+                <% if current_user.admin? %>                
+                  <li><%= link_to "Eigene", created_mines_path %></li>
+                  <li><%= link_to "Letzten 20", last_edited_mines_path %></li>
+                <% end %>
+              </ul>
+            </li>
+
+
             <% if current_user.admin? %>
               <li class="dropdown" id="liste">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listen <span class="caret"></span></a>
-                  <ul class="dropdown-menu">  
-                    <li><%= link_to "Alle", mines_path %></li>
-                    <li><%= link_to "Eigene", own_mines_path %></li>
-                    <li><%= link_to "Gesperrte", locked_mines_path %></li>
-                  </ul>
-                </li>
-            <% end %>
-            <% if current_user.superadmin? %>
-              <li id="dateien"><%= link_to "Dateien", gps_files_path %></li>                
-              <li id="user"><%= link_to "Benutzer", users_path %></li>                
-              <li id="events"><%= link_to "Log", events_path %></li>                
-            <% end %>                           
-            <% if current_user.admin? %>
-              <li id="photos"><%= link_to "Fotos", photos_path %></li>   
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listen <span class="caret"></span></a>
+                <ul class="dropdown-menu">  
+                  <li><%= link_to "Alle", mines_path %></li>
+                  <li><%= link_to "Eigene", own_mines_path %></li>
+                  <li><%= link_to "Gesperrte", locked_mines_path %></li>
+                </ul>
+              </li>
+              <li class="dropdown" id="photos">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fotos <span class="caret"></span></a>
+                <ul class="dropdown-menu">    
+                  <li id="photos"><%= link_to "Alle", photos_path %></li>   
+                  <li id="photos"><%= link_to "Eigene", own_photos_path %></li>   
+                </ul>
+              </li>
               <li class="dropdown" id="notiz">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notizen <span class="caret"></span></a>
                 <ul class="dropdown-menu">                    
@@ -50,6 +60,11 @@
                 </ul>
               </li>
             <% end %>
+            <% if current_user.superadmin? %>
+              <li id="dateien"><%= link_to "Dateien", gps_files_path %></li>                
+              <li id="user"><%= link_to "Benutzer", users_path %></li>                
+              <li id="events"><%= link_to "Log", events_path %></li>                
+            <% end %>                           
             <% if current_user.admin? %>
               <li id="arbeitsliste">
                 <%= link_to raw("Arbeitsliste: <span id='work_item_counter' class='badge'>"+current_user.work_items_count.to_s+"</span>"), work_list_mines_path %>
@@ -59,7 +74,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if @users_online and user_signed_in? %>
-              <button type="button" class="btn btn-default navbar-btn" data-placement="bottom" data-toggle="popover" title="Currently online"
+              <button type="button" class="btn btn-default navbar-btn"  data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Currently online"
                 data-content="<%=online_users_as_list(@users_online)%> ">
                   Online: <span class="badge"><%= @users_online.count.to_s -%></span>
                 </button>

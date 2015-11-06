@@ -4,7 +4,12 @@ class PhotosController < ApplicationController
   include ApplicationHelper
 
   def index
-  	@photos = Photo.page(params[:page]).per(24)    
+  	@photos = Photo.page(params[:page])#.per(24)    
+  end
+
+  def own
+    @photos = Photo.where(user_id: current_user.id).page(params[:page])#.per(24)    
+    render :index
   end
 
   def destroy
