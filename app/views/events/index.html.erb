@@ -24,13 +24,14 @@
                 <tr>
                   <td><%= event.user_email %></td>
                   <td><%= event.category %></td>
-                  <td><% if !event.mine.nil? %> 
-                    <%= link_to event.mine.name, mine_path(event.mine) %> 
-                    <%end%>
+                  <td>
+                    <% if !event.mine.nil? %>
+                      <%= link_to event.mine.name, edit_mine_path(event.mine), class: "btn btn-primary btn-xs", remote: true %>
+                    <% end %>
                   </td>
 
                   <td><%= event.level %></td>
-                  <td><%= event.description %></td>
+                  <td><span data-toggle="tooltip" data-placement="top" title="<%=n(event.description)%>"><%= n(event.description).first(30) %></span></td>
                   <td><%= event.created_at.strftime("%d.%m.%Y %H:%M:%S") %></td>
                 </tr>
               <% end %>
@@ -41,7 +42,8 @@
     </div>
   </div>
 </div>
-
+<div id="popup">
+</div>
 <script>
   enable_top_menu("events");
 </script> 

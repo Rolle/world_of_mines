@@ -161,11 +161,11 @@ class MinesController < ApplicationController
 
   def updateajax
     @mine = Mine.find(params[:id])
-    log_event(@mine, 1, "Mine", "Änderungen vorher:" + 
+    log_event(@mine, 1, "Mine", "Vorher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
     @mine.update_attributes({updated_by: current_user, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
-    log_event(@mine, 1, "Mine", "Änderungen nachher:" + 
+    log_event(@mine, 1, "Mine", "Nachher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
     respond_to do |format|
@@ -218,11 +218,11 @@ class MinesController < ApplicationController
   end
 
   def update
-    log_event(@mine, 1, "Mine", "Änderung vorher:" + 
+    log_event(@mine, 1, "Mine", "Vorher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)     
     )
     if @mine.update(mine_params)
-      log_event(@mine, 1, "Mine", "Änderung nachher:" + 
+      log_event(@mine, 1, "Mine", "Nachher:" + 
         n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
       )
       redirect_to @mine, notice: 'Erfolgreich geändert.'
