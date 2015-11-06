@@ -105,7 +105,6 @@
     ma[12] = greenMarker;
 
     map = new L.Map('map', {
-      worldCopyJump: true,
       fullscreenControl: true
     });
     
@@ -144,7 +143,7 @@
             "OSM DE": osmde,
             "OpenTopo": opentopo
     };
-    var markers = L.markerClusterGroup({ chunkedLoading: true });
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
 
     L.control.layers(baseMaps).addTo(map);
     map.addLayer(osmde);

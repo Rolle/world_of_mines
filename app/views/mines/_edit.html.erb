@@ -136,15 +136,9 @@
             "OSM DE": osmde,
     };
     var markers_main = new L.LayerGroup();
-    var overlayMaps = {
-        "Gruben": markers_main,
-    };
-    L.control.layers(baseMaps, overlayMaps).addTo(map_small);
-    //map.addLayer(bing);
+    L.control.layers(baseMaps).addTo(map_small);
     map_small.addLayer(osmde);
     map_small.addLayer(markers_main);
-    //map.addLayer(baseMaps);
-    
     
     marker = L.marker([<%= mine.latitude %>, <%= mine.longitude %>], {icon: redMarker, title: '<%=mine.name %>'}).addTo(map_small);
     $('#popup-mine-edit').on('shown.bs.modal', function(){
