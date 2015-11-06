@@ -104,6 +104,16 @@
     ma[11] = orangeMarker;
     ma[12] = greenMarker;
 
+    //Array über alle Punkte:
+    // <lat,long,Label,id,status,typ
+    var addressPoints = [
+      <%@mines.each do |mine| %>
+          [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
+      <% end %>
+    ]
+   
+    var markersId = {};
+
     map = new L.Map('map', {
       fullscreenControl: true
     });
@@ -137,41 +147,29 @@
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     var opentopo = L.tileLayer.provider('OpenTopoMap');
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
-    
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
+
     var baseMaps = {
             "Bing": bing,
             "OSM DE": osmde,
             "OpenTopo": opentopo
     };
-    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
-
-    L.control.layers(baseMaps).addTo(map);
-    map.addLayer(osmde);
-    
-    //Array über alle Punkte:
-    // <lat,long,Label,id,status,typ
-    var addressPoints = [
-      <%@mines.each do |mine| %>
-          [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
-      <% end %>
-    ]
-   
-    var markersId = {};
 
    for (var i = 0; i < addressPoints.length; i++) {
       var a = addressPoints[i];
       var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: ma[a[5]] });
       m._popup_id = a[3];
-      //only if user is more then guest
       <% if current_user.user? %>
         m.on('click', onClick);
       <% end %>
       markers.addLayer(m);
       markersId[a[3]] = m;
     }
-    map.addLayer(markers);
+
+    L.control.layers(baseMaps).addTo(map);
     
-    //map.invalidateSize();
+    map.addLayer(osmde);
+    map.addLayer(markers);
     enable_top_menu("karte");
 </script> 
 
