@@ -20,6 +20,12 @@
                 <%= text_area_tag :description, mine.description, {:class=>"input-small form-control"} %>
             </div>
           </div>
+          <div class="form-group">
+            <%= label_tag "Homepage", nil, :class => "control-label" %>
+            <div class="controls">
+                <%= text_field_tag :homepage, mine.homepage, {:class=>"input-small form-control"} %>
+            </div>
+          </div>
           
           <% if current_user.admin? %>
             <div class="row form-group">

@@ -162,11 +162,11 @@ class MinesController < ApplicationController
   def updateajax
     @mine = Mine.find(params[:id])
     log_event(@mine, 1, "Mine", "Vorher:" + 
-      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
+      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
     )
-    @mine.update_attributes({updated_by: current_user, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at]})   
+    @mine.update_attributes({updated_by: current_user, name: params[:name], description: params[:description], latitude: params[:latitude], longitude: params[:longitude], state: params[:state], sort: params[:sort], visited_at: params[:visited_at], homepage: params[:homepage]})   
     log_event(@mine, 1, "Mine", "Nachher:" + 
-      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
+      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
     )
     respond_to do |format|
       format.js {}
@@ -198,7 +198,7 @@ class MinesController < ApplicationController
 
   def create
     if (request.format == 'js')
-      @mine = Mine.new(created_by: current_user,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state])
+      @mine = Mine.new(created_by: current_user,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state], homepage: params[:homepage])
     else
       @mine = Mine.new(mine_params)
       @mine.created_by = current_user.id
@@ -206,7 +206,7 @@ class MinesController < ApplicationController
 
     if @mine.save
       log_event(@mine, 1, "Mine", "Neuanlage von:" + 
-        n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
+        n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
       )
       respond_to do |format|
         format.js {}
@@ -219,11 +219,11 @@ class MinesController < ApplicationController
 
   def update
     log_event(@mine, 1, "Mine", "Vorher:" + 
-      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)     
+      n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
     )
     if @mine.update(mine_params)
       log_event(@mine, 1, "Mine", "Nachher:" + 
-        n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
+        n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
       )
       redirect_to @mine, notice: 'Erfolgreich geändert.'
     else
@@ -251,6 +251,6 @@ class MinesController < ApplicationController
     end
 
     def mine_params
-      params.require(:mine).permit(:latitude, :longitude, :name, :description, :sort, :state, :locked_by, :created_by, :updated_by)
+      params.require(:mine).permit(:homepage, :latitude, :longitude, :name, :description, :sort, :state, :locked_by, :created_by, :updated_by)
     end
 end

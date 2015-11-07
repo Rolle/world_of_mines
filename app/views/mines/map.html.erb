@@ -118,7 +118,7 @@
       fullscreenControl: true
     });
     
-    <% if current_user.user? %>
+    <% if current_user.admin? %>
       map.on('click', addMarker);
       map.on('zoomend', function() {
         changeBoundsOnLink("export-link",map.getBounds());
@@ -128,7 +128,7 @@
       });
     <% else %>
       map.options.maxZoom = 12;
-      map.options.minZoom = 8;
+      map.options.minZoom = 9;
     <% end %>
 
     <% if @mine.nil? %>

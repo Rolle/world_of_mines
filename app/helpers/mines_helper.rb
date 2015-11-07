@@ -32,7 +32,8 @@ module MinesHelper
 		9 => "Höhle", 
 		10 => "Tunnel", 
 		11 => "U-Verlagerung", 
-		12 => "Montanindustrie"
+		12 => "Montanindustrie",
+		13 => "Besucherbergwerk"
 	}
 	SORTS = {
 		"N/A" =>0, 
@@ -47,7 +48,8 @@ module MinesHelper
 		"Höhle" => 9, 
 		"Tunnel" => 10, 
 		"U-Verlagerung" => 11, 
-		"Montanindustrie" => 12
+		"Montanindustrie" => 12,
+		"Besucherbergwerk" => 13
 	}
 	STATES_ALL = {
 		"Alle" => 99,
@@ -74,7 +76,8 @@ module MinesHelper
 		"Höhle" => 9, 
 		"Tunnel" => 10, 
 		"U-Verlagerung" => 11, 
-		"Montanindustrie" => 12
+		"Montanindustrie" => 12,
+		"Besucherbergwerk" => 13
 	}
 	def generate_kml(mines)
 		kml = "<?xml version='1.0' encoding='UTF-8'?>
