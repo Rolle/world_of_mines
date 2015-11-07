@@ -147,6 +147,7 @@
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     var opentopo = L.tileLayer.provider('OpenTopoMap');
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
+    
     var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
 
     var baseMaps = {
@@ -154,7 +155,8 @@
             "OSM DE": osmde,
             "OpenTopo": opentopo
     };
-
+    var osmGeocoder = new L.Control.OSMGeocoder();
+    map.addControl(osmGeocoder);
    for (var i = 0; i < addressPoints.length; i++) {
       var a = addressPoints[i];
       var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: ma[a[5]] });
