@@ -17,8 +17,8 @@
             <div class="alert alert-danger alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                   <%= flash.now[:error] %>
-                </div>
-            <% end -%>
+              </div>
+          <% end -%>
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: {:class=>"form-horizontal", :role=>"form"}) do |f| %>
 
@@ -42,9 +42,9 @@
                 </div>
               </div>
             <% end %>
+            <a href="http://untergrundkataster.stillestrecken.de/" target="_blank">Handbuch</a>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
