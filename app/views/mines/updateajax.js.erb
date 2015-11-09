@@ -1,1 +1,18 @@
+//close modal
 $('#popup-mine-edit').modal('hide');
+
+
+//update map if visible
+var m = L.marker(
+	L.latLng(<%= @mine.latitude.to_s %>, <%= @mine.longitude.to_s %>),
+	{ title: '<%=@mine.name + " ("+sort_of_text(@mine.sort)+")" %>', 
+	icon: iconForSort(<%= @mine.sort.to_s %>) });
+m._popup_id = <%= @mine.id %>;
+m.on('click', onClick);
+markers.removeLayer(markersId[<%= @mine.id.to_s%>]);
+markers.addLayer(m);
+markersId[<%= @mine.id %>] = m;
+
+//when a table row is edited
+$('#mine-row-<%= @mine.id.to_s %>').replaceWith("<%= j render(:partial => 'mine_table_row', locals: {mine: @mine}) %>");
+

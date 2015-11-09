@@ -1,13 +1,76 @@
+function iconForSort(sort) {
+  var color = "red";
+  switch (sort) {
+    case 0:
+      color = 'red';
+      break;
+    case 1:
+      color = 'darkred';
+      break;
+    case 2:
+      color = 'orange';
+      break;
+    case 3:
+      color = 'green';
+      break;
+    case 4:
+      color = 'darkgreen';
+      break;
+    case 5:
+      color = 'blue';
+      break;
+    case 6:
+      color = 'purple';
+      break;
+    case 7:
+      color = 'cadetblue';
+      break;
+    case 8:
+      color = 'darkpurple';
+      break;
+    case 9:
+      color = 'darkblue';
+      break;
+    case 10:
+      color = 'red';
+      break;
+    case 11:
+      color = 'orange';
+      break;
+    case 12:
+      color = 'green';
+      break;
+
+  }
+
+  var icon = L.AwesomeMarkers.icon({
+            icon: 'search', 
+            markerColor: color,
+            prefix: 'fa'
+  })
+  return icon;
+}
+
 function changeBoundsOnLink(link_id, bounds) {
-  var ne_lat = bounds._northEast.lat;
-  var ne_lng = bounds._northEast.lng;
-  var sw_lat = bounds._southWest.lat;
-  var sw_lng = bounds._southWest.lng;
+  ne_lat = bounds._northEast.lat;
+  ne_lng = bounds._northEast.lng;
+  sw_lat = bounds._southWest.lat;
+  sw_lng = bounds._southWest.lng;
   href = $('#'+link_id).attr("href");
   if (href.indexOf("?") != -1)
     href = href.substring(0, href.indexOf("?"));
   href = href + "?ne_lat="+ne_lat+"&ne_lng="+ne_lng+"&sw_lat="+sw_lat+"&sw_lng="+sw_lng;
   $('#'+link_id).attr("href",href);
+  $.cookie('map.lat', map.getCenter().lat, { expires: 7});
+  $.cookie('map.lng', map.getCenter().lng, { expires: 7});
+  $.cookie('map.zoomlevel', map.getZoom(), { expires: 7});
+}
+
+function changeBoundsCookie(bounds) {
+  ne_lat = bounds._northEast.lat;
+  ne_lng = bounds._northEast.lng;
+  sw_lat = bounds._southWest.lat;
+  sw_lng = bounds._southWest.lng;
   $.cookie('map.lat', map.getCenter().lat, { expires: 7});
   $.cookie('map.lng', map.getCenter().lng, { expires: 7});
   $.cookie('map.zoomlevel', map.getZoom(), { expires: 7});

@@ -4,20 +4,52 @@
 		"selected_items":
 		[
 			[
-				"sw_",
-				"sw_lng"
+				"dar",
+				"darkpurple"
 			],
 			[
-				"sw",
-				"sw_lat"
+				"mine",
+				"mine_id"
 			],
 			[
-				"get",
-				"getBounds"
+				"SORTS",
+				"SORTS_ALL"
+			],
+			[
+				"work_",
+				"work_list_ids"
+			],
+			[
+				"update",
+				"update_current_ids"
+			],
+			[
+				"user_",
+				"user_signed_in"
+			],
+			[
+				"work",
+				"work_items"
+			],
+			[
+				"par",
+				"params"
+			],
+			[
+				"wor",
+				"work_items"
 			],
 			[
 				"se",
-				"search"
+				"session"
+			],
+			[
+				"user",
+				"user_group_id"
+			],
+			[
+				"user_gr",
+				"user_group_id"
 			],
 			[
 				"lo",
@@ -167,22 +199,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/views/mines/map.html.erb",
-			"settings":
-			{
-				"buffer_size": 6004,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/mines/_edit.html.erb",
-			"settings":
-			{
-				"buffer_size": 7241,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -220,46 +236,72 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roland/projects/World_Of_Mines",
-		"/home/roland/projects/World_Of_Mines/app",
-		"/home/roland/projects/World_Of_Mines/app/assets",
-		"/home/roland/projects/World_Of_Mines/app/helpers",
-		"/home/roland/projects/World_Of_Mines/app/models",
-		"/home/roland/projects/World_Of_Mines/app/views",
-		"/home/roland/projects/World_Of_Mines/app/views/events",
-		"/home/roland/projects/World_Of_Mines/app/views/mines",
-		"/home/roland/projects/World_Of_Mines/app/views/photos",
-		"/home/roland/projects/World_Of_Mines/config",
-		"/home/roland/projects/World_Of_Mines/config/environments",
-		"/home/roland/projects/World_Of_Mines/public"
+		"/C/Projects/ruby/World_Of_Mines",
+		"/C/Projects/ruby/World_Of_Mines/app",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers",
+		"/C/Projects/ruby/World_Of_Mines/app/views",
+		"/C/Projects/ruby/World_Of_Mines/app/views/layouts",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines",
+		"/C/Projects/ruby/World_Of_Mines/app/views/photos"
 	],
 	"file_history":
 	[
-		"/home/roland/projects/World_Of_Mines/app/views/mines/work_list.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/index.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/_mine_table_row.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/views/events/index.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/controllers/mines_controller.rb",
-		"/home/roland/projects/World_Of_Mines/app/views/photos/_photo.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets/bootstrap.min.css",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets/leaflet.fullscreen.css",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets/leaflet.css",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets/Control.OSMGeocoder.css",
-		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets/Control.OSMGeocoder.css.erb",
-		"/home/roland/projects/World_Of_Mines/app/helpers/mines_helper.rb",
-		"/home/roland/projects/World_Of_Mines/config/environments/production.rb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/map.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/controllers/gps_files_controller.rb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/_mine_table.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/assets/javascripts/my.js",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/_edit.html.erb",
-		"/home/roland/projects/World_Of_Mines/config/routes.rb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/_new.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/views/mines/_form.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/views/photos/index.html.erb",
-		"/home/roland/projects/World_Of_Mines/app/controllers/photos_controller.rb",
-		"/home/roland/projects/World_Of_Mines/app/assets/javascripts/application.js",
-		"/home/roland/projects/World_Of_Mines/app/controllers/users_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/my.js",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/map.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/layouts/application.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/create.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/updateajax.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine_table_row.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_edit.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/config/routes.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/photos/_photo.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/photos/index.html.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/photos/create.js.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/mines/edit.js.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/mines/_edit.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_photos.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/new.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/gps_files/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/photo.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/mine.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/devise/sessions/new.html.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/layouts/devise/sessions.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/stylesheets/my.css.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/photos_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/stylesheets/Control.OSMGeocoder.css",
+		"/C/Projects/ruby/World_Of_Mines/db/migrate/20151105115016_add_indexes_to_tables.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/stylesheets/leaflet.awesome-markers.css.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/helpers/mines_helper.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/helpers/gps_files_helper.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/gps_files_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_form.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_new.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/work_list.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/helpers/application_helper.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/user.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/application.js",
+		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/jquery.cookies.js",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/application_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mini_photo_list.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/notes/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/update_work_list.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine_table.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/lock.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/add_or_remove_list_item.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/add_or_remove_listitem.js.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/users_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/_form.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/_edit.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/show.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/events_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/db/migrate/20151029094027_drop_columns_user.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/user_group.rb",
+		"/C/Projects/ruby/World_Of_Mines/db/seeds.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/user_notes_controller.rb",
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/_photos.html.erb",
 		"/C/Projects/ruby/WorldOfMines/Gemfile",
 		"/C/Projects/ruby/WorldOfMines/app/views/photos/index.html.erb",
@@ -331,54 +373,26 @@
 		"/home/roland/projects/WorldOfMines/config/routes.rb",
 		"/home/roland/projects/WorldOfMines/app/views/users/_form.html.erb",
 		"/home/roland/projects/WorldOfMines/app/views/layouts/application.html.erb",
-		"/home/roland/projects/WorldOfMines/app/controllers/users_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/users/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/users/new.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/new.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/_form.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/_edit.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/edit.js.erb",
-		"/home/roland/projects/WorldOfMines/app/controllers/mines_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/_mine.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/controllers/gps_files_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/gps_files/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/helpers/gps_files_helper.rb",
-		"/home/roland/projects/WorldOfMines/app/helpers/files_helper.rb",
-		"/home/roland/projects/WorldOfMines/Gemfile",
-		"/home/roland/projects/WorldOfMines/app/models/gps_file.rb",
-		"/home/roland/projects/WorldOfMines/app/models/mine.rb",
-		"/home/roland/projects/WorldOfMines/app/models/user.rb",
-		"/home/roland/projects/WorldOfMines/app/views/gps_files/new.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/gps_files/show.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/files/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/controllers/files_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/map.html.erb",
-		"/home/roland/projects/WorldOfMines/app/assets/stylesheets/leaflet.css",
-		"/home/roland/projects/WorldOfMines/app/views/devise/sessions/new.html.erb",
-		"/home/roland/projects/WorldOfMines/config/environments/development.rb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/_popup.html.erb",
-		"/home/roland/projects/WorldOfMines/app/assets/javascripts/leaflet.markercluster.js",
-		"/home/roland/projects/WorldOfMines/app/assets/javascripts/application.js",
-		"/home/roland/projects/WorldOfMines/app/assets/javascripts/leaflet-providers.js",
-		"/home/roland/projects/WorldOfMines/db/migrate/20151007191931_create_mines.rb",
-		"/home/roland/projects/marco/doc.kml"
+		"/home/roland/projects/WorldOfMines/app/controllers/users_controller.rb"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 90.0,
 		"where_history":
 		[
-			"/home/roland/projects/World_Of_Mines/app/",
-			"/home/roland/projects/World_Of_Mines/app/assets/stylesheets",
-			"/home/roland/projects/World_Of_Mines/app/assets",
-			"/home/roland/projects/World_Of_Mines/app/views/",
+			"C:\\Projects\\ruby\\world_of_mines\\app",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\assets",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
 			"C:\\Projects\\ruby\\World_Of_Mines\\app\\views",
-			"C:\\Projects\\ruby\\WorldOfMines\\app\\views",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\views",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\views",
+			"C:\\Projects\\ruby\\World_Of_Mines\\app\\",
 			"C:\\Projects\\ruby\\WorldOfMines\\app\\",
 			"C:\\Projects\\ruby\\WorldOfMines\\app\\views",
 			"C:\\Projects\\ruby\\WorldOfMines\\app",
@@ -399,19 +413,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"export",
-			"Änderung",
-			"url(",
-			"image_url",
-			"image-url",
+			"popover",
+			".count",
 			"geocoder.png",
-			"fullscreen.PNG",
-			"fullscreen",
-			"fullscreent",
-			"layers.png",
-			"fullscreen.png",
-			"showNew",
-			"verschlossen",
+			"darkpurple",
+			"darkpurpleMarker",
+			"options_for_select",
+			"options_for",
+			"work_list",
+			"session[",
+			"index",
+			"remote",
+			"is_work_item?",
+			"partial",
+			"strftim",
+			"inline",
+			"button",
+			"updateajax",
+			"createajax",
+			"is_admin",
+			"is_superadmin",
 			".nil",
 			"mine",
 			"update_attributes",
@@ -519,9 +540,7 @@
 			"glyph",
 			"gly",
 			"glyph",
-			"webserver",
-			"org.torquebox.web",
-			"link_to"
+			"webserver"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -565,69 +584,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/views/mines/map.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6004,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5501,
-								5501
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1547.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/mines/_edit.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7241,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6714,
-								6714
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -716,7 +674,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 226.0,
+	"side_bar_width": 322.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

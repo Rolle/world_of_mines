@@ -7,18 +7,16 @@
                 </div>
                 <div class="panel-body">
                   <div class="form-inline form-group">
-                  <% if current_user.admin? %>
-                    <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
-                    <% if current_user.superadmin? %>
-                      <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", id: "export-link" %>
-                    <% end %>
-                   <% end %> 
+                    <% if current_user.admin? %>
+                      <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
+                      <% if current_user.superadmin? %>
+                        <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", id: "export-link" %>
+                      <% end %>
+                    <% end %> 
                     <%= label_tag "Typ: "%> 
                     <%= select_tag :sort, options_for_select(MinesHelper::SORTS_ALL), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
-                    <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
                     <%= label_tag "Zustand: "%> 
                     <%= select_tag :state, options_for_select(MinesHelper::STATES_ALL), :class=>"input-small form-control", :onchange => 'select_zustand(this.value)' %>
-                    <!--%= link_to "Clear", "", class: "btn btn-primary" %-->
                   </div>
                   <div id ="map" style="width:auto; height: 700px;"></div>
                 </div>
@@ -26,6 +24,7 @@
         </div>
     </div>
 </div>
+
 <%=render(:partial => 'new', locals: {mine: @new_mine, photo: @new_photo}) %>
 
 <div id='popup'>
@@ -39,71 +38,6 @@
             L.Icon.Default.imagePath = 'assets';
     <% end %>
     
-    var redMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'red',
-              prefix: 'fa'
-    })
-    var darkredMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'darkred',
-              prefix: 'fa'
-    })
-    var orangeMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'orange',
-              prefix: 'fa'
-    })
-    var greenMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'green',
-              prefix: 'fa'
-    })
-    var darkgreenMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'darkgreen',
-              prefix: 'fa'
-    })
-    var blueMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'blue',
-              prefix: 'fa'
-    })
-    var purpleMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'purple',
-              prefix: 'fa'
-    })
-    var cadetblueMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'cadetblue',
-              prefix: 'fa'
-    })
-    var darkpurpleMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'darkpurple',
-              prefix: 'fa'
-    })   
-      var darkblueMarker = L.AwesomeMarkers.icon({
-              icon: 'search', 
-              markerColor: 'darkblue',
-              prefix: 'fa'
-    })   
-    var ma = {};
-    ma[0] = redMarker;
-    ma[1] = darkredMarker;
-    ma[2] = orangeMarker;
-    ma[3] = greenMarker;
-    ma[4] = darkgreenMarker;
-    ma[5] = blueMarker; 
-    ma[6] = darkblueMarker;
-    ma[7] = purpleMarker;
-    ma[8] = darkpurpleMarker;
-    ma[9] = redMarker;
-    ma[10] = darkredMarker;
-    ma[11] = orangeMarker;
-    ma[12] = greenMarker;
-
     //Array über alle Punkte:
     // <lat,long,Label,id,status,typ
     var addressPoints = [
@@ -111,55 +45,11 @@
           [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
       <% end %>
     ]
-   
     var markersId = {};
-
-    map = new L.Map('map', {
-      fullscreenControl: true
-    });
-    
-    <% if current_user.admin? %>
-      map.on('click', addMarker);
-      map.on('zoomend', function() {
-        changeBoundsOnLink("export-link",map.getBounds());
-      });
-      map.on('dragend', function() {
-        changeBoundsOnLink("export-link",map.getBounds());
-      });
-    <% else %>
-      map.options.maxZoom = 12;
-      map.options.minZoom = 9;
-    <% end %>
-
-    <% if @mine.nil? %>
-      if ($.cookie('map.lat') != undefined && $.cookie("map.lng") != undefined && $.cookie("map.zoomlevel") != undefined) {
-        map.setView(new L.LatLng($.cookie('map.lat'),$.cookie("map.lng")), $.cookie("map.zoomlevel"));      
-      } else {
-        map.setView(new L.LatLng(49.77477900007886,6.80334), 12);      
-      }
-    <% else %>
-      map.setView(new L.LatLng(<%= @mine.latitude.to_s %>,<%= @mine.longitude.to_s %>), 15);
-    <% end %>
-
-    var osmGeocoder = new L.Control.OSMGeocoder();
-    map.addControl(osmGeocoder);
-
-    var osmde = L.tileLayer.provider('OpenStreetMap.DE');
-    var opentopo = L.tileLayer.provider('OpenTopoMap');
-    var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
-    
-    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
-
-    var baseMaps = {
-            "Bing": bing,
-            "OSM DE": osmde,
-            "OpenTopo": opentopo
-    };
-    var osmGeocoder = new L.Control.OSMGeocoder();
-    map.addControl(osmGeocoder);
+   var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
    for (var i = 0; i < addressPoints.length; i++) {
       var a = addressPoints[i];
-      var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: ma[a[5]] });
+      var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: iconForSort(a[5])});
       m._popup_id = a[3];
       <% if current_user.user? %>
         m.on('click', onClick);
@@ -168,10 +58,59 @@
       markersId[a[3]] = m;
     }
 
-    L.control.layers(baseMaps).addTo(map);
-    
-    map.addLayer(osmde);
+    map = new L.Map('map', {
+      fullscreenControl: true
+    });    
     map.addLayer(markers);
+    var osmGeocoder = new L.Control.OSMGeocoder();
+    map.addControl(osmGeocoder);
+
+    var osmde = L.tileLayer.provider('OpenStreetMap.DE');
+    var opentopo = L.tileLayer.provider('OpenTopoMap');
+    var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
+    
+    
+
+    var baseMaps = {
+            "Bing": bing,
+            "OSM DE": osmde,
+            "OpenTopo": opentopo
+    };
+    L.control.layers(baseMaps).addTo(map);    
+    map.addLayer(osmde);
+    
+    <% if @mine.nil? %>
+      if ($.cookie('map.lat') != undefined && $.cookie("map.lng") != undefined && $.cookie("map.zoomlevel") != undefined) {
+        map.setView(new L.LatLng($.cookie('map.lat'),$.cookie("map.lng")), $.cookie("map.zoomlevel"));      
+      } else {
+        map.setView(new L.LatLng(49.77477900007886,6.80334), 12);      
+      }
+    <% else %>
+      map.setView(new L.LatLng(<%= @mine.latitude.to_s %>,<%= @mine.longitude.to_s %>), 15);
+    <% end %> 
+
+    <% if current_user.admin? %>
+      map.on('click', addMarker);
+      <% if current_user.superadmin? %>
+        map.on('zoomend', function() {
+          changeBoundsOnLink("export-link",map.getBounds());
+        });
+        map.on('dragend', function() {
+          changeBoundsOnLink("export-link",map.getBounds());
+        });
+      <% end %>
+    <% else %>
+      map.on('zoomend', function() {
+        changeBoundsCookie(map.getBounds());
+      });
+      map.on('dragend', function() {
+        changeBoundsCookie(map.getBounds());
+      });
+      map.options.maxZoom = 12;
+      map.options.minZoom = 9;
+    <% end %>    
+
+   
     enable_top_menu("karte");
 </script> 
 
