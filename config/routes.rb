@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   resources :notes
+
+  resources :orders do 
+    member do
+      get "first_approval"
+      get "second_approval"
+    end
+  end
+  resources :orders
   resources :user_notes
 
   resources :gps_files do

@@ -9,7 +9,7 @@
 
         <div class="panel-body">
           <div class="form-inline form-group">
-            <% if current_user.superadmin? %>
+            <% if current_user.superadmin? %>              
               <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
               <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
             <% end %>
@@ -29,6 +29,14 @@
                 }
             %>
             <%= link_to 'Clear', clear_work_list_mines_path, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-success" %>
+            <% if current_user.admin? %>
+              <% if @mines.size > 25 %>
+                <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disabled" %>
+                <%= label_tag "Nicht mehr als 25 Einträge erlaubt!" %>
+              <% else %>
+                <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disable" %>
+              <% end %>
+            <% end %>            
           </div>
 
           <div id="work-list-table">

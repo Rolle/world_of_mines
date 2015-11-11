@@ -135,10 +135,12 @@
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
-    
+    var opentopo = L.tileLayer.provider('OpenTopoMap');
+
     var baseMaps = {
             //"Google": ggl,
             "Bing": bing,
+            "OpenTopo": opentopo,
             "OSM DE": osmde,
     };
     var markers_main = new L.LayerGroup();
