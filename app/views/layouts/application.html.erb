@@ -74,7 +74,7 @@
                 <%= link_to raw("Arbeitsliste: <span id='work_item_counter' class='badge'>"+current_user.work_items_count.to_s+"</span>"), work_list_mines_path %>
               </li>
             <% end %>
-            <% if current_user.superadmin? %>
+            <% if current_user.superadmin? and @open_orders.size > 0 %>
               <li id="bestellungen">
                 <%= link_to raw("Bestellungen: <span id='work_item_counter' class='badge'>"+@open_orders.size.to_s+"</span>"), orders_path %>
               </li>
