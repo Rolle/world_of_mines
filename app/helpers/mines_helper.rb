@@ -1,4 +1,6 @@
 module MinesHelper
+	include MinesHelper
+	
 	STATES_ID = {
 		0 => "unbekannt",
 		1 => "offen", 
