@@ -1,6 +1,5 @@
 module MinesHelper
-	include MinesHelper
-	
+
 	STATES_ID = {
 		0 => "unbekannt",
 		1 => "offen", 
@@ -94,7 +93,7 @@ module MinesHelper
 			kml = kml + 
 			"<Placemark>
 				<name>"+mine.name+"</name>
-				<description><![CDATA["+n(mine.description)+"]]></description>
+				<description><![CDATA["+mine.description ||= "" +"]]></description>
 				<styleUrl>#icon-503-DB4436</styleUrl>
 				<ExtendedData>
 				</ExtendedData>
