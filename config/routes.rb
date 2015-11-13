@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :notes
-
+  resources :documents
+  
   resources :orders do 
     member do
       get "first_approval"

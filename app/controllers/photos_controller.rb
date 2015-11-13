@@ -12,14 +12,6 @@ class PhotosController < ApplicationController
     render :index
   end
 
-  def destroy
-    @photo = Photo.find(params[:id])
-    @photo.destroy
-    log_event(@photo.mine, 1, "Foto", "Datei "+File.basename(@photo.file.path)+" wurde gelöscht.")
-
-    redirect_to photos_url, notice: 'Datei gelöscht.'
-  end
-
   def show
     @photo = Photo.find(params[:id])
   end
@@ -41,7 +33,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     @photo.mine_id = params[:mine_id]
-    
+    @photo.photo_type = params[:photo_type]
     if @photo.save
       log_event(@photo.mine, 1, "File", "Datei " + File.basename(@photo.file.path) + " wurde hochgeladen zur " + @photo.mine.name)
       respond_to do |format|
@@ -53,6 +45,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:file, :description)
+    params.require(:photo).permit(:file, :description, :photo_type)
   end
 end

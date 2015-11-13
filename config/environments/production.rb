@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address => "localhost",
     :port => "25",
-    :domain => "rolandschmitt.info",
+    #:domain => "",
     :user_name => "",
     :password => "",
     :authentication => "plain",

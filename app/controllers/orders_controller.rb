@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
+  
+  def show
+    @order = set_order
+    
+  end
 
   def new
     @order = Order.create(user: current_user, state: 0)
@@ -22,12 +27,8 @@ class OrdersController < ApplicationController
 
   def second_approval
     @order = set_order
-    @order.update_attributes(second_approval: current_user)
-
-    # if second approval is given, send out mail
-    #http://www.gotealeaf.com/blog/handling-emails-in-rails
-    OrderMailer.send_order(@order).deliver
-
+    @order.update_attributes(second_approval: current_user, status: 1)
+    OrderMailer.delay.send_order(@order).devliver_now
     redirect_to :action => 'index'
   end  
 

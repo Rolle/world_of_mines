@@ -10,7 +10,8 @@
         <div>  <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#data" aria-controls="home" role="tab" data-toggle="tab">Daten</a></li>
-            <li role="presentation"><a href="#image" aria-controls="profile" role="tab" data-toggle="tab">Bilder (<%= mine.photos.size.to_s %>)</a></li>
+            <li role="presentation"><a href="#image" aria-controls="profile" role="tab" data-toggle="tab">Bilder (<%= mine.images.size.to_s %>)</a></li>
+            <li role="presentation"><a href="#document" aria-controls="profile" role="tab" data-toggle="tab">Unterlagen (<%= mine.documents.size.to_s %>)</a></li>
           </ul>
 
           <div class="tab-content">
@@ -103,7 +104,10 @@
               <% end %>
             </div> <!-- end tab div data -->
             <div role="tabpanel" class="tab-pane" id="image">
-              <%= render(:partial => 'photos', locals: {mine: mine, photo: photo}) %>
+              <%= render(:partial => 'photos', locals: {mine: mine, photo: photo, photo_type: 0}) %>
+            </div> <!-- end tab div image -->
+            <div role="tabpanel" class="tab-pane" id="document">
+              <%= render(:partial => 'photos', locals: {mine: mine, photo: photo, photo_type: 1}) %>
             </div> <!-- end tab div image -->
           </div> <!-- end tab content -->
         </div> <!-- end tab div -->

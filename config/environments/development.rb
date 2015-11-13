@@ -15,13 +15,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => "587",
-    :domain => "gmail.com",
-    :user_name => "",
-    :password => "",
+    :address => "mail.rolandschmitt.info",
+    :port => "25",
+    :domain => "rolandschmitt.info",
+    :user_name => "test",
+    :password => "test",
     :authentication => "plain",
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none'
   } 
   # Do not eager load code on boot.
   config.eager_load = false

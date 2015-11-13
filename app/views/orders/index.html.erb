@@ -44,7 +44,9 @@
                       <% end %>
                     <% end %>
                   </td>
-                  <td><%= link_to 'Delete', order, method: :delete, data: {confirm: 'Bist du sicher, das die Bestellung gelöscht werden soll?'}, class: "btn btn-danger btn-xs" %></td>
+                  <td>
+                    <%= link_to 'Show', order, class: "btn btn-primary btn-xs" %>
+                    <%= link_to 'Delete', order, method: :delete, data: {confirm: 'Bist du sicher, das die Bestellung gelöscht werden soll?'}, class: "btn btn-danger btn-xs" %></td>
                 </tr>
               <% end %>
             </tbody>

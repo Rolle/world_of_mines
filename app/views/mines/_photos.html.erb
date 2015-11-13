@@ -12,24 +12,27 @@
   		</div>
 	</div>
 	<%= hidden_field_tag :mine_id , mine.id.to_s  %>
+	<%= hidden_field_tag :photo_type , photo_type.to_s  %>
 	<%= f.submit "Hochladen", class: "btn btn-primary" %>
 <% end %>
 <br/>
 
-<div class="row" id="image-list">
+<div class="row" id="image-list-<%=photo_type.to_s%>">
 	<% mine.photos.each do |photo| %>
-  		<div class="col-xs-6 col-md-3" id="photo-<%= photo.id.to_s %>">
-  			<div class="thumbnail">
-				<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="fancybox" >
-				  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
-				</a>
-				<div class="caption">
-					<h6><%= photo.description %></h6>
-					<% if current_user.admin? %>
-						<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
-					<% end %>
+		<% if photo.photo_type == photo_type %>
+	  		<div class="col-xs-6 col-md-3" id="photo-<%= photo.id.to_s %>">
+	  			<div class="thumbnail">
+					<a href="<%= photo.file.url %>" class="thumbnail fancybox" rel="fancybox" >
+					  <%= image_tag(photo.file.url, data: {:src => photo.file.url}) %>
+					</a>
+					<div class="caption">
+						<h6><%= photo.description %></h6>
+						<% if current_user.admin? %>
+							<%= link_to 'Delete', photo, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %>
+						<% end %>
+					</div>
 				</div>
-			</div>
-  		</div>
+	  		</div>
+	  	<% end %>
   	<% end %>
 </div>

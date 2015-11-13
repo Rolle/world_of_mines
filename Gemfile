@@ -42,6 +42,8 @@ gem 'kaminari'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'fancybox2-rails'
+gem 'delayed_job_active_record'
+
 #gem 'acts_as_indexed'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

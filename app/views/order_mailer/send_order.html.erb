@@ -4,9 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Bestellung <%= @order.id.to_s %> vom <%= @order.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></h1>
+    <h3>Bestellung <%= @order.id.to_s %> vom <%= @order.created_at.strftime("%d.%m.%Y, %H:%M:%S") %></h3>
     <p>
-      Sample mail sent using smtp.
+      Hallo, <br/>
+      im Dateianhang die Liste der ausgewählten Koordinaten als KML-Datei zur Nutzung in Navigationsgeräten.
     </p>
+    <p>Viele Grüsse,<br/>
+    das Team der Untergrundkatasters</p>
+    <p><h4>www.untergrundkataster.de</h4></p>
   </body>
 </html>

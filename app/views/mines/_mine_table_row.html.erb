@@ -2,7 +2,7 @@
   <td><%= check_box_tag "check-"+mine.id.to_s, 1, current_user.work_item?(mine.id),
         data: {
           remote: true,
-          url: url_for( action: :add_or_remove_list_item, id: mine.id)
+          url: url_for( controller: :mines, action: :add_or_remove_list_item, id: mine.id)
         }
       %>
   <td><%= mine.id.to_s %></td>
@@ -11,7 +11,7 @@
   <td><%= mine.description.first(25) if mine.description %></td>
   
   <td>
-    <button type="button" class="btn btn-default btn-xs" data-trigger="hover" data-placement="right" data-html="true" data-toggle="popover" title="Fotos" data-content='<%=render(partial: "mini_photo_list", locals: {mine: mine}).html_safe%>'>
+    <button type="button" class="btn btn-default btn-xs" data-trigger="hover" data-placement="right" data-html="true" data-toggle="popover" title="Fotos" data-content='<%=render(partial: "mines/mini_photo_list", locals: {mine: mine}).html_safe%>'>
       <%= mine.photos.size.to_s %>       
     </button>
   </td>

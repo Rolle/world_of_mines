@@ -4,4 +4,5 @@ class Photo < ActiveRecord::Base
 	belongs_to :mine, counter_cache: true
 
 	self.per_page = 24
+
 end

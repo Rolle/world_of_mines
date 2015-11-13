@@ -31,8 +31,7 @@
             <%= link_to 'Clear', clear_work_list_mines_path, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-success" %>
             <% if current_user.admin? %>
               <% if @mines.size > 25 %>
-                <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disabled" %>
-                <%= label_tag "Nicht mehr als 25 Einträge erlaubt!" %>
+                <%= link_to 'Bestellen', new_order_path, data: {toggle: "tooltip", title: "Nicht mehr als 25 Einträge erlaubt!", no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disabled" %>                
               <% else %>
                 <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disable" %>
               <% end %>

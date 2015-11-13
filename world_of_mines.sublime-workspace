@@ -199,71 +199,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/controllers/application_controller.rb",
-			"settings":
-			{
-				"buffer_size": 674,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Projects/ruby/world_of_mines/app/controllers/orders_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1048,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/mailers/order_mailer.rb",
-			"settings":
-			{
-				"buffer_size": 278,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.html.erb",
-			"settings":
-			{
-				"buffer_size": 300,
-				"line_ending": "Windows",
-				"name": "Hier ist die Order!"
-			}
-		},
-		{
-			"file": "/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.text.erb",
-			"settings":
-			{
-				"buffer_size": 123,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Projects/ruby/world_of_mines/app/views/orders/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 2390,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/mines_controller.rb",
-			"settings":
-			{
-				"buffer_size": 7697,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/models/order.rb",
-			"settings":
-			{
-				"buffer_size": 260,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -303,13 +238,24 @@
 	[
 		"/C/Projects/ruby/World_Of_Mines",
 		"/C/Projects/ruby/World_Of_Mines/app",
-		"/C/Projects/ruby/World_Of_Mines/app/views",
-		"/C/Projects/ruby/World_Of_Mines/app/views/order_mailer",
-		"/C/Projects/ruby/World_Of_Mines/db/migrate"
+		"/C/Projects/ruby/World_Of_Mines/app/mailers",
+		"/C/Projects/ruby/World_Of_Mines/app/views"
 	],
 	"file_history":
 	[
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/work_list.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/application_controller.rb",
+		"/C/Projects/ruby/world_of_mines/app/controllers/orders_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/config/environments/development.rb",
+		"/C/Projects/ruby/World_Of_Mines/config/environments/production.rb",
+		"/C/Projects/ruby/World_Of_Mines/Gemfile",
+		"/C/Projects/ruby/World_Of_Mines/config/application.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/mailers/order_mailer.rb",
+		"/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.html.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.text.erb",
+		"/C/Projects/ruby/world_of_mines/app/views/orders/index.html.erb",
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
+		"/C/Projects/ruby/World_Of_Mines/app/models/order.rb",
 		"/C/Projects/ruby/world_of_mines/app/views/orders/destroy.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/config/routes.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/models/order_detail.rb",
@@ -324,7 +270,6 @@
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/create.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/updateajax.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine_table_row.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/mines_controller.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/photos/_photo.html.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/photos/index.html.erb",
 		"/C/Projects/ruby/world_of_mines/app/views/photos/create.js.erb",
@@ -351,7 +296,6 @@
 		"/C/Projects/ruby/World_Of_Mines/app/models/user.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/application.js",
 		"/C/Projects/ruby/World_Of_Mines/app/assets/javascripts/jquery.cookies.js",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/application_controller.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mini_photo_list.html.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/notes/index.html.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/update_work_list.js.erb",
@@ -426,17 +370,7 @@
 		"/C/Projects/ruby/WorldOfMines/db/migrate/20151014080258_create_gps_files_carrierwave.rb",
 		"/C/Projects/ruby/WorldOfMines/db/migrate/20151014075907_rebuild_gps_file_table.rb",
 		"/C/Projects/ruby/WorldOfMines/app/models/gps_file.rb",
-		"/C/Projects/ruby/WorldOfMines/db/migrate/20151014071948_create_photos.rb",
-		"/C/Projects/ruby/WorldOfMines/TODO.txt",
-		"/C/Projects/ruby/WorldOfMines/db/migrate/20151013151647_add_default_to_mines_sort.rb",
-		"/C/Projects/ruby/WorldOfMines/app/views/users/switch_superadmin.js.erb",
-		"/C/Projects/ruby/WorldOfMines/app/assets/javascripts/jquery.dataTables.min.js",
-		"/C/Projects/ruby/WorldOfMines/app/views/devise/sessions/new.html.erb",
-		"/C/Projects/ruby/WorldOfMines/app/views/mines/search.js.erb",
-		"/C/Projects/ruby/WorldOfMines/app/views/users/switch_admin.js.erb",
-		"/C/Projects/ruby/WorldOfMines/db/migrate/20151012093513_remove_type_from_events.rb",
-		"/C/Projects/ruby/WorldOfMines/app/views/mines/_mine.html.erb",
-		"/C/Projects/ruby/WorldOfMines/db/migrate/20151011203238_add_state_and_visited_at_to_mines.rb"
+		"/C/Projects/ruby/WorldOfMines/db/migrate/20151014071948_create_photos.rb"
 	],
 	"find":
 	{
@@ -476,6 +410,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"popover",
+			"popup",
 			"strftime",
 			"popover",
 			".count",
@@ -601,8 +537,6 @@
 			"span8\"",
 			"span6\"",
 			"span",
-			"glyph",
-			"gly",
 			"glyph"
 		],
 		"highlight": true,
@@ -647,242 +581,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/controllers/application_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								329,
-								329
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Projects/ruby/world_of_mines/app/controllers/orders_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1048,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								663,
-								663
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/mailers/order_mailer.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 278,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								224,
-								272
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 143.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 300,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								300
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Hier ist die Order!",
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/C/Projects/ruby/world_of_mines/app/views/order_mailer/send_order.text.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								92,
-								92
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/Projects/ruby/world_of_mines/app/views/orders/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2390,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								985,
-								1015
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 187.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/controllers/mines_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7697,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2267,
-								2267
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 900.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/models/order.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								236,
-								236
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
 			]
 		}
 	],

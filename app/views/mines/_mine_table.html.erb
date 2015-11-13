@@ -20,7 +20,7 @@
     <tbody>
       <% if mines %>
         <% mines.each do |mine| %>
-          <%= render partial: "mine_table_row", locals: {mine: mine} %>
+          <%= render partial: "mines/mine_table_row", locals: {mine: mine} %>
         <% end %>
       <% end %>
     </tbody>

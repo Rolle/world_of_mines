@@ -1,0 +1,10 @@
+<div class="col-md-2" id="document-<%= document.id.to_s%>">
+	<div class="thumbnail">
+		<a id="a-document-<%= document.id.to_s%>" href="<%= document.file.url %>" class="fancybox" rel="fancybox" title="<%= n(document.description) %>">
+		  <%= image_tag(document.file_url(:thumb), data: {:src => document.file.url}) %>
+		</a>
+		<div class="caption">
+			<h6><%= n(document.description) %></h6>
+		</div>
+	</div>
+</div>

@@ -79,12 +79,13 @@ module MinesHelper
 		"Montanindustrie" => 12,
 		"Besucherbergwerk" => 13
 	}
+
 	def generate_kml(mines)
 		kml = "<?xml version='1.0' encoding='UTF-8'?>
 				<kml xmlns='http://www.opengis.net/kml/2.2'>
 				<Document>
 					<name>Untergrundkataster "+ DateTime.now.strftime("%Y%m%d_%H%M%S")+"</name>
-					<description>Export von " + @mines.count.to_s + " Eintraegen</description>
+					<description>Export von " + mines.count.to_s + " Eintraegen</description>
 					<Folder>"
 
 		mines.each do |mine|

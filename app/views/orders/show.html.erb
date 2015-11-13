@@ -1,0 +1,25 @@
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="panel panel-primary">
+        
+        <div class="panel-heading">
+            <h3>Bestellung <%= @order.id.to_s %> für <%= @order.user.email %> vom <%= @order.created_at.strftime("%d.%M.%Y") %></h3>
+        </div>
+
+        <div class="panel-body">
+          <div id="work-list-table">
+            <%= render partial: "mines/mine_table", locals: {mines: @order.mines, search: true} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='popup'>
+</div>
+
+<script>
+  enable_top_menu("bestellungen");
+</script> 
