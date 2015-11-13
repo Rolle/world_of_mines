@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def second_approval
     @order = set_order
     @order.update_attributes(second_approval: current_user, state: 1)
-    OrderMailer.send_order(@order).devliver_now
+    OrderMailer.send_order(@order).deliver_now
     redirect_to :action => 'index'
   end  
 
