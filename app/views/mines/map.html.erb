@@ -7,12 +7,12 @@
                 </div>
                 <div class="panel-body">
                   <div class="form-inline form-group">
-                    <% if current_user.admin? %>
-                      <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
-                      <% if current_user.superadmin? %>
-                        <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", id: "export-link" %>
-                      <% end %>
-                    <% end %> 
+                  <% if current_user.user? %>
+                    <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
+                  <% end %>
+                    <% if current_user.superadmin? %>
+                      <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", id: "export-link" %>
+                    <% end %>
                     <%= label_tag "Typ: "%> 
                     <%= select_tag :sort, options_for_select(MinesHelper::SORTS_ALL), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
                     <%= label_tag "Zustand: "%> 
@@ -89,7 +89,7 @@
       map.setView(new L.LatLng(<%= @mine.latitude.to_s %>,<%= @mine.longitude.to_s %>), 15);
     <% end %> 
 
-    <% if current_user.admin? %>
+    <% if current_user.user? %>
       map.on('click', addMarker);
       <% if current_user.superadmin? %>
         map.on('zoomend', function() {

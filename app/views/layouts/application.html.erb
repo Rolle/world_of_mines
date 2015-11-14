@@ -72,12 +72,16 @@
             <% end %>                           
             <% if current_user.admin? %>
               <li id="arbeitsliste">
-                <%= link_to raw("Arbeitsliste: <span id='work_item_counter' class='badge'>"+current_user.work_items_count.to_s+"</span>"), work_list_mines_path %>
+                <%= link_to raw("Arbeitsliste: <span id='work_item_counter' class='label label-primary label-as-badge'>"+current_user.work_items_count.to_s+"</span>"), work_list_mines_path %>
               </li>
             <% end %>
-            <% if current_user.superadmin? and @open_orders.size > 0 %>
+            <% if current_user.superadmin? %>
               <li id="bestellungen">
-                <%= link_to raw("Bestellungen: <span id='work_item_counter' class='badge'>"+@open_orders.size.to_s+"</span>"), orders_path %>
+                <% if @open_orders.size > 0 %>
+                <%= link_to raw("Bestellungen: <span id='work_item_counter' class='label label-danger label-as-badge'>"+@open_orders.size.to_s+"</span>"), orders_path %>
+                <% else %>
+                <%= link_to raw("Bestellungen: <span id='work_item_counter' class='label label-primary label-as-badge'>"+@open_orders.size.to_s+"</span>"), orders_path %>
+                <% end %>
               </li>
             <% end %>            
              
