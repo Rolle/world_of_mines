@@ -27,44 +27,43 @@
             </div>
           </div>
           
-          <% if current_user.admin? %>
-            <div class="row form-group">
-              <div class="col-xs-6">
-                <%= label_tag "Latitude", nil, :class => "control-label" %>
-                <div class="controls">
-                  <%= text_field_tag :latitude, mine.latitude, {:class=>"input-small form-control"} %>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <%= label_tag "Longitude", nil, :class => "control-label" %>
-                <div class="controls">
-                  <%= text_field_tag :longitude, mine.longitude, {:class=>"input-small form-control"} %>
-                </div>
-              </div>
-            </div>      
 
-            <div class="row form-group">
-              <div class="col-xs-4">
-                <%= label_tag "Typ", nil, :class => "control-label" %>
-                <div class="controls">
-                  <%= select_tag :sort, options_for_select(MinesHelper::SORTS, mine.sort), :class=>"input-small form-control" %>
-                </div>             
-              </div> 
-
-              <div class="col-xs-4">
-                <%= label_tag "Zustand", nil, :class => "control-label" %>
-                <div class="controls">
-                  <%= select_tag :state, options_for_select(MinesHelper::STATES, mine.state), :class=>"input-small form-control" %>
-                </div>              
-              </div>      
-              <div class="col-xs-4">
-                <%= label_tag "Besucht am", nil, :class => "control-label" %>
-                <div class="controls">
-                  <%= text_field_tag :visited_at, mine.visited_at, {:class=>"input-small form-control"} %>
-                </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= label_tag "Latitude", nil, :class => "control-label" %>
+              <div class="controls">
+                <%= text_field_tag :latitude, mine.latitude, {:class=>"input-small form-control"} %>
               </div>
+            </div>
+            <div class="col-xs-6">
+              <%= label_tag "Longitude", nil, :class => "control-label" %>
+              <div class="controls">
+                <%= text_field_tag :longitude, mine.longitude, {:class=>"input-small form-control"} %>
+              </div>
+            </div>
+          </div>      
+
+          <div class="row form-group">
+            <div class="col-xs-4">
+              <%= label_tag "Typ", nil, :class => "control-label" %>
+              <div class="controls">
+                <%= select_tag :sort, options_for_select(MinesHelper::SORTS, mine.sort), :class=>"input-small form-control" %>
+              </div>             
+            </div> 
+
+            <div class="col-xs-4">
+              <%= label_tag "Zustand", nil, :class => "control-label" %>
+              <div class="controls">
+                <%= select_tag :state, options_for_select(MinesHelper::STATES, mine.state), :class=>"input-small form-control" %>
+              </div>              
             </div>      
-          <% end %>
+            <div class="col-xs-4">
+              <%= label_tag "Besucht am", nil, :class => "control-label" %>
+              <div class="controls">
+                <%= text_field_tag :visited_at, mine.visited_at, {:class=>"input-small form-control"} %>
+              </div>
+            </div>
+          </div>      
 
           <%= button_tag( :class => "btn btn-primary btn-sm") do %>
             <i class="glyphicon glyphicon-save"></i> Speichern

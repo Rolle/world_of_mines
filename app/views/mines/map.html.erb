@@ -110,7 +110,10 @@
       map.options.minZoom = 9;
     <% end %>    
 
-   
+    <% if current_user.admin? %>
+      changeBoundsOnLink("export-link",map.getBounds());
+    <% end %>
+    
     enable_top_menu("karte");
 </script> 
 
