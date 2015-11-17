@@ -68,16 +68,17 @@
     var osmde = L.tileLayer.provider('OpenStreetMap.DE');
     var opentopo = L.tileLayer.provider('OpenTopoMap');
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
-    
+    var thunder = new L.TileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png');
     
 
     var baseMaps = {
             "Bing": bing,
             "OSM DE": osmde,
-            "OpenTopo": opentopo
+            "OpenTopo": opentopo,
+            "Thunder" : thunder
     };
     L.control.layers(baseMaps).addTo(map);    
-    map.addLayer(osmde);
+    map.addLayer(thunder);
     
     <% if @mine.nil? %>
       if ($.cookie('map.lat') != undefined && $.cookie("map.lng") != undefined && $.cookie("map.zoomlevel") != undefined) {
