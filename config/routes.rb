@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'statistic/index'
+  get 'statistics/index'
 
   resources :notes
   resources :documents

@@ -6,7 +6,25 @@
             <h3>Statistik</h3>
         </div>
         <div class="panel-body"> 
-        	<canvas id="myChart" width="500" height="700"></canvas>
+            <div class="row">
+        	   <canvas id="myChart" width="500" height="700"></canvas>
+           </div>
+           <div class="row" id="legend">
+           </div><
+            <!--div class="ct-chart ct-perfect-fourth"></div-->
+            <!--script>
+                var data = {
+                  series: [5, 3, 4]
+                };
+
+                var sum = function(a, b) { return a + b };
+
+                new Chartist.Pie('.ct-chart', data, {
+                  labelInterpolationFnc: function(value) {
+                    return Math.round(value / data.series.reduce(sum) * 100) + '%';
+                  }
+                });
+            </script-->
         	<script>
         		var data = [
         			{
@@ -43,7 +61,7 @@
                 }
         		var ctx = $("#myChart").get(0).getContext("2d");
 				var myPieChart = new Chart(ctx).Pie(data, options);
-                $('#myChart').append(myPieChart.generateLegend());
+                $('#legend').append(myPieChart.generateLegend());
         	</script>
         </div>
       </div>
