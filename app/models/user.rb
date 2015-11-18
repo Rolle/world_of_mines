@@ -71,6 +71,14 @@ class User < ActiveRecord::Base
     self.work_items = a.join("|")
     self.save      
   end
+
+  def add_mines_to_workitems(mines)
+    ids = []
+    mines.each do |mine|
+      ids << mine.id.to_s
+    end
+    add_workitems(ids.join("|"))
+  end
   
   def work_item?(id)
     return false if self.work_items.nil?

@@ -1,0 +1,52 @@
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Statistik</h3>
+        </div>
+        <div class="panel-body"> 
+        	<canvas id="myChart" width="500" height="700"></canvas>
+        	<script>
+        		var data = [
+        			{
+        				value: <%= @stollen_count.to_s%>,
+    				    color:"#F7464A",
+        				highlight: "#FF5A5E",
+        				label: "Stollen"
+        			},
+        			{
+        				value: <%= @bunker_count.to_s%>,
+    				    color:"#46BFBD",
+        				highlight: "#5AD3D1",
+        				label: "Bunker"
+        			},
+        			{
+        				value: <%= @besucherbergwerk_count.to_s%>,
+    				    color:"#FDB45C",
+        				highlight: "#FFC870",
+        				label: "Besucherbergwerk"
+        			},
+                    {
+                        value: <%= @na_count.to_s%>,
+                        color:"#FDB45C",
+                        highlight: "#FFC870",
+                        label: "N/A"
+                    }                    
+
+        		]
+
+                var options = {
+                    segmentShowStroke: false,
+                    animateRotate: true,
+                    animateScale: false,
+                }
+        		var ctx = $("#myChart").get(0).getContext("2d");
+				var myPieChart = new Chart(ctx).Pie(data, options);
+                $('#myChart').append(myPieChart.generateLegend());
+        	</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

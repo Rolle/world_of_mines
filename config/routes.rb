@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'statistic/index'
+
   resources :notes
   resources :documents
+  resources :statistic
   
   resources :orders do 
     member do
@@ -72,5 +75,5 @@ Rails.application.routes.draw do
   resources :photos
   
   root 'mines#map'
-  
+  #root 'statistics#index'
 end
