@@ -128,6 +128,14 @@ class MinesController < ApplicationController
     @new_photo = Photo.new
   end
 
+
+  def map_work_list
+    @mines = Mine.find(current_user.work_list_ids)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+    render :map
+  end
+
   def created
     @mines = Mine.where(created_by: current_user.id).order(latitude: :desc)
     @new_mine = Mine.new

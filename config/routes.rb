@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       get "add_current_list_items"
       get "last_edited"
       get "created"
+      get "map_work_list"
     end
     member do
       post "updateajax"

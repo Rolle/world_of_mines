@@ -30,6 +30,7 @@
                 <% if current_user.admin? %>                
                   <li><%= link_to "Eigene", created_mines_path %></li>
                   <li><%= link_to "Letzten 20", last_edited_mines_path %></li>
+                  <li><%= link_to "Arbeitsliste", map_work_list_mines_path %></li>
                 <% end %>
               </ul>
             </li>
