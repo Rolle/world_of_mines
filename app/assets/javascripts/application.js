@@ -26,5 +26,6 @@
 //= require jquery.cookie
 //= require togeojson
 //= require leaflet.filelayer
-//= require Chart.min
+//= require jsapi
+//= require chartkick
 //= require my

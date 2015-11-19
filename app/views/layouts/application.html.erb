@@ -4,6 +4,7 @@
   <title>Untergrundkataster</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
@@ -17,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>          
-        <a class="navbar-brand" href="/">Untergrundkataster</a>          
+        <a class="navbar-brand" href="/statistics"><p><%= image_tag "logo_small" -%> Untergrundkataster</p></a>          
       </div>
 
       <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -91,7 +92,7 @@
             <% if @users_online and user_signed_in? %>
               <button type="button" class="btn btn-default navbar-btn"  data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Currently online"
                 data-content="<%=online_users_as_list(@users_online)%> ">
-                  Online: <span class="badge"><%= @users_online.count.to_s -%></span>
+                  Online: <span class="label label-default label-as-badge"><%= @users_online.count.to_s -%></span>
                 </button>
             <% end %>                 
             <li id="fb"><%= link_to "Logout " + current_user.email, destroy_user_session_path, method: :delete %></li>

@@ -7,62 +7,45 @@
         </div>
         <div class="panel-body"> 
             <div class="row">
-        	   <canvas id="myChart" width="500" height="700"></canvas>
-           </div>
-           <div class="row" id="legend">
-           </div><
-            <!--div class="ct-chart ct-perfect-fourth"></div-->
-            <!--script>
-                var data = {
-                  series: [5, 3, 4]
-                };
-
-                var sum = function(a, b) { return a + b };
-
-                new Chartist.Pie('.ct-chart', data, {
-                  labelInterpolationFnc: function(value) {
-                    return Math.round(value / data.series.reduce(sum) * 100) + '%';
-                  }
-                });
-            </script-->
-        	<script>
-        		var data = [
-        			{
-        				value: <%= @stollen_count.to_s%>,
-    				    color:"#F7464A",
-        				highlight: "#FF5A5E",
-        				label: "Stollen"
-        			},
-        			{
-        				value: <%= @bunker_count.to_s%>,
-    				    color:"#46BFBD",
-        				highlight: "#5AD3D1",
-        				label: "Bunker"
-        			},
-        			{
-        				value: <%= @besucherbergwerk_count.to_s%>,
-    				    color:"#FDB45C",
-        				highlight: "#FFC870",
-        				label: "Besucherbergwerk"
-        			},
-                    {
-                        value: <%= @na_count.to_s%>,
-                        color:"#FDB45C",
-                        highlight: "#FFC870",
-                        label: "N/A"
-                    }                    
-
-        		]
-
-                var options = {
-                    segmentShowStroke: false,
-                    animateRotate: true,
-                    animateScale: false,
-                }
-        		var ctx = $("#myChart").get(0).getContext("2d");
-				var myPieChart = new Chart(ctx).Pie(data, options);
-                $('#legend').append(myPieChart.generateLegend());
-        	</script>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Einträge nach Typ (Gesamt: <%= @mines_count.to_s %>)</div>
+                        <div class="panel-body">
+                            <%= pie_chart @sort_count %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Einträge nach Zustand (Gesamt: <%= @mines_count.to_s %>)</div>
+                        <div class="panel-body">
+                            <%= pie_chart @state_count %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Benutzer (Gesamt: <%= @users_count.to_s %>)</div>
+                        <div class="panel-body">
+                            <%= column_chart @user_count %>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Aktivität der letzten 14 Tage (Gesamt <%=@mines_count.to_s%> Einträge, <%= @photos_count.to_s %> Fotos)</div>
+                        <div class="panel-body">
+                            <%= area_chart [
+                                {name: "Updates", data: @activity_count_update},
+                                {name: "Neue Fotos", data: @photos_new_count},
+                                {name: "Neue Einträge", data: @mines_new_count}
+                            ]%>
+                        </div>
+                    </div>
+                </div>
+            </div>                   
         </div>
       </div>
     </div>
