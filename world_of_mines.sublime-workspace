@@ -176,34 +176,28 @@
 	"buffers":
 	[
 		{
-			"file": "app/assets/javascripts/application.js",
+			"file": "app/assets/javascripts/leaflet.filelayer.js",
 			"settings":
 			{
-				"buffer_size": 1070,
+				"buffer_size": 6279,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/statistics/index.html.erb",
+			"contents": "Searching 157 files for \"marker-shadow\"\n\n/home/roland/projects/World_Of_Mines/app/assets/stylesheets/MarkerCluster.css:\n    1: .leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {\n    2  	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;\n    3  	-moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;\n\n/home/roland/projects/World_Of_Mines/app/assets/stylesheets/leaflet.awesome-markers.css.erb:\n   17  }\n   18  \n   19: .awesome-marker-shadow {\n   20    background: url(<%= asset_path 'markers-shadow.png'%>) no-repeat 0 0;\n   21    width: 36px;\n   ..\n   30    background-size: 360px 46px;\n   31   }\n   32:  .awesome-marker-shadow {\n   33    background-image: url(<%= asset_path 'markers-shadow@2x.png'%>);\n   34    background-size: 35px 16px;\n\n/home/roland/projects/World_Of_Mines/app/assets/stylesheets/leaflet.css:\n    4  .leaflet-tile,\n    5  .leaflet-marker-icon,\n    6: .leaflet-marker-shadow,\n    7  .leaflet-tile-container,\n    8  .leaflet-map-pane svg,\n    .\n   22  .leaflet-tile,\n   23  .leaflet-marker-icon,\n   24: .leaflet-marker-shadow {\n   25  	-webkit-user-select: none;\n   26  	   -moz-user-select: none;\n   ..\n   39  	}\n   40  .leaflet-marker-icon,\n   41: .leaflet-marker-shadow {\n   42  	display: block;\n   43  	}\n\n/home/roland/projects/World_Of_Mines/app/assets/stylesheets/leaflet.css.erb:\n    4  .leaflet-tile,\n    5  .leaflet-marker-icon,\n    6: .leaflet-marker-shadow,\n    7  .leaflet-tile-container,\n    8  .leaflet-map-pane svg,\n    .\n   22  .leaflet-tile,\n   23  .leaflet-marker-icon,\n   24: .leaflet-marker-shadow {\n   25  	-webkit-user-select: none;\n   26  	   -moz-user-select: none;\n   ..\n   39  	}\n   40  .leaflet-marker-icon,\n   41: .leaflet-marker-shadow {\n   42  	display: block;\n   43  	}\n\n9 matches across 4 files\n",
 			"settings":
 			{
-				"buffer_size": 2301,
-				"line_ending": "Unix"
+				"buffer_size": 1826,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
-			"file": "app/controllers/statistics_controller.rb",
+			"file": "app/assets/stylesheets/leaflet.awesome-markers.css.erb",
 			"settings":
 			{
-				"buffer_size": 1523,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/photos_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1116,
+				"buffer_size": 1666,
 				"line_ending": "Windows"
 			}
 		}
@@ -246,7 +240,9 @@
 	[
 		"/home/roland/projects/World_Of_Mines",
 		"/home/roland/projects/World_Of_Mines/app",
-		"/home/roland/projects/World_Of_Mines/app/controllers",
+		"/home/roland/projects/World_Of_Mines/app/assets",
+		"/home/roland/projects/World_Of_Mines/app/assets/javascripts",
+		"/home/roland/projects/World_Of_Mines/app/assets/stylesheets",
 		"/home/roland/projects/World_Of_Mines/app/views",
 		"/home/roland/projects/World_Of_Mines/app/views/layouts",
 		"/home/roland/projects/World_Of_Mines/app/views/orders",
@@ -256,6 +252,10 @@
 	],
 	"file_history":
 	[
+		"/home/roland/projects/World_Of_Mines/app/assets/javascripts/application.js",
+		"/home/roland/projects/World_Of_Mines/app/views/statistics/index.html.erb",
+		"/home/roland/projects/World_Of_Mines/app/controllers/statistics_controller.rb",
+		"/home/roland/projects/World_Of_Mines/app/controllers/users_controller.rb",
 		"/home/roland/projects/World_Of_Mines/config/routes.rb",
 		"/home/roland/projects/World_Of_Mines/app/views/layouts/application.html.erb",
 		"/home/roland/projects/World_Of_Mines/app/controllers/mines_controller.rb",
@@ -300,8 +300,6 @@
 		"/home/roland/projects/World_Of_Mines/app/assets/javascripts/my.js",
 		"/home/roland/projects/World_Of_Mines/app/views/photos/index.html.erb",
 		"/home/roland/projects/World_Of_Mines/app/controllers/photos_controller.rb",
-		"/home/roland/projects/World_Of_Mines/app/assets/javascripts/application.js",
-		"/home/roland/projects/World_Of_Mines/app/controllers/users_controller.rb",
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/_photos.html.erb",
 		"/C/Projects/ruby/WorldOfMines/Gemfile",
 		"/C/Projects/ruby/WorldOfMines/app/views/photos/index.html.erb",
@@ -381,13 +379,11 @@
 		"/home/roland/projects/WorldOfMines/app/views/mines/_edit.html.erb",
 		"/home/roland/projects/WorldOfMines/app/views/mines/edit.js.erb",
 		"/home/roland/projects/WorldOfMines/app/controllers/mines_controller.rb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/_mine.html.erb",
-		"/home/roland/projects/WorldOfMines/app/views/mines/index.html.erb",
-		"/home/roland/projects/WorldOfMines/app/controllers/gps_files_controller.rb"
+		"/home/roland/projects/WorldOfMines/app/views/mines/_mine.html.erb"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -420,6 +416,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"marker-shadow",
+			"marker-icon",
+			"marker-icon.png",
+			"marker-icon",
+			"marker",
 			"export",
 			"Änderung",
 			"url(",
@@ -591,11 +592,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/assets/javascripts/application.js",
-					"semi_transient": false,
+					"file": "app/assets/javascripts/leaflet.filelayer.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1070,
+						"buffer_size": 6279,
 						"regions":
 						{
 						},
@@ -608,103 +609,123 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/statistics/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2301,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/controllers/statistics_controller.rb",
+					"buffer": 1,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1523,
+						"buffer_size": 1826,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										202,
+										215
+									],
+									[
+										505,
+										518
+									],
+									[
+										693,
+										706
+									],
+									[
+										961,
+										974
+									],
+									[
+										1111,
+										1124
+									],
+									[
+										1258,
+										1271
+									],
+									[
+										1453,
+										1466
+									],
+									[
+										1603,
+										1616
+									],
+									[
+										1750,
+										1763
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								89,
-								89
+								702,
+								702
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/controllers/photos_controller.rb",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1116,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								82,
-								49
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/assets/stylesheets/leaflet.awesome-markers.css.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								716,
+								716
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 152.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
