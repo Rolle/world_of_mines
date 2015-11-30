@@ -65,11 +65,28 @@
             </div>
           </div>      
 
-          <%= button_tag( :class => "btn btn-primary btn-sm") do %>
-            <i class="glyphicon glyphicon-save"></i> Speichern
+          <%= button_tag( :class => "btn btn-primary") do %>
+            Speichern
           <% end %>
+          <div class="pull-right">
+            <%= link_to 'GPS-Position', '#', onclick: "getLocation()", data: {no_turbolink: true}, class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation wird von diesem Browser nicht unterstützt!.");
+    }
+  }
+  function showPosition(position) {
+    $('#latitude').val(position.coords.latitude);
+    $('#longitude').val(position.coords.longitude);
+  }
+</script>

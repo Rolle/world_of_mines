@@ -32,24 +32,26 @@
 
 
 <script type='text/javascript'>   
-    /*<% if Rails.env.production? %>
-            L.Icon.Default.imagePath = '/';
+    <% if Rails.env.production? %>
+            L.Icon.Default.imagePath = '';
     <% else %>
             L.Icon.Default.imagePath = 'assets';
-    <% end %>*/
+    <% end %>
     
     //Array über alle Punkte:
     // <lat,long,Label,id,status,typ
+    <% oZ = -1 %>
     var addressPoints = [
       <%@mines.each do |mine| %>
-          [<%=mine.latitude.to_s%>,<%=mine.longitude.to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
+          <% oZ = oZ + 1 %>
+          [<%=(mine.latitude + oZ).to_s%>,<%=(mine.longitude - oZ).to_s%>,"<%=mine.id.to_s + " - " + mine.name + " ("+sort_of_text(mine.sort)+")" %>", <%=mine.id.to_s%>, <%= state(mine) %>, <%=sort(mine)%>],
       <% end %>
     ]
     var markersId = {};
-   var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
-   for (var i = 0; i < addressPoints.length; i++) {
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
+    for (var i = 0; i < addressPoints.length; i++) {
       var a = addressPoints[i];
-      var m = L.marker(L.latLng(a[0], a[1]), { title: a[2], icon: iconForSort(a[5])});
+      var m = L.marker(L.latLng(a[0]-i, a[1]+i), { title: a[2], icon: iconForSort(a[5])});
       m._popup_id = a[3];
       <% if current_user.user? %>
         m.on('click', onClick);

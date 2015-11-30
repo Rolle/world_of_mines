@@ -4,12 +4,13 @@
       <div class="panel panel-primary">
         
         <div class="panel-heading">
-            <h3>Bestellung <%= @order.id.to_s %> für <%= @order.user.email %> vom <%= @order.created_at.strftime("%d.%M.%Y") %></h3>
+          <h3>Papierkorb</h3>
         </div>
 
         <div class="panel-body">
-          <div id="work-list-table">
-            <%= render partial: "mines/mine_table", locals: {mines: @order.mines, mode: "search"} %>
+          <div id="table">
+            <%= render partial: "mine_table", locals: {mines: @mines, mode: 'paperbin'} %>
+          </div>
           </div>
         </div>
       </div>
@@ -21,5 +22,6 @@
 </div>
 
 <script>
-  enable_top_menu("bestellungen");
+  enable_top_menu("system");
 </script> 
+

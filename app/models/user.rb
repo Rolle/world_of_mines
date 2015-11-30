@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :gps_files
   has_many :events
   belongs_to :user_group
-  has_many :orders, dependent: :destroy
 
   def guest?
   	return true if user_group_id == 1

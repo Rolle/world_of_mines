@@ -18,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>          
-        <a class="navbar-brand" href="/statistics"><p><%= image_tag "logo_small" -%> Untergrundkataster</p></a>          
+        <a class="navbar-brand" href="/statistics"><p><%= image_tag "logo_small.png" -%> Untergrundkataster</p></a>          
       </div>
 
       <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -68,6 +68,7 @@
                   <li id="dokumente"><%= link_to "Dokumente", documents_path %></li>                
                   <li id="dateien"><%= link_to "Dateien", gps_files_path %></li>                
                   <li id="user"><%= link_to "Benutzer", users_path %></li>                
+                  <li id="papierkorb"><%= link_to "Papierkorb", paperbin_mines_path %></li> 
                   <li id="events"><%= link_to "Log", events_path %></li>   
                 </ul>
               </li>             

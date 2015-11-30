@@ -5,6 +5,22 @@ class MinesController < ApplicationController
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
 
+  def kill
+    @mine = set_mine
+    @mine.destroy
+    render "paperbin"
+  end
+
+  def undo
+    @mine = set_mine
+    @mine.update_attributes(deleted: false)
+    render "paperbin"
+  end
+
+  def paperbin
+    @mines = Mine.where(deleted: true)
+  end
+
   def clear_work_list
     current_user.clear_work_list()
     respond_to do |format|
@@ -38,27 +54,29 @@ class MinesController < ApplicationController
   def export_work_list
     if current_user.admin?
       if params[:ne_lat] and params[:ne_lng] and params[:sw_lat] and params[:sw_lng] 
-        @mines = Mine.where("latitude < ? and latitude > ? and longitude < ? and longitude > ?", params[:ne_lat], params[:sw_lat],params[:ne_lng],params[:sw_lng])
+        @mines = Mine.where("latitude < ? and latitude > ? and longitude < ? and longitude > ? and deleted = ?", params[:ne_lat], params[:sw_lat],params[:ne_lng],params[:sw_lng], false)
         current_user.add_mines_to_workitems(@mines)
         respond_to do |format|
           format.js {render "add_or_remove_list_item"}
         end
       else
-        @mines = Mine.where(id: current_user.work_list_ids)
+        @mines = Mine.where(id: current_user.work_list_ids, deleted: false)
         send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
       end      
     end
   end
 
   def export_all
-    @mines = Mine.all
+    #@mines = Mine.all
+    @mines = Mine.where(deleted: false)
     send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
   end
 
   def delete_work_list
     @mines = Mine.find(current_user.work_list_ids)
     @mines.each do |mine|
-      mine.destroy      
+      #mine.destroy      
+      mine.update_attributes(deleted: true)
     end
     current_user.clear_work_list()
     @mines = nil
@@ -89,11 +107,11 @@ class MinesController < ApplicationController
   end
 
   def work_list
-    @mines = Mine.where(id: current_user.work_list_ids)
+    @mines = Mine.where(id: current_user.work_list_ids, deleted: false)
   end
 
   def index
-    @mines = Mine.page(params[:page])
+    @mines = Mine.where(deleted: false).page(params[:page])
     current_user.update_page_ids(@mines)
     current_user.update_current_ids(nil)
     @new_mine = Mine.new
@@ -103,10 +121,10 @@ class MinesController < ApplicationController
   def search
     search_term = params[:search].strip
 
-
     search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
     search = search + " and state = " + params[:state] if (params[:state] != "99")
     search = search + " and sort = " + params[:sort]  if (params[:sort] != "99")
+    search = search + " and deleted = 'f'"
 
     if is_s_i?(search_term)
       search = search + " or id = "+search_term
@@ -123,7 +141,8 @@ class MinesController < ApplicationController
   end
 
   def map
-    @mines = Mine.all.order(latitude: :desc)
+    #@mines = Mine.all.order(latitude: :desc)
+    @mines = Mine.where(deleted: false).order(latitude: :desc)
     @new_mine = Mine.new
     @new_photo = Photo.new
   end
@@ -137,14 +156,14 @@ class MinesController < ApplicationController
   end
 
   def created
-    @mines = Mine.where(created_by: current_user.id).order(latitude: :desc)
+    @mines = Mine.where(created_by: current_user.id, deleted: false).order(latitude: :desc)
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :map
   end
 
   def last_edited
-    @mines = Mine.where(updated_by: current_user.id).limit(20).order(latitude: :desc)
+    @mines = Mine.where(updated_by: current_user.id, deleted: false).limit(20).order(latitude: :desc)
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :map
@@ -165,7 +184,8 @@ class MinesController < ApplicationController
 
   def show
     @mine = set_mine
-    @mines = Mine.all.order(latitude: :desc)
+    #@mines = Mine.all.order(latitude: :desc)
+    @mines = Mine.where(deleted: false).order(latitude: :desc)
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :map
@@ -186,14 +206,14 @@ class MinesController < ApplicationController
   end
 
   def own
-    @mines = Mine.where("locked_by = "+current_user.id.to_s).page(params[:page])
+    @mines = Mine.where(locked_by: current_user.id.to_s, deleted: false).page(params[:page])
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :index
   end
 
   def locked
-    @mines = Mine.where("locked_by is not null").page(params[:page])
+    @mines = Mine.where("locked_by is not null and deleted = 'f'").page(params[:page])
     @new_mine = Mine.new
     @new_photo = Photo.new
     render :index
@@ -251,7 +271,8 @@ class MinesController < ApplicationController
     log_event(@mine, 1, "Mine", "Löschung von:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at)
     )
-    @mine.destroy
+    #@mine.destroy
+    @mine.update_attributes(deleted: true)
     respond_to do |format|
       format.js {}
     end

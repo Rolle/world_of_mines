@@ -1,2 +1,2 @@
-$('#data-table').replaceWith("<%= j render(:partial => 'mine_table', locals: {mines: @mines, search: true}) %>");
+$('#data-table').replaceWith("<%= j render(:partial => 'mine_table', locals: {mines: @mines, mode: 'search'}) %>");
 $('#work_item_counter').replaceWith("<span id='work_item_counter' class='badge'><%= current_user.work_items_count.to_s %></span>");

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
 
-    log_event(nil, 0, "User", "User " + @user.email + " wurde gelöscht.")
+    log_event(0, "User", "User " + @user.email + " wurde gelöscht.")
     redirect_to users_url, notice: 'User gelöscht.'
   end
 

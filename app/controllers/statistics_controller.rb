@@ -1,6 +1,6 @@
 class StatisticsController < ApplicationController
-  
   before_action :authenticate_user!
+  
 	include MinesHelper
 
   def index

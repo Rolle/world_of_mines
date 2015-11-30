@@ -1,10 +1,12 @@
 <tr id="mine-row-<%=mine.id.to_s%>" <%= 'class=warning' if !mine.locked_by.nil? %> >
-  <td><%= check_box_tag "check-"+mine.id.to_s, 1, current_user.work_item?(mine.id),
-        data: {
-          remote: true,
-          url: url_for( controller: :mines, action: :add_or_remove_list_item, id: mine.id)
-        }
-      %>
+  <td><% if mode == "normal" %>
+        <%= check_box_tag "check-"+mine.id.to_s, 1, current_user.work_item?(mine.id),
+          data: {
+            remote: true,
+            url: url_for( controller: :mines, action: :add_or_remove_list_item, id: mine.id)
+          }
+        %>
+      <% end %>
   <td><%= mine.id.to_s %></td>
   <td><%= mine.name.first(25) %></td>
   <td><%= sort_of_text(mine.sort) %></td>
@@ -25,14 +27,21 @@
       <%= link_to 'Edit', edit_mine_path(mine), class: "btn btn-primary btn-xs", remote: true %>
     <% end %>
       <%= link_to 'Show', mine_path(mine), class: "btn btn-success btn-xs" %>
-    <% if mine.locked_by.nil? or mine.locked_by == current_user %>            
-      <%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs" %>
+    <% if mine.locked_by.nil? or mine.locked_by == current_user %>      
+      <% if mode != 'paperbin' %>     
+        <%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs" %>
+      <% else %>
+        <%= link_to 'Kill', kill_mine_path(mine), data: { confirm: 'Entgültig löschen?'},class: "btn btn-danger btn-xs" %>
+        <%= link_to "Undo", undo_mine_path(mine), class: "btn btn-success btn-xs" %>
+      <% end %>
     <% end %>
-    <% if mine.locked_by == current_user %>
-      <%= link_to 'Unlock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
-    <% end %>
-    <% if mine.locked_by.nil? %>
-      <%= link_to 'Lock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
+    <% if mode != 'paperbin' %>
+      <% if mine.locked_by == current_user %>
+        <%= link_to 'Unlock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
+      <% end %>
+      <% if mine.locked_by.nil? %>
+        <%= link_to 'Lock', lock_mine_path(mine), method: :post, remote: true, class: "btn btn-warning btn-xs" %>            
+      <% end %>
     <% end %>
   <% end %>
   </td>  

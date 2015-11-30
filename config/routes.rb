@@ -48,11 +48,14 @@ Rails.application.routes.draw do
       get "last_edited"
       get "created"
       get "map_work_list"
+      get "paperbin"
     end
     member do
       post "updateajax"
       get  "createajax"
       get  "add_or_remove_list_item"
+      get "kill"
+      get "undo"
       post  "lock"
     end
   end

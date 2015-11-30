@@ -16,7 +16,7 @@
 
               <div class="btn-group" role="group">
                 <%= button_tag( :class => "btn btn-success") do %>
-                  <i class="glyphicon glyphicon-search"></i> Filtern
+                  Filtern
                 <% end %>
                 <%= link_to "Alle", mines_path, :class => "btn btn-success" %>
               </div>
@@ -33,7 +33,7 @@
             <% end %>            
           </div>
           <div id="table">
-            <%= render partial: "mine_table", locals: {mines: @mines, search: false} %>
+            <%= render partial: "mine_table", locals: {mines: @mines, mode: "normal"} %>
           </div>
         </div>
       </div>
