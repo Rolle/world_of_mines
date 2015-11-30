@@ -230,7 +230,7 @@ class MinesController < ApplicationController
 
   def create
     if (request.format == 'js')
-      @mine = Mine.new(created_by: current_user,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state], homepage: params[:homepage])
+      @mine = Mine.new(deleted: false, created_by: current_user,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state], homepage: params[:homepage])
     else
       @mine = Mine.new(mine_params)
       @mine.created_by = current_user.id
