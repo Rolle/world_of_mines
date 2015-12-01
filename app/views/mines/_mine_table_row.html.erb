@@ -31,8 +31,8 @@
       <% if mode != 'paperbin' %>     
         <%= link_to 'Delete', mine, method: :delete, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs" %>
       <% else %>
-        <%= link_to 'Kill', kill_mine_path(mine), data: { confirm: 'Entgültig löschen?'},class: "btn btn-danger btn-xs" %>
-        <%= link_to "Undo", undo_mine_path(mine), class: "btn btn-success btn-xs" %>
+        <%= link_to 'Kill', kill_mine_path(mine), remote: true, data: { confirm: 'Entgültig löschen?'},class: "btn btn-danger btn-xs" %>
+        <%= link_to "Undo", undo_mine_path(mine), remote: true, class: "btn btn-warning btn-xs" %>
       <% end %>
     <% end %>
     <% if mode != 'paperbin' %>

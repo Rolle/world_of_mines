@@ -8,13 +8,17 @@ class MinesController < ApplicationController
   def kill
     @mine = set_mine
     @mine.destroy
-    render "paperbin"
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def undo
     @mine = set_mine
     @mine.update_attributes(deleted: false)
-    render "paperbin"
+    respond_to do |format|
+      format.js {render "kill"}
+    end
   end
 
   def paperbin
