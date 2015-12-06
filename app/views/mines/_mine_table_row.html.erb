@@ -1,5 +1,5 @@
 <tr id="mine-row-<%=mine.id.to_s%>" <%= 'class=warning' if !mine.locked_by.nil? %> >
-  <td><% if mode == "normal" %>
+  <td><% if mode == "normal" || mode == "work_list" %>
         <%= check_box_tag "check-"+mine.id.to_s, 1, current_user.work_item?(mine.id),
           data: {
             remote: true,
