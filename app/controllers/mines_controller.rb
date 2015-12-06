@@ -5,6 +5,14 @@ class MinesController < ApplicationController
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
 
+  def kill_all
+    @mines = Mine.where(deleted: true)
+    @mines.each do |mine|
+      mine.destroy
+    end
+    redirect_to :action => 'paperbin'
+  end
+
   def kill
     @mine = set_mine
     @mine.destroy

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       get "created"
       get "map_work_list"
       get "paperbin"
+      get "kill_all"
     end
     member do
       post "updateajax"
