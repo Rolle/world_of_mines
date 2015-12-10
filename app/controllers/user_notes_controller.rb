@@ -1,9 +1,9 @@
 class UserNotesController < ApplicationController
-  before_action :log
+  #before_action :log
 
-  def log
-    puts "---"  + action_name + "---"
-  end
+  #def log
+  #  puts "---"  + action_name + "---"
+  #end
 
   def index
   	@usernote = UserNote.where(user_id: current_user.id).first
