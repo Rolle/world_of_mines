@@ -28,4 +28,5 @@
 //= require leaflet.filelayer
 //= require jsapi
 //= require chartkick
+//= require leaflet-measure.min
 //= require my

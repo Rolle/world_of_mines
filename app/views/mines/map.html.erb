@@ -61,7 +61,8 @@
     }
 
     map = new L.Map('map', {
-      fullscreenControl: true
+      fullscreenControl: true,
+      measureControl: true
     });    
     map.addLayer(markers);
     var osmGeocoder = new L.Control.OSMGeocoder();
