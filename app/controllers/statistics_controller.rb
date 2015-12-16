@@ -4,6 +4,8 @@ class StatisticsController < ApplicationController
 	include MinesHelper
 
   def index
+
+    @users = User.all
   	count = Mine.group(:sort).count
   	@sort_count = {}
   	count.keys.each do |key|

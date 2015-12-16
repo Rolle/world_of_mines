@@ -15,7 +15,7 @@
           </ul>
 
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="data">
+            <div role="tabpanel" class="tab-pane active fade in" id="data">
               <%= form_tag(url_for(controller: 'mines', action: :updateajax, id: mine.id, format: :js), method: :post, remote: true) do %>
                 <div class="form-group">
                   <%= label_tag "Name", nil, :class => "control-label" %>
@@ -103,10 +103,10 @@
                 <% end %>                
               <% end %>
             </div> <!-- end tab div data -->
-            <div role="tabpanel" class="tab-pane" id="image">
+            <div role="tabpanel" class="tab-pane fade" id="image">
               <%= render(:partial => 'photos', locals: {mine: mine, photo: photo, photo_type: 0}) %>
             </div> <!-- end tab div image -->
-            <div role="tabpanel" class="tab-pane" id="document">
+            <div role="tabpanel" class="tab-pane fade" id="document">
               <%= render(:partial => 'photos', locals: {mine: mine, photo: photo, photo_type: 1}) %>
             </div> <!-- end tab div image -->
           </div> <!-- end tab content -->

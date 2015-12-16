@@ -8,6 +8,30 @@ class User < ActiveRecord::Base
   has_many :events
   belongs_to :user_group
 
+  def count_mines    
+    return Mine.where(created_by: self.id).count
+  end
+
+  def count_photos
+    return Photo.where(user_id: self.id).count
+  end
+
+  def count_updates
+    return Mine.where(updated_by: self.id).count
+  end
+
+  def last_update_at
+    mine = Mine.where(updated_by: self.id).order("updated_at desc").first
+    return mine.updated_at if !mine.nil?
+    return nil
+  end
+
+  def last_mine_at
+    mine = Mine.where(created_by: self.id).order("created_at desc").first
+    return mine.created_at if !mine.nil?
+    return nil
+  end
+
   def guest?
   	return true if user_group_id == 1
   	false
