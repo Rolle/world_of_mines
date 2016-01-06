@@ -208,26 +208,18 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/mines/map.html.erb",
+			"file": "app/views/mines/_edit.html.erb",
 			"settings":
 			{
-				"buffer_size": 4795,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/helpers/gps_files_helper.rb",
-			"settings":
-			{
-				"buffer_size": 664,
+				"buffer_size": 8166,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/controllers/users_controller.rb",
+			"file": "app/models/user.rb",
 			"settings":
 			{
-				"buffer_size": 1567,
+				"buffer_size": 2688,
 				"line_ending": "Unix"
 			}
 		}
@@ -270,14 +262,15 @@
 	[
 		"/home/roland/projects/world_of_mines",
 		"/home/roland/projects/world_of_mines/app",
-		"/home/roland/projects/world_of_mines/app/controllers",
-		"/home/roland/projects/world_of_mines/app/helpers",
 		"/home/roland/projects/world_of_mines/app/models",
 		"/home/roland/projects/world_of_mines/app/views",
-		"/home/roland/projects/world_of_mines/app/views/statistics"
+		"/home/roland/projects/world_of_mines/app/views/mines"
 	],
 	"file_history":
 	[
+		"/home/roland/projects/world_of_mines/app/views/mines/map.html.erb",
+		"/home/roland/projects/world_of_mines/app/helpers/gps_files_helper.rb",
+		"/home/roland/projects/world_of_mines/app/controllers/users_controller.rb",
 		"/home/roland/projects/world_of_mines/app/assets/javascripts/application.js",
 		"/home/roland/projects/world_of_mines/app/assets/stylesheets/leaflet-measure.css.erb",
 		"/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb",
@@ -402,10 +395,7 @@
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/_mine_table.html.erb",
 		"/C/Projects/ruby/WorldOfMines/app/controllers/mines_controller.rb",
 		"/C/Projects/ruby/WorldOfMines/config/secrets.yml",
-		"/C/Projects/ruby/WorldOfMines/app/views/mines/map.html.erb",
-		"/C/Projects/ruby/WorldOfMines/app/models/user.rb",
-		"/C/Projects/ruby/WorldOfMines/app/views/layouts/application.html.erb",
-		"/C/Projects/ruby/WorldOfMines/config/routes.rb"
+		"/C/Projects/ruby/WorldOfMines/app/views/mines/map.html.erb"
 	],
 	"find":
 	{
@@ -617,24 +607,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/mines/map.html.erb",
+					"file": "app/views/mines/_edit.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4795,
+						"buffer_size": 8166,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2610,
-								2610
+								4623,
+								4623
 							]
 						],
 						"settings":
@@ -644,56 +634,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 1530.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/helpers/gps_files_helper.rb",
-					"semi_transient": false,
+					"file": "app/models/user.rb",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 664,
+						"buffer_size": 2688,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								519,
-								519
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 570.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/controllers/users_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1567,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								420,
-								420
+								0,
+								0
 							]
 						],
 						"settings":
@@ -702,11 +663,11 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.x": -0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
