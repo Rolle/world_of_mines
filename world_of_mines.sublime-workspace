@@ -222,6 +222,14 @@
 				"buffer_size": 664,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "app/controllers/users_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1567,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -262,6 +270,7 @@
 	[
 		"/home/roland/projects/world_of_mines",
 		"/home/roland/projects/world_of_mines/app",
+		"/home/roland/projects/world_of_mines/app/controllers",
 		"/home/roland/projects/world_of_mines/app/helpers",
 		"/home/roland/projects/world_of_mines/app/models",
 		"/home/roland/projects/world_of_mines/app/views",
@@ -608,7 +617,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -638,7 +647,7 @@
 						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -665,6 +674,36 @@
 						},
 						"translation.x": 570.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/users_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
