@@ -130,6 +130,29 @@ class MinesController < ApplicationController
     @new_photo = Photo.new
   end
 
+  def search_map
+    search_term = params[:search].strip
+
+    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
+    search = search + " and state = " + params[:state] if (params[:state] != "99")
+    search = search + " and sort = " + params[:sort]  if (params[:sort] != "99")
+    search = search + " and deleted = 'f'"
+
+    if is_s_i?(search_term)
+      search = search + " or id = "+search_term
+    end
+    @mines = Mine.where(search)
+
+    current_user.update_current_ids(@mines)
+    @mines = @mines.page(params[:page])
+
+    current_user.update_page_ids(@mines)
+    @new_mine = Mine.new
+    @new_photo = Photo.new
+
+    render :map
+  end
+
   def search
     search_term = params[:search].strip
 

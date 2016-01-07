@@ -9,32 +9,36 @@
 
         <div class="panel-body">
           <div class="form-inline form-group">
-          <%= link_to 'Karte', map_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
+          <%= link_to 'Karte', map_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Die Einträge der Arbeitsliste auf der Karte anzeigen" %>
             <% if current_user.superadmin? %>              
-              <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary" %>
-              <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger" %>
+              <%= link_to 'Export', export_work_list_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Es wird eine KML-Datei mit den Einträgen auf der Arbeitsliste erstellt, die dann heruntergeladen wird." %>
+              <%= link_to 'Delete', delete_work_list_mines_path, remote: true, data: {confirm: 'Bist du sicher, das die Einträge gelöscht werden sollen?'},class: "btn btn-danger", data: {toggle: "tooltip"}, title: "Löscht die Einträge in der Arbeitsliste aus der Datenbank" %>
             <% end %>
 
             <%= select_tag :sort, 
               options_for_select(MinesHelper::SORTS), :class=>"input-small form-control",
                data: {
                   remote: true,
-                  url: url_for( action: :sort_work_list)
-                }
+                  url: url_for( action: :sort_work_list),
+                  toggle: "tooltip"
+                },
+                title: "Filtert die Arbeitsliste nach Einträgen dieses Typs"
             %>
             <%= select_tag :state, 
               options_for_select(MinesHelper::STATES), :class=>"input-small form-control",
               data: {
                   remote: true,
-                  url: url_for( action: :state_work_list)
-                }
+                  url: url_for( action: :state_work_list),
+                  toggle: "tooltip"
+                },
+                title: "Filtert die Arbeitsliste nach Einträgen in diesem Zustand"
             %>
-            <%= link_to 'Clear', clear_work_list_mines_path, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-success" %>
+            <%= link_to 'Clear', clear_work_list_mines_path, remote: true,data: { confirm: 'Bist du sicher?'},class: "btn btn-success", data: {toggle: "tooltip"}, title: "Entfernt die Einträge von der Arbeitsliste" %>
             <% if current_user.admin? %>
               <% if @mines.size > 50 %>
                 <%= link_to 'Bestellen', new_order_path, data: {toggle: "tooltip", title: "Nicht mehr als 50 Einträge erlaubt!", no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disabled" %>                
               <% else %>
-                <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?'}, class: "btn btn-primary disable" %>
+                <%= link_to 'Bestellen', new_order_path, data: {no_turbolink: true, confirm: 'Die Bestellung wird dir erst nach Freigabe durch die Admins per Email zugesendet. Bist du sicher?', toggle: "tooltip"}, title: "Startet den Bestellvorgang für die Einträge der Arbeitsliste. Die Admins erhalten eine Benachrichtigung. Nach Freigabe kann die KML-Datei heruntergeladen werden.", class: "btn btn-primary" %>
               <% end %>
             <% end %>            
           </div>

@@ -16,9 +16,7 @@
                   <%= tinymce %>
               </div>
             </div>
-            <%= button_tag( :class => "btn btn-primary") do %>
-              <i class="glyphicon glyphicon-save"></i> Speichern
-            <% end %>
+            <%= button_tag "Speichern", :class => "btn btn-primary"%>
           <% end %>  
           Letztes Update am <%= @note.updated_at.strftime("%d.%m.%Y %H:%M:%S") %> von <%= @note.user.email %>
         </div>

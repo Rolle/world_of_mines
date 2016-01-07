@@ -36,6 +36,7 @@ gem 'devise'
 gem 'carrierwave'
 gem "nokogiri"
 gem 'remotipart'
+gem 'sprockets-rails', '2.3.3'
 gem 'tinymce-rails'
 gem "mini_magick"
 gem 'kaminari'

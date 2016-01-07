@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get "locked"
       get "own"
       get "search"
+      get "search_map"
       get  "work_list"
       get "delete_work_list"
       get "export_work_list"

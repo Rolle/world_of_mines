@@ -82,8 +82,8 @@
                                                     <% else %>
                                                         <tr class='danger'><td>Letztes Update:</td><td>n/a</td></tr>
                                                     <% end %>
-                                                    <% if !user.last_sign_in_at.nil? %> 
-                                                        <tr <%= raw("class='danger'") if (user.last_sign_in_at+4.weeks < DateTime.now) %>><td>Letzter Login:</td><td><%= user.last_sign_in_at.strftime("%d.%m.%Y %H:%M") %></td></tr>
+                                                    <% if !user.current_sign_in_at.nil? %> 
+                                                        <tr <%= raw("class='danger'") if (user.current_sign_in_at+4.weeks < DateTime.now) %>><td>Letzter Login:</td><td><%= user.current_sign_in_at.strftime("%d.%m.%Y %H:%M") %></td></tr>
                                                     <% else %>
                                                         <tr class='danger'><td>Letzter Login:</td><td>n/a</td></tr>
                                                     <% end %>

@@ -7,16 +7,23 @@
                 </div>
                 <div class="panel-body">
                   <div class="form-inline form-group">
-                  <% if current_user.user? %>
-                    <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary" %>
-                  <% end %>
-                    <% if current_user.admin? %>
-                      <%= link_to 'Export', export_work_list_mines_path, remote: true, class: "btn btn-primary", id: "export-link" %>
+                    <%= form_tag(url_for(action: :search_map), method: :get, class: "form-inline") do %>
+                      <%= text_field_tag :search, nil, {:class=>"input-small form-control"} %>
+                      <%= button_tag( :class => "btn btn-success", data: {toggle: "tooltip"}, title: "Wildcard-Suche in der Datenbank" ) do %>
+                        Suche
+                      <% end %>
+
+                      <% if current_user.user? %>
+                        <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Neuen Eintrag in der Karte anlegen" %>
+                      <% end %>
+                      <% if current_user.admin? %>
+                        <%= link_to 'Export', export_work_list_mines_path, remote: true, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Alle aktuell auf der Karte sichtbaren Einträge werden in die Arbeitliste aufgenommen", id: "export-link" %>
+                      <% end %>
+                      <%= label_tag "Typ: "%> 
+                      <%= select_tag :sort, options_for_select(MinesHelper::SORTS_ALL), :class=>"input-small form-control", :onchange => 'select_typ(this.value)', data: {toggle: "tooltip"}, title: "Nur Einträge dieses Typs in der Karte anzeigen" %>
+                      <%= label_tag "Zustand: "%> 
+                      <%= select_tag :state, options_for_select(MinesHelper::STATES_ALL), :class=>"input-small form-control", :onchange => 'select_zustand(this.value)', data: {toggle: "tooltip"}, title: "Nur Einträge dieses Zustands in der Karte anzeigen" %>
                     <% end %>
-                    <%= label_tag "Typ: "%> 
-                    <%= select_tag :sort, options_for_select(MinesHelper::SORTS_ALL), :class=>"input-small form-control", :onchange => 'select_typ(this.value)' %>
-                    <%= label_tag "Zustand: "%> 
-                    <%= select_tag :state, options_for_select(MinesHelper::STATES_ALL), :class=>"input-small form-control", :onchange => 'select_zustand(this.value)' %>
                   </div>
                   <div id ="map" style="width:auto; height: 700px;"></div>
                 </div>
