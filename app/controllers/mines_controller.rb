@@ -133,7 +133,7 @@ class MinesController < ApplicationController
   def search_map
     search_term = params[:search].strip
 
-    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
+    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%' or homepage like '%" + search_term + "%')"
     search = search + " and state = " + params[:state] if (params[:state] != "99")
     search = search + " and sort = " + params[:sort]  if (params[:sort] != "99")
     search = search + " and deleted = 'f'"
@@ -156,7 +156,7 @@ class MinesController < ApplicationController
   def search
     search_term = params[:search].strip
 
-    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%')"
+    search = "(name like '%" + search_term +"%' or description like '%" +search_term +"%' or homepage like '%" + search_term + "%')"
     search = search + " and state = " + params[:state] if (params[:state] != "99")
     search = search + " and sort = " + params[:sort]  if (params[:sort] != "99")
     search = search + " and deleted = 'f'"

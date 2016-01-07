@@ -10,7 +10,7 @@
         <div class="panel-body">
           <div class="form-group form-inline">
             <%= form_tag(url_for(action: :search), method: :get,  class: "form-inline") do %>
-              <%= text_field_tag :search, nil, {:class=>"input-small form-control"}, data: {toggle: "tooltip"}, title: "Parameter für Wildcard-Suche" %>
+              <%= text_field_tag :search, nil, {:class=>"input-small form-control", data: {toggle: "tooltip"}, title: "Parameter für Wildcard-Suche"} %>
               <%= select_tag :sort, options_for_select(MinesHelper::SORTS_ALL), :class=>"input-small form-control", data: {toggle: "tooltip"}, title: "Suche auf diesen Type beschränken" %>
               <%= select_tag :state, options_for_select(MinesHelper::STATES_ALL), :class=>"input-small form-control", data: {toggle: "tooltip"}, title: "Suche auf diesen Zustand beschränken"  %>
 
