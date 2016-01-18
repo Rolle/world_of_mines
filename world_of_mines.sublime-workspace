@@ -309,11 +309,6 @@
 	"expanded_folders":
 	[
 		"/home/roland/projects/world_of_mines",
-		"/home/roland/projects/world_of_mines/app/controllers",
-		"/home/roland/projects/world_of_mines/app/models",
-		"/home/roland/projects/world_of_mines/app/views",
-		"/home/roland/projects/world_of_mines/app/views/mines",
-		"/home/roland/projects/world_of_mines/config/initializers",
 		"/home/roland/projects/world_of_mines/db",
 		"/home/roland/projects/world_of_mines/db/migrate"
 	],
@@ -450,7 +445,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
