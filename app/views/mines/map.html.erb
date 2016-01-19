@@ -55,7 +55,7 @@
       <% end %>
     ]
     var markersId = {};
-    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 15, chunkedLoading: true });
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 13, chunkedLoading: true });
     for (var i = 0; i < addressPoints.length; i++) {
       var a = addressPoints[i];
       var m = L.marker(L.latLng(a[0]-i, a[1]+i), { title: a[2], icon: iconForSort(a[5])});
