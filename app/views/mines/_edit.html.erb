@@ -149,12 +149,14 @@
     //var ggl = new L.Google();
     var bing = new L.BingLayer("ApiJPrwDWWqUlXoy7gg460DQBa55V-i1XqWWQfnf1sz5HW4CfxUkBZ7afjaMtQ5W");
     var opentopo = L.tileLayer.provider('OpenTopoMap');
+    var thunder = new L.TileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png');
 
     var baseMaps = {
             //"Google": ggl,
             "Bing": bing,
             "OpenTopo": opentopo,
             "OSM DE": osmde,
+            "Thunder": thunder
     };
     var markers_main = new L.LayerGroup();
     L.control.layers(baseMaps).addTo(map_small);
