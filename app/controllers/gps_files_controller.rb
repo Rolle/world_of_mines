@@ -18,7 +18,7 @@ class GpsFilesController < ApplicationController
 
   def import
     @file = GpsFile.find(params[:id])
-    create_mines_from_file(@file)
+    @file.skipped_entries = create_mines_from_file(@file)
     @file.imported = true
     @file.save
     log_event(nil, 1, "File", "Datei "+File.basename(@file.file.path)+" wurde importiert.")

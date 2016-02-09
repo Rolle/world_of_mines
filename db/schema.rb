@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107215133) do
+ActiveRecord::Schema.define(version: 20160209201833) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160107215133) do
     t.integer  "count"
     t.boolean  "imported"
     t.datetime "created_at"
+    t.float    "skipped_entries"
   end
 
 # Could not dump table "mines" because of following NoMethodError

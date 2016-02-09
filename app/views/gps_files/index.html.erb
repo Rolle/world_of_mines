@@ -15,6 +15,7 @@
                 <th>Name</th>
                 <th>Author</th>
                 <th>Einträge</th>
+                <th>Überlesen</th>
                 <th>Upload am</th>
                 <th colspan="2"></th> 
               </tr>
@@ -27,6 +28,11 @@
                   <td><%= File.basename(file.file.path) %></td>
                   <td><%= file.user.email %></td>
                   <td><%= file.count.to_s %></td>
+                  <td>
+                    <% if !file.skipped_entries.nil? .to_s %>
+                      <%= file.skipped_entries.to_s %>
+                    <% end %>
+                  </td>
                   <td><%= file.created_at.strftime("%d.%m.%Y %H:%M") %></td>
                   <td><%= link_to 'Download', file, class: "btn btn-primary btn-xs" %></td>
                   <td><%= link_to 'Löschen', file, method: :delete, data: { confirm: 'Bist du sicher?'},class: "btn btn-danger btn-xs"  %></td>

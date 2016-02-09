@@ -207,22 +207,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/views/mines/_edit.html.erb",
-			"settings":
-			{
-				"buffer_size": 8502,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/mines/map.html.erb",
-			"settings":
-			{
-				"buffer_size": 5623,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -262,19 +246,23 @@
 	[
 		"/home/roland/projects/world_of_mines",
 		"/home/roland/projects/world_of_mines/app",
+		"/home/roland/projects/world_of_mines/app/assets",
+		"/home/roland/projects/world_of_mines/app/assets/stylesheets",
+		"/home/roland/projects/world_of_mines/app/controllers",
 		"/home/roland/projects/world_of_mines/app/views",
-		"/home/roland/projects/world_of_mines/app/views/mines"
+		"/home/roland/projects/world_of_mines/app/views/layouts"
 	],
 	"file_history":
 	[
+		"/home/roland/projects/world_of_mines/app/views/devise/sessions/new.html.erb",
 		"/home/roland/projects/world_of_mines/app/views/mines/_edit.html.erb",
+		"/home/roland/projects/world_of_mines/app/views/mines/map.html.erb",
 		"/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb",
 		"/home/roland/projects/world_of_mines/config/initializers/devise.rb",
 		"/home/roland/projects/world_of_mines/app/models/user.rb",
 		"/home/roland/projects/world_of_mines/db/migrate/20160107215133_add_unique_session_id_to_user.rb",
 		"/home/roland/projects/world_of_mines/Gemfile",
 		"/home/roland/projects/world_of_mines/app/views/mines/index.html.erb",
-		"/home/roland/projects/world_of_mines/app/views/mines/map.html.erb",
 		"/home/roland/projects/world_of_mines/app/helpers/gps_files_helper.rb",
 		"/home/roland/projects/world_of_mines/app/controllers/users_controller.rb",
 		"/home/roland/projects/world_of_mines/app/assets/javascripts/application.js",
@@ -393,8 +381,7 @@
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/edit.js.erb",
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/_edit.html.erb",
 		"/C/Projects/ruby/WorldOfMines/app/views/mines/index.html.erb",
-		"/C/Projects/ruby/WorldOfMines/app/assets/stylesheets/application.css",
-		"/C/Projects/ruby/WorldOfMines/app/assets/javascripts/application.js"
+		"/C/Projects/ruby/WorldOfMines/app/assets/stylesheets/application.css"
 	],
 	"find":
 	{
@@ -606,69 +593,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/views/mines/_edit.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8502,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6972,
-								6972
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2295.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/mines/map.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5623,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3801,
-								3891
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1275.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
