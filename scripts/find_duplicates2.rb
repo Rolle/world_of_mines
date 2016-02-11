@@ -29,7 +29,7 @@ duplicates.each_pair do |key, value|
         value.sort!
         value = value[0..value.size-2]
         value.each do |id|
-                puts "Mark mine with id " + id.to_s
+                #puts "Mark mine with id " + id.to_s
                 mine = Mine.find(id)
                 mine.deleted = true
                 mine.save!
