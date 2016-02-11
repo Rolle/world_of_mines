@@ -7,20 +7,22 @@ mines.each do |mine|
         if !duplicates.key? key
                 duplicates[key] = Array.new 
         end
-        duplicates[key] << mine.id #.to_s + ":" + mine.name + "," + 
-mine.created_at.strftime("%Y%m%d_%H%M%S") + "," + 
-mine.updated_at.strftime("%Y%m%d_%H%M%S")
+        duplicates[key] << mine.id
 end
 
+count = 0
 duplicates.each_pair do |key, value|
         if value.size > 1
                 value.each do |id|
                         puts "   " + id.to_s
                 end
+                count += value.size
         else
                 duplicates.delete key
         end
 end
+
+puts "too delete: " + count.to_s
 
 duplicates.each_pair do |key, value|
 
