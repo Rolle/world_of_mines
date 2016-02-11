@@ -10,8 +10,8 @@ module GpsFilesHelper
 				name = placemark.css("name").text
 
 				coords = placemark.css("Point").css("coordinates").text.split(",")
-				longitude = coords[0].to_d.truncate(7).to_f
-				latitude= coords[1].to_d.truncate(7).to_f
+				longitude = coords[0].to_d.truncate(6).to_f
+				latitude= coords[1].to_d.truncate(6).to_f
 				mines = Mine.find_by_latitude_and_longitude(latitude, longitude)
 				if (mines.nil?)	
 					m = Mine.new(created_by: current_user, name: name.parameterize(), sort: 0, state: 0, latitude: latitude, longitude: longitude, gps_file_id: file.id, deleted: false)

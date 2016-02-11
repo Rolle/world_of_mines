@@ -233,8 +233,8 @@ class MinesController < ApplicationController
     )
     @mine.update_attributes({updated_by: current_user, name: params[:name], 
       description: params[:description], 
-      latitude: params[:latitude].to_d.truncate(7).to_f, 
-      longitude: params[:longitude].to_d.truncate(7).to_f, 
+      latitude: params[:latitude].to_d.truncate(6).to_f, 
+      longitude: params[:longitude].to_d.truncate(6).to_f, 
       state: params[:state], sort: params[:sort], visited_at: params[:visited_at], homepage: params[:homepage]})   
     log_event(@mine, 1, "Mine", "Nachher:" + 
       n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
@@ -274,8 +274,8 @@ class MinesController < ApplicationController
       @mine = Mine.new(mine_params)
       @mine.created_by = current_user.id
     end
-    @mine.latitude = @mine.latitude.to_d.truncate(7).to_f
-    @mine.longitude = @mine.longitude.to_d.truncate(7).to_f
+    @mine.latitude = @mine.latitude.to_d.truncate(6).to_f
+    @mine.longitude = @mine.longitude.to_d.truncate(6).to_f
     if @mine.save
       log_event(@mine, 1, "Mine", "Neuanlage von:" + 
         n(@mine.name) + ", " + n(@mine.description)+", " + n(@mine.latitude) + ", " + n(@mine.longitude) + ", " + n(@mine.state.to_s) + ", " + n(@mine.sort.to_s) + ", " + n(@mine.visited_at) + ", " + n(@mine.homepage)
