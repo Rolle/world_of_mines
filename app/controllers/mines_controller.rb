@@ -81,7 +81,7 @@ class MinesController < ApplicationController
   def export_all
     #@mines = Mine.all
     @mines = Mine.where(deleted: false)
-    send_data generate_kml(@mines), filename: "export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
+    send_data generate_kml(@mines), filename: "full_export_untergrundkataster_" + DateTime.now.strftime("%Y%m%d_%H%M%S") + "_" + @mines.count.to_s + ".kml"
   end
 
   def delete_work_list

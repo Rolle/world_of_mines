@@ -28,7 +28,7 @@
 
               <%= link_to 'Neuer Eintrag', '#', onclick: "showNew()", data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Neuen Eintrag in die Liste einfügen" %>
               <% if current_user.superadmin? %>
-                <%= link_to 'Export', export_all_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Exportiert ALLE Einträge in eine KML-Datei" %>
+                <%= link_to 'Alle exportieren', export_all_mines_path, data: {no_turbolink: true}, class: "btn btn-primary", data: {toggle: "tooltip"}, title: "Exportiert ALLE Einträge in eine KML-Datei" %>
               <% end %>
             <% end %>            
           </div>

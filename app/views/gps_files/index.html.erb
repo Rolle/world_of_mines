@@ -29,7 +29,7 @@
                   <td><%= file.user.email %></td>
                   <td><%= file.count.to_s %></td>
                   <td>
-                    <% if !file.skipped_entries.nil? .to_s %>
+                    <% if !file.skipped_entries.nil? %>
                       <%= file.skipped_entries.to_s %>
                     <% end %>
                   </td>
