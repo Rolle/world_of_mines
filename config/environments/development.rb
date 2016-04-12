@@ -18,8 +18,8 @@ Rails.application.configure do
     :address => "mail.rolandschmitt.info",
     :port => "25",
     :domain => "rolandschmitt.info",
-    :user_name => "test",
-    :password => "test",
+    :user_name => "rolle",
+    :password => "7WildSchweine!",
     :authentication => "plain",
     :enable_starttls_auto => true,
     :openssl_verify_mode => 'none'
