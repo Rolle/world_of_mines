@@ -49,10 +49,6 @@ class GpsFilesController < ApplicationController
     send_file @file.file.path, filename: File.basename(@file.file.path)
   end
 
-  def fullbackup
-    send_file "private/fullbackup_untergrundkataster.kml", filename: "fullback_untergrundkataster.kml"
-  end
-
   def new
   	@file = GpsFile.new
   end

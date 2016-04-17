@@ -6,6 +6,10 @@ class Mine < ActiveRecord::Base
   belongs_to :locked_by, class_name: "User", foreign_key: "locked_by"
   belongs_to :updated_by, class_name: "User", foreign_key: 'updated_by'
 
+  def fullbackup
+    send_file "private/fullbackup_untergrundkataster.kml", filename: "fullback_untergrundkataster.kml"
+  end
+  
   def documents
   	documents = []
   	photos.each do |photo|
@@ -35,7 +39,7 @@ class Mine < ActiveRecord::Base
     mines.each do |mine|
       kml = kml + 
       "<Placemark>
-        <name>"+mine.name+"</name>"
+        <name><![CDATA["+mine.name+"]]></name>"
       if (mine.description)
         kml = kml + "<description><![CDATA["+mine.description+"]]></description>"
       end

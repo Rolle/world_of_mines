@@ -220,10 +220,18 @@
 	"buffers":
 	[
 		{
-			"file": "app/controllers/mines_controller.rb",
+			"file": "app/models/mine.rb",
 			"settings":
 			{
-				"buffer_size": 9884,
+				"buffer_size": 1818,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 1460,
 				"line_ending": "Unix"
 			}
 		},
@@ -232,6 +240,14 @@
 			"settings":
 			{
 				"buffer_size": 2979,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 6879,
 				"line_ending": "Unix"
 			}
 		}
@@ -243,8 +259,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 311.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "Package Control: ",
 		"selected_items":
 		[
 			[
@@ -252,7 +268,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 400.0
+		"width": 530.0
 	},
 	"console":
 	{
@@ -274,16 +290,17 @@
 	[
 		"/home/roland/projects/world_of_mines",
 		"/home/roland/projects/world_of_mines/app",
-		"/home/roland/projects/world_of_mines/app/assets",
-		"/home/roland/projects/world_of_mines/app/controllers",
-		"/home/roland/projects/world_of_mines/app/helpers",
-		"/home/roland/projects/world_of_mines/app/views",
-		"/home/roland/projects/world_of_mines/app/views/mines",
-		"/home/roland/projects/world_of_mines/app/views/users",
-		"/home/roland/projects/world_of_mines/scripts"
+		"/home/roland/projects/world_of_mines/app/models",
+		"/home/roland/projects/world_of_mines/config"
 	],
 	"file_history":
 	[
+		"/home/roland/projects/world_of_mines/.gitignore",
+		"/home/roland/projects/world_of_mines/app/controllers/gps_files_controller.rb",
+		"/home/roland/projects/world_of_mines/app/models/gps_file.rb",
+		"/home/roland/projects/world_of_mines/config/routes.rb",
+		"/home/roland/projects/world_of_mines/private/fullbackup_untergrundkataster.kml",
+		"/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb",
 		"/home/roland/projects/world_of_mines/app/views/mines/index.html.erb",
 		"/home/roland/projects/world_of_mines/app/views/mines/paperbin.html.erb",
 		"/home/roland/projects/world_of_mines/app/views/layouts/devise/sessions.html.erb",
@@ -292,12 +309,10 @@
 		"/home/roland/projects/world_of_mines/scripts/normalize_coords_to_6_decimals.rb",
 		"/home/roland/projects/world_of_mines/app/views/gps_files/index.html.erb",
 		"/home/roland/projects/world_of_mines/scripts/find_duplicates2.rb",
-		"/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb",
 		"/home/roland/projects/world_of_mines/app/helpers/gps_files_helper.rb",
 		"/home/roland/projects/world_of_mines/scripts/find_duplicates.rb",
 		"/home/roland/projects/world_of_mines/scripts/duplicates.txt",
 		"/home/roland/projects/world_of_mines/app/views/mines/_edit.html.erb",
-		"/home/roland/projects/world_of_mines/app/controllers/gps_files_controller.rb",
 		"/home/roland/projects/world_of_mines/db/migrate/20160209201820_remove_skipped_entries_to_mines.rb",
 		"/home/roland/projects/world_of_mines/db/migrate/20160209201227_add_skipped_entries_to_mines.rb",
 		"/home/roland/projects/world_of_mines/app/views/devise/sessions/new.html.erb",
@@ -407,11 +422,7 @@
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/add_or_remove_listitem.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/controllers/users_controller.rb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/users/_form.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/users/_edit.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/users/show.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/mines/_mine.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/events_controller.rb",
-		"/C/Projects/ruby/World_Of_Mines/db/migrate/20151029094027_drop_columns_user.rb"
+		"/C/Projects/ruby/World_Of_Mines/app/views/users/_edit.html.erb"
 	],
 	"find":
 	{
@@ -625,24 +636,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/controllers/mines_controller.rb",
+					"file": "app/models/mine.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9884,
+						"buffer_size": 1818,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2171,
-								2183
+								492,
+								492
 							]
 						],
 						"settings":
@@ -652,7 +663,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1122.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -660,8 +671,38 @@
 				},
 				{
 					"buffer": 1,
+					"file": "config/routes.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1006,
+								1006
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 459.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "app/helpers/mines_helper.rb",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 2979,
@@ -671,8 +712,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								1518,
+								1518
 							]
 						],
 						"settings":
@@ -681,7 +722,37 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1377.0,
+						"translation.y": 1275.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/layouts/application.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6879,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3912,
+								3912
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 935.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -775,7 +846,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 221.0,
+	"side_bar_width": 254.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

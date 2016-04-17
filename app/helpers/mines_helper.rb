@@ -92,7 +92,7 @@ module MinesHelper
 		mines.each do |mine|
 			kml = kml + 
 			"<Placemark>
-				<name>"+mine.name+"</name>"
+				<name><![CDATA["+mine.name+"]]></name>"
 			if (mine.description)
 				kml = kml + "<description><![CDATA["+mine.description+"]]></description>"
 			end

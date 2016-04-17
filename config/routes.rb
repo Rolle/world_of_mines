@@ -18,9 +18,6 @@ Rails.application.routes.draw do
       get 'import'
       get 'export'
     end
-    collection do
-      get "fullbackup"
-    end
   end
   resources :gps_files
 
@@ -54,6 +51,7 @@ Rails.application.routes.draw do
       get "map_work_list"
       get "paperbin"
       get "kill_all"
+      get "fullbackup"
     end
     member do
       post "updateajax"
