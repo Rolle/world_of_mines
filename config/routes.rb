@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       get 'import'
       get 'export'
     end
+    collection do
+      get "fullbackup"
+    end
   end
   resources :gps_files
 
