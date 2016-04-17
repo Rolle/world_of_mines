@@ -23,7 +23,8 @@ class Mine < ActiveRecord::Base
   end
 
   def self.fullbackup
-    mines = self.where(deleted: false)
+    #mines = self.where(deleted: false)
+    mines = self.where(id: 62854)
     kml = "<?xml version='1.0' encoding='UTF-8'?>
         <kml xmlns='http://www.opengis.net/kml/2.2'>
         <Document>
@@ -48,6 +49,9 @@ class Mine < ActiveRecord::Base
       </Placemark>"
     end
     kml = kml + "</Folder></Document></kml>"
-    send_data kml, filename: "private/fullbackup_untergrundkataster.kml"
+    f = File.new("private/fullbackup_untergrundkataster.kml","wb")
+    f.write(kml)
+    f.flush
+    f.close
   end
 end
