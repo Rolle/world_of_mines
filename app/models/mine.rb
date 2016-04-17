@@ -23,8 +23,8 @@ class Mine < ActiveRecord::Base
   end
 
   def self.fullbackup
-    #mines = self.where(deleted: false)
-    mines = self.where(id: 62854)
+    mines = self.where(deleted: false)
+    #mines = self.where(id: 62854)
     kml = "<?xml version='1.0' encoding='UTF-8'?>
         <kml xmlns='http://www.opengis.net/kml/2.2'>
         <Document>
