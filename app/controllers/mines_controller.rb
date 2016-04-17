@@ -5,6 +5,10 @@ class MinesController < ApplicationController
   before_action :authenticate_user!
   protect_from_forgery with: :null_session
 
+  def fullbackup
+    send_data "private/fullbackup_untergrundkataster.kml", filename: "fullbackup_untergrundkataster.kml"
+  end
+
   def kill_all
     @mines = Mine.where(deleted: true)
     @mines.each do |mine|
