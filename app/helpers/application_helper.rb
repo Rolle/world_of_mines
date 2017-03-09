@@ -26,4 +26,8 @@ module ApplicationHelper
 		/\A[-+]?\d+\z/ === s
 	end
 
+	def to_url(url)
+		return "http://" + url if !url.start_with? "http"
+	end
+
 end

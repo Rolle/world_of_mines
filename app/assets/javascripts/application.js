@@ -29,4 +29,5 @@
 //= require jsapi
 //= require chartkick
 //= require leaflet-measure.min
+//= require clipboard.min
 //= require my
