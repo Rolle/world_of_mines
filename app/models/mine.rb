@@ -36,7 +36,7 @@ class Mine < ActiveRecord::Base
           <name>Untergrundkataster "+ DateTime.now.strftime("%Y%m%d_%H%M%S")+"</name>
           <description>Export von " + mines.count.to_s + " Eintraegen</description>
           <Folder>"
-    puts "Count: " + mines.size().to_s
+    #puts "Count: " + mines.size().to_s
     f = File.new("private/fullbackup_untergrundkataster.kml","wb")
     f.write(kml)
 
