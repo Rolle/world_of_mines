@@ -34,7 +34,8 @@ module MinesHelper
 		10 => "Tunnel", 
 		11 => "U-Verlagerung", 
 		12 => "Montanindustrie",
-		13 => "Besucherbergwerk"
+		13 => "Besucherbergwerk",
+		14 => "Schacht"
 	}
 	SORTS = {
 		"N/A" =>0, 
@@ -50,7 +51,8 @@ module MinesHelper
 		"Tunnel" => 10, 
 		"U-Verlagerung" => 11, 
 		"Montanindustrie" => 12,
-		"Besucherbergwerk" => 13
+		"Besucherbergwerk" => 13,
+		"Schacht" => 14
 	}
 	STATES_ALL = {
 		"Alle" => 99,
@@ -78,7 +80,8 @@ module MinesHelper
 		"Tunnel" => 10, 
 		"U-Verlagerung" => 11, 
 		"Montanindustrie" => 12,
-		"Besucherbergwerk" => 13
+		"Besucherbergwerk" => 13,
+		"Schacht" => 14
 	}
 
 	def generate_kml(mines)
@@ -90,6 +93,7 @@ module MinesHelper
 					<Folder>"
 
 		mines.each do |mine|
+			#byebug if mine.id = 195360
 			kml = kml + 
 			"<Placemark>
 				<name><![CDATA["+mine.name+"]]></name>"

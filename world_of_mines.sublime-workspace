@@ -223,15 +223,7 @@
 			"file": "app/models/mine.rb",
 			"settings":
 			{
-				"buffer_size": 1818,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 1460,
+				"buffer_size": 1830,
 				"line_ending": "Unix"
 			}
 		},
@@ -239,16 +231,31 @@
 			"file": "app/helpers/mines_helper.rb",
 			"settings":
 			{
-				"buffer_size": 2979,
+				"buffer_size": 3079,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/layouts/application.html.erb",
+			"contents": "fclass MinesController < ApplicationController\n  include ApplicationHelper\n  include MinesHelper\n\n  before_action :authenticate_user!\n  protect_from_forgery with: :null_session\n\n  def fullbackup\n    send_file \"private/fullbackup_untergrundkataster.kml\", filename: \"fullbackup_untergrundkataster.kml\"\n  end\n\n  def kill_all\n    @mines = Mine.where(deleted: true)\n    @mines.each do |mine|\n      mine.destroy\n    end\n    redirect_to :action => 'paperbin'\n  end\n\n  def kill\n    @mine = set_mine\n    @mine.destroy\n    respond_to do |format|\n      format.js {}\n    end\n  end\n\n  def undo\n    @mine = set_mine\n    @mine.update_attributes(deleted: false)\n    respond_to do |format|\n      format.js {render \"kill\"}\n    end\n  end\n\n  def paperbin\n    @mines = Mine.where(deleted: true)\n  end\n\n  def clear_work_list\n    current_user.clear_work_list()\n    respond_to do |format|\n      format.js {render \"update_work_list\"}\n    end\n  end\n\n  def sort_work_list\n    @mines = Mine.find(current_user.work_list_ids)\n    @mines.each do |mine|\n      mine.sort = params[:sort]\n      mine.save\n    end\n    respond_to do |format|\n      format.js {render \"update_work_list\"}\n    end\n  end\n\n  def state_work_list\n    @mines = Mine.find(current_user.work_list_ids)\n    @mines.each do |mine|\n      mine.state = params[:state]\n      mine.save\n    end\n    @mines = Mine.find(current_user.work_list_ids)\n    respond_to do |format|\n      format.js {render \"update_work_list\"}\n    end    \n  end\n\n  def export_work_list\n    if current_user.admin?\n      if params[:ne_lat] and params[:ne_lng] and params[:sw_lat] and params[:sw_lng] \n        @mines = Mine.where(\"latitude < ? and latitude > ? and longitude < ? and longitude > ? and deleted = ?\", params[:ne_lat], params[:sw_lat],params[:ne_lng],params[:sw_lng], false)\n        current_user.add_mines_to_workitems(@mines)\n        respond_to do |format|\n          format.js {render \"add_or_remove_list_item\"}\n        end\n      else\n        @mines = Mine.where(id: current_user.work_list_ids, deleted: false)\n        send_data generate_kml(@mines), filename: \"export_untergrundkataster_\" + DateTime.now.strftime(\"%Y%m%d_%H%M%S\") + \"_\" + @mines.count.to_s + \".kml\"\n      end      \n    end\n  end\n\n  def export_all\n    #@mines = Mine.all\n    @mines = Mine.where(deleted: false)\n    send_data generate_kml(@mines), filename: \"full_export_untergrundkataster_\" + DateTime.now.strftime(\"%Y%m%d_%H%M%S\") + \"_\" + @mines.count.to_s + \".kml\"\n  end\n\n  def delete_work_list\n    @mines = Mine.find(current_user.work_list_ids)\n    @mines.each do |mine|\n      #mine.destroy      \n      mine.update_attributes(deleted: true)\n    end\n    current_user.clear_work_list()\n    @mines = nil\n    respond_to do |format|\n      format.js {render \"update_work_list\"}\n    end   \n  end\n\n  def add_current_list_items    \n    current_user.add_workitems(current_user.current_ids)\n    respond_to do |format|\n      format.js {render \"add_or_remove_list_item\"}\n    end\n  end\n\n  def add_page_list_items    \n    current_user.add_workitems(current_user.page_ids)\n    respond_to do |format|\n      format.js {render \"add_or_remove_list_item\"}\n    end\n  end\n\n  def add_or_remove_list_item\n    current_user.add_or_remove_workitem(params[:id])\n    respond_to do |format|\n      format.js {}\n    end\n  end\n\n  def work_list\n    @mines = Mine.where(id: current_user.work_list_ids, deleted: false)\n  end\n\n  def index\n    @mines = Mine.where(deleted: false).page(params[:page])\n    current_user.update_page_ids(@mines)\n    current_user.update_current_ids(nil)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n  end\n\n  def search_map\n    search_term = params[:search].strip\n\n    search = \"(name like '%\" + search_term +\"%' or description like '%\" +search_term +\"%' or homepage like '%\" + search_term + \"%')\"\n    search = search + \" and state = \" + params[:state] if (params[:state] != \"99\")\n    search = search + \" and sort = \" + params[:sort]  if (params[:sort] != \"99\")\n    search = search + \" and deleted = 'f'\"\n\n    if is_s_i?(search_term)\n      search = search + \" or id = \"+search_term\n    end\n    @mines = Mine.where(search)\n\n    current_user.update_current_ids(@mines)\n    @mines = @mines.page(params[:page])\n\n    current_user.update_page_ids(@mines)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n\n    render :map\n  end\n\n  def search\n    search_term = params[:search].strip\n\n    search = \"(name like '%\" + search_term +\"%' or description like '%\" +search_term +\"%' or homepage like '%\" + search_term + \"%')\"\n    search = search + \" and state = \" + params[:state] if (params[:state] != \"99\")\n    search = search + \" and sort = \" + params[:sort]  if (params[:sort] != \"99\")\n    search = search + \" and deleted = 'f'\"\n\n    if is_s_i?(search_term)\n      search = search + \" or id = \"+search_term\n    end\n    @mines = Mine.where(search)\n\n    current_user.update_current_ids(@mines)\n    @mines = @mines.page(params[:page])\n\n    current_user.update_page_ids(@mines)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :index\n  end\n\n  def map\n    #@mines = Mine.all.order(latitude: :desc)\n    @mines = Mine.where(deleted: false).order(latitude: :desc)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n  end\n\n\n  def map_work_list\n    @mines = Mine.find(current_user.work_list_ids)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :map\n  end\n\n  def created\n    @mines = Mine.where(created_by: current_user.id, deleted: false).order(latitude: :desc)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :map\n  end\n\n  def last_edited\n    @mines = Mine.where(updated_by: current_user.id, deleted: false).limit(20).order(latitude: :desc)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :map\n  end\n  \n  def lock\n    @mine = Mine.find(params[:id])\n    if @mine.locked_by == current_user\n      @mine.locked_by = nil\n    else\n      @mine.locked_by = current_user\n    end\n    @mine.save\n    respond_to do |format|\n      format.js { }\n    end\n  end\n\n  def show\n    @mine = set_mine\n    #@mines = Mine.all.order(latitude: :desc)\n    @mines = Mine.where(deleted: false).order(latitude: :desc)\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :map\n  end\n\n  def updateajax\n    @mine = Mine.find(params[:id])\n    log_event(@mine, 1, \"Mine\", \"Vorher:\" + \n      n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at) + \", \" + n(@mine.homepage)\n    )\n    @mine.update_attributes({updated_by: current_user, name: params[:name], \n      description: params[:description], \n      latitude: params[:latitude].to_d.truncate(6).to_f, \n      longitude: params[:longitude].to_d.truncate(6).to_f, \n      state: params[:state], sort: params[:sort], visited_at: params[:visited_at], homepage: params[:homepage]})   \n    log_event(@mine, 1, \"Mine\", \"Nachher:\" + \n      n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at) + \", \" + n(@mine.homepage)\n    )\n    respond_to do |format|\n      format.js {}\n    end\n  end\n\n  def own\n    @mines = Mine.where(locked_by: current_user.id.to_s, deleted: false).page(params[:page])\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :index\n  end\n\n  def locked\n    @mines = Mine.where(\"locked_by is not null and deleted = 'f'\").page(params[:page])\n    @new_mine = Mine.new\n    @new_photo = Photo.new\n    render :index\n  end\n\n  def new\n    @mine = Mine.new\n  end\n\n  def edit\n    @mine = set_mine    \n    @photo = Photo.new\n  end\n\n  def create\n    if (request.format == 'js')\n      @mine = Mine.new(deleted: false, created_by: current_user,latitude: params[:latitude], longitude: params[:longitude], name: params[:name], description: params[:description], sort: params[:sort], state: params[:state], homepage: params[:homepage])\n    else\n      @mine = Mine.new(mine_params)\n      @mine.created_by = current_user.id\n    end\n    @mine.latitude = @mine.latitude.to_d.truncate(6).to_f\n    @mine.longitude = @mine.longitude.to_d.truncate(6).to_f\n    if @mine.save\n      log_event(@mine, 1, \"Mine\", \"Neuanlage von:\" + \n        n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at) + \", \" + n(@mine.homepage)\n      )\n      respond_to do |format|\n        format.js {}\n        format.html {redirect_to @mine, notice: 'Erfolgreich angelegt.'}\n      end\n    else\n      render :new\n    end\n  end\n\n  def update\n    log_event(@mine, 1, \"Mine\", \"Vorher:\" + \n      n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at) + \", \" + n(@mine.homepage)\n    )\n    if @mine.update(mine_params)\n      log_event(@mine, 1, \"Mine\", \"Nachher:\" + \n        n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at) + \", \" + n(@mine.homepage)\n      )\n      redirect_to @mine, notice: 'Erfolgreich geändert.'\n    else\n      render :edit\n    end\n  end\n\n  def destroy\n    set_mine\n    @mine.photos.each do |photo|\n      photo.destroy\n    end\n    log_event(@mine, 1, \"Mine\", \"Löschung von:\" + \n      n(@mine.name) + \", \" + n(@mine.description)+\", \" + n(@mine.latitude) + \", \" + n(@mine.longitude) + \", \" + n(@mine.state.to_s) + \", \" + n(@mine.sort.to_s) + \", \" + n(@mine.visited_at)\n    )\n    #@mine.destroy\n    @mine.update_attributes(deleted: true)\n    respond_to do |format|\n      format.js {}\n    end\n  end\n\n  private\n    def set_mine\n      @mine = Mine.find(params[:id])\n    end\n\n    def mine_params\n      params.require(:mine).permit(:homepage, :latitude, :longitude, :name, :description, :sort, :state, :locked_by, :created_by, :updated_by)\n    end\nend\n",
+			"file": "app/controllers/mines_controller.rb",
+			"file_size": 10015,
+			"file_write_time": 131694757885289680,
 			"settings":
 			{
-				"buffer_size": 6879,
+				"buffer_size": 10014,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 173 files for \"fullbackup_untergrundkataster\"\n\n/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb:\n    7  \n    8    def fullbackup\n    9:     send_file \"private/fullbackup_untergrundkataster.kml\", filename: \"fullbackup_untergrundkataster.kml\"\n   10    end\n   11  \n\n/home/roland/projects/world_of_mines/app/models/mine.rb:\n    8  \n    9    def fullbackup\n   10:     send_file \"private/fullbackup_untergrundkataster.kml\", filename: \"fullback_untergrundkataster.kml\"\n   11    end\n   12    \n   ..\n   54      end\n   55      kml = kml + \"</Folder></Document></kml>\"\n   56:     f = File.new(\"private/fullbackup_untergrundkataster.kml\",\"wb\")\n   57      f.write(kml)\n   58      f.flush\n\n4 matches across 2 files\n\n\nSearching 173 files for \"generate_kml\"\n\n/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb:\n   78        else\n   79          @mines = Mine.where(id: current_user.work_list_ids, deleted: false)\n   80:         send_data generate_kml(@mines), filename: \"export_untergrundkataster_\" + DateTime.now.strftime(\"%Y%m%d_%H%M%S\") + \"_\" + @mines.count.to_s + \".kml\"\n   81        end      \n   82      end\n   ..\n   86      #@mines = Mine.all\n   87      @mines = Mine.where(deleted: false)\n   88:     send_data generate_kml(@mines), filename: \"full_export_untergrundkataster_\" + DateTime.now.strftime(\"%Y%m%d_%H%M%S\") + \"_\" + @mines.count.to_s + \".kml\"\n   89    end\n   90  \n\n/home/roland/projects/world_of_mines/app/helpers/mines_helper.rb:\n   85  \t}\n   86  \n   87: \tdef generate_kml(mines)\n   88  \t\tkml = \"<?xml version='1.0' encoding='UTF-8'?>\n   89  \t\t\t\t<kml xmlns='http://www.opengis.net/kml/2.2'>\n\n/home/roland/projects/world_of_mines/app/mailers/order_mailer.rb:\n    6  \tdef send_order(order)\n    7  \t\t@order = order\n    8: \t\tkml = generate_kml(@order.mines)\n    9: \t\t#kml = generate_kml_from_order(@order)\n   10  \t\tattachments[\"download.kml\"] = kml\n   11  \t\tmail(to: @order.user.email, subject: \"Untergrundkataster - Bestellung \" + @order.id.to_s + \" vom \" + @order.created_at.strftime(\"%d.%m.%Y, %H:%M:%S\"))\n\n5 matches across 3 files\n\n\nSearching 173 files for \"export_all\"\n\n/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb:\n   83    end\n   84  \n   85:   def export_all\n   86      #@mines = Mine.all\n   87      @mines = Mine.where(deleted: false)\n\n/home/roland/projects/world_of_mines/app/views/mines/index.html.erb:\n   29                <%= link_to 'Neuer Eintrag', '#', onclick: \"showNew()\", data: {no_turbolink: true}, class: \"btn btn-primary\", data: {toggle: \"tooltip\"}, title: \"Neuen Eintrag in die Liste einfügen\" %>\n   30                <% if current_user.superadmin? %>\n   31:                 <%= link_to 'Alle exportieren', export_all_mines_path, data: {no_turbolink: true}, class: \"btn btn-primary\", data: {toggle: \"tooltip\"}, title: \"Exportiert ALLE Einträge in eine KML-Datei\" %>\n   32                <% end %>\n   33              <% end %>            \n\n2 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 2966,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		}
 	],
@@ -290,15 +297,17 @@
 	[
 		"/home/roland/projects/world_of_mines",
 		"/home/roland/projects/world_of_mines/app",
-		"/home/roland/projects/world_of_mines/app/models",
-		"/home/roland/projects/world_of_mines/config"
+		"/home/roland/projects/world_of_mines/app/controllers",
+		"/home/roland/projects/world_of_mines/app/views"
 	],
 	"file_history":
 	[
+		"/home/roland/Downloads/fullbackup_untergrundkataster.kml",
+		"/home/roland/projects/world_of_mines/app/views/layouts/application.html.erb",
+		"/home/roland/projects/world_of_mines/config/routes.rb",
 		"/home/roland/projects/world_of_mines/.gitignore",
 		"/home/roland/projects/world_of_mines/app/controllers/gps_files_controller.rb",
 		"/home/roland/projects/world_of_mines/app/models/gps_file.rb",
-		"/home/roland/projects/world_of_mines/config/routes.rb",
 		"/home/roland/projects/world_of_mines/private/fullbackup_untergrundkataster.kml",
 		"/home/roland/projects/world_of_mines/app/controllers/mines_controller.rb",
 		"/home/roland/projects/world_of_mines/app/views/mines/index.html.erb",
@@ -420,17 +429,15 @@
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/lock.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/add_or_remove_list_item.js.erb",
 		"/C/Projects/ruby/World_Of_Mines/app/views/mines/add_or_remove_listitem.js.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/controllers/users_controller.rb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/users/_form.html.erb",
-		"/C/Projects/ruby/World_Of_Mines/app/views/users/_edit.html.erb"
+		"/C/Projects/ruby/World_Of_Mines/app/controllers/users_controller.rb"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 98.0,
 		"where_history":
 		[
 			"/home/roland/projects/world_of_mines/app/",
@@ -465,6 +472,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"export_all",
+			"generate_kml",
+			"fullbackup_untergrundkataster",
 			"background",
 			"bgimage",
 			"iconForSort",
@@ -589,10 +599,7 @@
 			"<div class=\"control-group\">",
 			"'icon-refresh",
 			"icon-refresh",
-			"gly",
-			"span4",
-			"btn",
-			"container-fluid"
+			"gly"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -636,7 +643,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -645,15 +652,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1818,
+						"buffer_size": 1830,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								492,
-								492
+								1172,
+								1172
 							]
 						],
 						"settings":
@@ -663,57 +670,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "config/routes.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1460,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1006,
-								1006
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 459.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "app/helpers/mines_helper.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2979,
+						"buffer_size": 3079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1518,
-								1518
+								1915,
+								1915
 							]
 						],
 						"settings":
@@ -722,40 +699,126 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1275.0,
+						"translation.y": 990.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/views/layouts/application.html.erb",
+					"buffer": 2,
+					"file": "app/controllers/mines_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6879,
+						"buffer_size": 10014,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3912,
-								3912
+								2213,
+								2223
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 935.0,
+						"translation.y": 985.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2966,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										193,
+										222
+									],
+									[
+										240,
+										269
+									],
+									[
+										416,
+										445
+									],
+									[
+										625,
+										654
+									],
+									[
+										977,
+										989
+									],
+									[
+										1256,
+										1268
+									],
+									[
+										1516,
+										1528
+									],
+									[
+										1783,
+										1795
+									],
+									[
+										1826,
+										1838
+									],
+									[
+										2235,
+										2245
+									],
+									[
+										2709,
+										2719
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								2089,
+								2089
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -763,7 +826,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -804,7 +867,7 @@
 	"project": "world_of_mines.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

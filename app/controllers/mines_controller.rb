@@ -6,7 +6,8 @@ class MinesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def fullbackup
-    send_file "private/fullbackup_untergrundkataster.kml", filename: "fullbackup_untergrundkataster.kml"
+    Mine.fullbackup
+    send_file "private/fullbackup_untergrundkataster.kml", filename: "fullback_untergrundkataster.kml"
   end
 
   def kill_all

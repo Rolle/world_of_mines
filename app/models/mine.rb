@@ -7,6 +7,7 @@ class Mine < ActiveRecord::Base
   belongs_to :updated_by, class_name: "User", foreign_key: 'updated_by'
 
   def fullbackup
+    Mine.fullbackup
     send_file "private/fullbackup_untergrundkataster.kml", filename: "fullback_untergrundkataster.kml"
   end
   
@@ -35,9 +36,12 @@ class Mine < ActiveRecord::Base
           <name>Untergrundkataster "+ DateTime.now.strftime("%Y%m%d_%H%M%S")+"</name>
           <description>Export von " + mines.count.to_s + " Eintraegen</description>
           <Folder>"
+    puts "Count: " + mines.size().to_s
+    f = File.new("private/fullbackup_untergrundkataster.kml","wb")
+    f.write(kml)
 
     mines.each do |mine|
-      kml = kml + 
+      kml =  
       "<Placemark>
         <name><![CDATA["+mine.name+"]]></name>"
       if (mine.description)
@@ -51,10 +55,10 @@ class Mine < ActiveRecord::Base
           <coordinates>"+mine.longitude.to_s+","+mine.latitude.to_s+",0.0</coordinates>
         </Point>
       </Placemark>"
+      f.write(kml)
     end
-    kml = kml + "</Folder></Document></kml>"
-    f = File.new("private/fullbackup_untergrundkataster.kml","wb")
-    f.write(kml)
+    f.write("</Folder></Document></kml>")
+    
     f.flush
     f.close
   end
